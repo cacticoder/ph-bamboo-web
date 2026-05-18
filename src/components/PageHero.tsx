@@ -1,6 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { motion } from "framer-motion";
 import { ReactNode } from "react";
+import { motion } from "framer-motion";
 
 export function PageHero({ kicker, title, lead }: { kicker: string; title: string; lead: string }) {
   return (
@@ -15,6 +14,3 @@ export function PageHero({ kicker, title, lead }: { kicker: string; title: strin
 export function PageShell({ children }: { children: ReactNode }) {
   return <div className="mx-auto max-w-7xl px-4 md:px-8 py-12">{children}</div>;
 }
-
-// Dummy route export needed if this file is in routes dir; placing in components instead.
-export const _unused = createFileRoute;
