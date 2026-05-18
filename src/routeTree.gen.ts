@@ -9,18 +9,60 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ValueChainRouteImport } from './routes/value-chain'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as SpeciesRouteImport } from './routes/species'
+import { Route as RndRouteImport } from './routes/rnd'
+import { Route as ProcessingCenterRouteImport } from './routes/processing-center'
 import { Route as ModulesRouteImport } from './routes/modules'
+import { Route as MakersRouteImport } from './routes/makers'
 import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as IndexRouteImport } from './routes/index'
 
+const ValueChainRoute = ValueChainRouteImport.update({
+  id: '/value-chain',
+  path: '/value-chain',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SpeciesRoute = SpeciesRouteImport.update({
+  id: '/species',
+  path: '/species',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RndRoute = RndRouteImport.update({
+  id: '/rnd',
+  path: '/rnd',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProcessingCenterRoute = ProcessingCenterRouteImport.update({
+  id: '/processing-center',
+  path: '/processing-center',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ModulesRoute = ModulesRouteImport.update({
   id: '/modules',
   path: '/modules',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MakersRoute = MakersRouteImport.update({
+  id: '/makers',
+  path: '/makers',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GalleryRoute = GalleryRouteImport.update({
   id: '/gallery',
   path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -31,36 +73,130 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
+  '/makers': typeof MakersRoute
   '/modules': typeof ModulesRoute
+  '/processing-center': typeof ProcessingCenterRoute
+  '/rnd': typeof RndRoute
+  '/species': typeof SpeciesRoute
+  '/terms': typeof TermsRoute
+  '/value-chain': typeof ValueChainRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
+  '/makers': typeof MakersRoute
   '/modules': typeof ModulesRoute
+  '/processing-center': typeof ProcessingCenterRoute
+  '/rnd': typeof RndRoute
+  '/species': typeof SpeciesRoute
+  '/terms': typeof TermsRoute
+  '/value-chain': typeof ValueChainRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
+  '/makers': typeof MakersRoute
   '/modules': typeof ModulesRoute
+  '/processing-center': typeof ProcessingCenterRoute
+  '/rnd': typeof RndRoute
+  '/species': typeof SpeciesRoute
+  '/terms': typeof TermsRoute
+  '/value-chain': typeof ValueChainRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/gallery' | '/modules'
+  fullPaths:
+    | '/'
+    | '/contact'
+    | '/gallery'
+    | '/makers'
+    | '/modules'
+    | '/processing-center'
+    | '/rnd'
+    | '/species'
+    | '/terms'
+    | '/value-chain'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/gallery' | '/modules'
-  id: '__root__' | '/' | '/gallery' | '/modules'
+  to:
+    | '/'
+    | '/contact'
+    | '/gallery'
+    | '/makers'
+    | '/modules'
+    | '/processing-center'
+    | '/rnd'
+    | '/species'
+    | '/terms'
+    | '/value-chain'
+  id:
+    | '__root__'
+    | '/'
+    | '/contact'
+    | '/gallery'
+    | '/makers'
+    | '/modules'
+    | '/processing-center'
+    | '/rnd'
+    | '/species'
+    | '/terms'
+    | '/value-chain'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContactRoute: typeof ContactRoute
   GalleryRoute: typeof GalleryRoute
+  MakersRoute: typeof MakersRoute
   ModulesRoute: typeof ModulesRoute
+  ProcessingCenterRoute: typeof ProcessingCenterRoute
+  RndRoute: typeof RndRoute
+  SpeciesRoute: typeof SpeciesRoute
+  TermsRoute: typeof TermsRoute
+  ValueChainRoute: typeof ValueChainRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/value-chain': {
+      id: '/value-chain'
+      path: '/value-chain'
+      fullPath: '/value-chain'
+      preLoaderRoute: typeof ValueChainRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/species': {
+      id: '/species'
+      path: '/species'
+      fullPath: '/species'
+      preLoaderRoute: typeof SpeciesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rnd': {
+      id: '/rnd'
+      path: '/rnd'
+      fullPath: '/rnd'
+      preLoaderRoute: typeof RndRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/processing-center': {
+      id: '/processing-center'
+      path: '/processing-center'
+      fullPath: '/processing-center'
+      preLoaderRoute: typeof ProcessingCenterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/modules': {
       id: '/modules'
       path: '/modules'
@@ -68,11 +204,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ModulesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/makers': {
+      id: '/makers'
+      path: '/makers'
+      fullPath: '/makers'
+      preLoaderRoute: typeof MakersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/gallery': {
       id: '/gallery'
       path: '/gallery'
       fullPath: '/gallery'
       preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -87,8 +237,15 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContactRoute: ContactRoute,
   GalleryRoute: GalleryRoute,
+  MakersRoute: MakersRoute,
   ModulesRoute: ModulesRoute,
+  ProcessingCenterRoute: ProcessingCenterRoute,
+  RndRoute: RndRoute,
+  SpeciesRoute: SpeciesRoute,
+  TermsRoute: TermsRoute,
+  ValueChainRoute: ValueChainRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
