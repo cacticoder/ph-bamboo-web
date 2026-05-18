@@ -14,13 +14,82 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      module_metrics: {
+        Row: {
+          downloads: number
+          likes: number
+          module_id: string
+          updated_at: string
+          views: number
+        }
+        Insert: {
+          downloads?: number
+          likes?: number
+          module_id: string
+          updated_at?: string
+          views?: number
+        }
+        Update: {
+          downloads?: number
+          likes?: number
+          module_id?: string
+          updated_at?: string
+          views?: number
+        }
+        Relationships: []
+      }
+      visitor_logs: {
+        Row: {
+          city: string | null
+          country: string | null
+          country_code: string | null
+          created_at: string
+          id: number
+          path: string | null
+          referrer: string | null
+          region: string | null
+          user_agent: string | null
+        }
+        Insert: {
+          city?: string | null
+          country?: string | null
+          country_code?: string | null
+          created_at?: string
+          id?: number
+          path?: string | null
+          referrer?: string | null
+          region?: string | null
+          user_agent?: string | null
+        }
+        Update: {
+          city?: string | null
+          country?: string | null
+          country_code?: string | null
+          created_at?: string
+          id?: number
+          path?: string | null
+          referrer?: string | null
+          region?: string | null
+          user_agent?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
-      [_ in never]: never
+      visitor_country_counts: {
+        Row: {
+          country: string | null
+          country_code: string | null
+          visits: number | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
-      [_ in never]: never
+      increment_module_metric: {
+        Args: { p_field: string; p_module_id: string }
+        Returns: undefined
+      }
     }
     Enums: {
       [_ in never]: never
