@@ -86,6 +86,14 @@ export type Database = {
       }
     }
     Functions: {
+      get_visitor_country_counts: {
+        Args: never
+        Returns: {
+          country: string
+          country_code: string
+          visits: number
+        }[]
+      }
       increment_module_metric: {
         Args: { p_field: string; p_module_id: string }
         Returns: undefined
