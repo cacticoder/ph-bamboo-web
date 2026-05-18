@@ -77,7 +77,6 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <SiteShell />
-      <Outlet />
     </QueryClientProvider>
   );
 }
