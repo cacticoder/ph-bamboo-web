@@ -54,6 +54,31 @@ function SpeciesPage() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <section className="mt-16">
+        <div className="flex items-end justify-between">
+          <h2 className="font-display text-2xl text-gold">From the Field</h2>
+          <p className="text-sm text-muted-foreground hidden md:block">Where Philippine instrument bamboos grow and are harvested.</p>
+        </div>
+        <div className="mt-5">
+          <ImageGallery tiles={FIELD_GALLERY} columns={3} />
+        </div>
+      </section>
+
+      <section className="mt-16 grid md:grid-cols-3 gap-4">
+        <div className="rounded-2xl border border-border/50 gradient-card p-5 shadow-card">
+          <h3 className="font-display text-lg text-gold">Sustainable Harvest</h3>
+          <p className="mt-2 text-sm text-foreground/85">Culms are cut at 3–4 years of age, leaving younger shoots to mature — a regenerative cycle perfected over generations.</p>
+        </div>
+        <div className="rounded-2xl border border-border/50 gradient-card p-5 shadow-card">
+          <h3 className="font-display text-lg text-gold">Carbon Positive</h3>
+          <p className="mt-2 text-sm text-foreground/85">Bamboo sequesters up to 35% more CO₂ than equivalent hardwood stands, making each instrument a climate-positive object.</p>
+        </div>
+        <div className="rounded-2xl border border-border/50 gradient-card p-5 shadow-card">
+          <h3 className="font-display text-lg text-gold">Community Forestry</h3>
+          <p className="mt-2 text-sm text-foreground/85">Local cooperatives manage stands as both cultural and economic assets, ensuring fair pricing for artisan-grade bamboo.</p>
+        </div>
+      </section>
     </PageShell>
   );
 }
