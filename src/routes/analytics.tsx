@@ -81,18 +81,11 @@ function AnalyticsPage() {
           <p className="text-xs text-muted-foreground mt-1">Views, likes, and downloads per teaching module.</p>
           <div className="h-80 mt-4">
             {loading ? <Skeleton /> : (
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={moduleChart}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#ffffff15" />
-                  <XAxis dataKey="name" stroke="#f0f2f5aa" fontSize={11} />
-                  <YAxis stroke="#f0f2f5aa" fontSize={11} />
-                  <Tooltip contentStyle={{ background: "#414833", border: "1px solid #cead4a55", borderRadius: 12, color: "#f0f2f5" }} />
-                  <Legend wrapperStyle={{ fontSize: 12 }} />
-                  <Bar dataKey="views" fill="#cead4a" radius={[6, 6, 0, 0]} />
-                  <Bar dataKey="likes" fill="#3e5b2c" radius={[6, 6, 0, 0]} />
-                  <Bar dataKey="downloads" fill="#321524" radius={[6, 6, 0, 0]} />
-                </BarChart>
-              </ResponsiveContainer>
+              <ClientOnly fallback={<Skeleton />}>
+                <Suspense fallback={<Skeleton />}>
+                  <ModuleBarChart data={moduleChart} />
+                </Suspense>
+              </ClientOnly>
             )}
           </div>
         </div>
@@ -104,15 +97,11 @@ function AnalyticsPage() {
             {loading ? <Skeleton /> : topCountries.length === 0 ? (
               <div className="h-full grid place-items-center text-sm text-muted-foreground">No visitor data yet.</div>
             ) : (
-              <ResponsiveContainer width="100%" height="100%">
-                <PieChart>
-                  <Pie data={topCountries} dataKey="visits" nameKey="country" innerRadius={50} outerRadius={90} paddingAngle={2}>
-                    {topCountries.map((_, i) => <Cell key={i} fill={COLORS[i % COLORS.length]} />)}
-                  </Pie>
-                  <Tooltip contentStyle={{ background: "#414833", border: "1px solid #cead4a55", borderRadius: 12, color: "#f0f2f5" }} />
-                  <Legend wrapperStyle={{ fontSize: 11 }} />
-                </PieChart>
-              </ResponsiveContainer>
+              <ClientOnly fallback={<Skeleton />}>
+                <Suspense fallback={<Skeleton />}>
+                  <CountryPieChart data={topCountries} />
+                </Suspense>
+              </ClientOnly>
             )}
           </div>
         </div>
