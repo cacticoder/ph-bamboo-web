@@ -78,6 +78,19 @@ export const Route = createFileRoute("/rnd")({
           </div>
         </div>
       </section>
+
+      <section className="mt-16">
+        <h2 className="font-display text-2xl text-gold">Inside the Labs</h2>
+        <p className="text-sm text-muted-foreground mt-1">Where measurement meets craft.</p>
+        <div className="mt-5">
+          <ImageGallery tiles={LAB_GALLERY} columns={3} />
+        </div>
+      </section>
+
+      <section className="mt-16 rounded-2xl border border-border/50 gradient-card p-6 md:p-8 shadow-card">
+        <h2 className="font-display text-2xl text-gold">Publications & Open Data</h2>
+        <p className="mt-3 text-foreground/85 max-w-3xl">Datasets from acoustic measurements, modal tests, and treatment trials are progressively released under open licenses to support educators, makers, and academic researchers across the region.</p>
+      </section>
     </PageShell>
   ),
 });
