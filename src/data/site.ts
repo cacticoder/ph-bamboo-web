@@ -7,6 +7,7 @@ export const NAV_LINKS = [
   { to: "/value-chain", label: "Value Chain" },
   { to: "/modules", label: "Teaching Modules" },
   { to: "/rnd", label: "R&D Technologies" },
+  { to: "/analytics", label: "Analytics" },
 ] as const;
 
 export const PARTNERS = [
