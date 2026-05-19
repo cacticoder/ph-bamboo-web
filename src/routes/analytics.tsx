@@ -13,7 +13,7 @@ const CountryPieChart = lazy(() => import("@/components/AnalyticsCharts").then((
 interface CountryRow { country: string; country_code: string; visits: number }
 interface ModuleRow { module_id: string; views: number; likes: number; downloads: number }
 
-const COLORS = ["#cead4a", "#3e5b2c", "#414833", "#321524", "#8a7a2a", "#5e7a3a"];
+
 
 export const Route = createFileRoute("/analytics")({
   head: () => ({ meta: [{ title: "Analytics — phBMI" }, { name: "description", content: "Live engagement metrics: visitor countries and module views, likes, and downloads." }] }),
