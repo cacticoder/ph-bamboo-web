@@ -1,12 +1,14 @@
 import { createFileRoute, ClientOnly } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { BarChart3, Globe2, Eye, Heart, Download } from "lucide-react";
-import { Bar, BarChart, CartesianGrid, Cell, Legend, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { supabase } from "@/integrations/supabase/client";
 import { MODULES } from "@/data/modules";
 import { seedMetrics } from "@/lib/metrics";
 import { PageHero, PageShell } from "@/components/PageHero";
+
+const ModuleBarChart = lazy(() => import("@/components/AnalyticsCharts").then((m) => ({ default: m.ModuleBarChart })));
+const CountryPieChart = lazy(() => import("@/components/AnalyticsCharts").then((m) => ({ default: m.CountryPieChart })));
 
 interface CountryRow { country: string; country_code: string; visits: number }
 interface ModuleRow { module_id: string; views: number; likes: number; downloads: number }
