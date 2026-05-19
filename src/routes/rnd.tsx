@@ -1,7 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Beaker, Flame, Waves, Cpu } from "lucide-react";
+import { Beaker, Flame, Waves, Cpu, AudioLines, Activity, Gauge, Atom } from "lucide-react";
 import { PageHero, PageShell } from "@/components/PageHero";
+import { ImageGallery } from "@/components/ImageGallery";
+
+const LAB_GALLERY = [
+  { title: "Spectral Analysis", caption: "Frequency-domain fingerprinting of every prototype.", icon: AudioLines, tone: "bamboo" as const },
+  { title: "Modal Testing", caption: "Impact hammer + accelerometer rigs for vibration modes.", icon: Activity, tone: "earth" as const },
+  { title: "FEA Simulation", caption: "COMSOL-driven prototyping before a single culm is cut.", icon: Atom, tone: "plum" as const },
+  { title: "Treatment Trials", caption: "Side-by-side aging studies on chemical and non-chemical methods.", icon: Beaker, tone: "gold" as const },
+  { title: "Tuning Bench", caption: "Laser-measured pitch calibration for ensemble-grade builds.", icon: Gauge, tone: "earth" as const },
+  { title: "Material Characterization", caption: "Density, moisture, and Young's modulus mapping per culm.", icon: Cpu, tone: "bamboo" as const },
+];
 
 const CHEMICAL = ["Spraying", "Brushing", "Dipping", "Pressure Method"];
 const PRESERVATIVES = [
