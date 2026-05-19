@@ -1,7 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Beaker, Flame, Waves, Cpu } from "lucide-react";
+import { Beaker, Flame, Waves, Cpu, AudioLines, Activity, Gauge, Atom } from "lucide-react";
 import { PageHero, PageShell } from "@/components/PageHero";
+import { ImageGallery } from "@/components/ImageGallery";
+
+const LAB_GALLERY = [
+  { title: "Spectral Analysis", caption: "Frequency-domain fingerprinting of every prototype.", icon: AudioLines, tone: "bamboo" as const },
+  { title: "Modal Testing", caption: "Impact hammer + accelerometer rigs for vibration modes.", icon: Activity, tone: "earth" as const },
+  { title: "FEA Simulation", caption: "COMSOL-driven prototyping before a single culm is cut.", icon: Atom, tone: "plum" as const },
+  { title: "Treatment Trials", caption: "Side-by-side aging studies on chemical and non-chemical methods.", icon: Beaker, tone: "gold" as const },
+  { title: "Tuning Bench", caption: "Laser-measured pitch calibration for ensemble-grade builds.", icon: Gauge, tone: "earth" as const },
+  { title: "Material Characterization", caption: "Density, moisture, and Young's modulus mapping per culm.", icon: Cpu, tone: "bamboo" as const },
+];
 
 const CHEMICAL = ["Spraying", "Brushing", "Dipping", "Pressure Method"];
 const PRESERVATIVES = [
@@ -67,6 +77,19 @@ export const Route = createFileRoute("/rnd")({
             <ul className="mt-2 text-sm text-foreground/85 space-y-1"><li>• Simulation-based prototyping</li><li>• COMSOL integration</li><li>• MATLAB integration</li></ul>
           </div>
         </div>
+      </section>
+
+      <section className="mt-16">
+        <h2 className="font-display text-2xl text-gold">Inside the Labs</h2>
+        <p className="text-sm text-muted-foreground mt-1">Where measurement meets craft.</p>
+        <div className="mt-5">
+          <ImageGallery tiles={LAB_GALLERY} columns={3} />
+        </div>
+      </section>
+
+      <section className="mt-16 rounded-2xl border border-border/50 gradient-card p-6 md:p-8 shadow-card">
+        <h2 className="font-display text-2xl text-gold">Publications & Open Data</h2>
+        <p className="mt-3 text-foreground/85 max-w-3xl">Datasets from acoustic measurements, modal tests, and treatment trials are progressively released under open licenses to support educators, makers, and academic researchers across the region.</p>
       </section>
     </PageShell>
   ),
