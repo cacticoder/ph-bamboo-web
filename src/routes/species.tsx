@@ -1,9 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Leaf } from "lucide-react";
+import { X, Leaf, TreePine, Sprout, TreeDeciduous } from "lucide-react";
 import { SPECIES } from "@/data/site";
 import { PageHero, PageShell } from "@/components/PageHero";
+import { ImageGallery } from "@/components/ImageGallery";
+
+const FIELD_GALLERY = [
+  { title: "Lowland Stands", caption: "Bayog clumps lining river edges in Luzon — the workhorse of instrument making.", icon: TreePine, tone: "bamboo" as const },
+  { title: "Hillside Buho", caption: "Straight-grained Schizostachyum harvested for flutes and panpipes.", icon: Sprout, tone: "earth" as const },
+  { title: "Giant Bamboo Grove", caption: "Dendrocalamus asper cultivated for drum bodies and resonators.", icon: TreeDeciduous, tone: "plum" as const },
+  { title: "Cordillera Highlands", caption: "Mountain stands feeding the Kalinga and Bontoc traditions.", icon: TreePine, tone: "gold" as const },
+  { title: "Harvest Season", caption: "Selective culm cutting after 3–4 years for optimal density.", icon: Leaf, tone: "bamboo" as const },
+  { title: "Nursery Propagation", caption: "Tissue-culture seedlings ensuring sustainable supply.", icon: Sprout, tone: "earth" as const },
+];
 
 export const Route = createFileRoute("/species")({
   head: () => ({ meta: [{ title: "Bamboo Species — phBMI" }, { name: "description", content: "Philippine bamboo species used in musical instrument making." }] }),
@@ -15,7 +25,8 @@ function SpeciesPage() {
   return (
     <PageShell>
       <PageHero kicker="Botanical Heritage" title="Bamboo Species" lead="The native and naturalized bamboos that give voice to Philippine instruments." />
-      <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <h2 className="mt-12 font-display text-2xl text-gold">Species Catalogue</h2>
+      <div className="mt-5 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {SPECIES.map((s) => (
           <motion.button key={s.id} whileHover={{ y: -4 }} onClick={() => setActive(s)} className="text-left rounded-2xl overflow-hidden border border-border/50 gradient-card shadow-card">
             <div className="aspect-square bg-gradient-to-br from-bamboo/50 to-earth/40 texture-bamboo grid place-items-center">
