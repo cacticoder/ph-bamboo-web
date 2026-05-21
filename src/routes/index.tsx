@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Play, ArrowRight, Sparkles } from "lucide-react";
-import { PARTNERS, FESTIVALS } from "@/data/site";
+import { PARTNERS } from "@/data/site";
+import { ARTICLES } from "@/data/articles";
 import { AdSlot } from "@/components/AdSlot";
 import { VideoPlayer } from "@/components/VideoPlayer";
 
@@ -113,23 +114,38 @@ function Index() {
         </motion.div>
 
         <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {FESTIVALS.map((f, i) => (
-            <motion.article
-              key={f.name}
+          {ARTICLES.map((a, i) => (
+            <motion.div
+              key={a.slug}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
               whileHover={{ y: -6 }}
-              className="group relative overflow-hidden rounded-2xl border border-border/50 gradient-card p-6 shadow-card cursor-pointer"
             >
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity gradient-gold mix-blend-overlay" />
-              <div className="relative">
-                <div className="text-[10px] uppercase tracking-widest text-gold/80">{f.region}</div>
-                <h3 className="mt-2 font-display text-xl text-foreground group-hover:text-gold transition-colors">{f.name}</h3>
-                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{f.description}</p>
-              </div>
-            </motion.article>
+              <Link
+                to="/articles/$slug"
+                params={{ slug: a.slug }}
+                className="group block overflow-hidden rounded-2xl border border-border/50 gradient-card shadow-card h-full"
+              >
+                <div className="aspect-[4/3] overflow-hidden">
+                  <img
+                    src={a.cover}
+                    alt={a.title}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div className="p-5">
+                  <div className="text-[10px] uppercase tracking-widest text-gold/80">{a.region}</div>
+                  <h3 className="mt-2 font-display text-xl text-foreground group-hover:text-gold transition-colors">{a.title}</h3>
+                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed line-clamp-3">{a.excerpt}</p>
+                  <span className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-gold">
+                    Read article <ArrowRight size={12} />
+                  </span>
+                </div>
+              </Link>
+            </motion.div>
           ))}
         </div>
       </section>
