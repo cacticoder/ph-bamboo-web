@@ -131,7 +131,7 @@
     letter-spacing: -0.01em;
     font-weight: 400; /* Potta One has a single weight */
   }
-  h1 { color: var(--plum); }
+  h1 { color: var(--plum) !important; }
   h2, h3 { color: var(--olive); }
   h4, h5, h6 { color: var(--olive); }
   a { color: var(--olive); }
