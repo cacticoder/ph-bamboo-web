@@ -65,7 +65,7 @@ function ArticlePage() {
           {article.excerpt}
         </p>
         <div className="mt-10 space-y-6 text-foreground/85 leading-relaxed">
-          {article.body.map((p, i) => (
+          {article.body.map((p: string, i: number) => (
             <p key={i}>{p}</p>
           ))}
         </div>
