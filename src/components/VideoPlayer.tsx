@@ -10,6 +10,14 @@
  *  - `autoPlay`, `loop`, `muted`: standard video flags
  */
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+declare global {
+  interface Window {
+    YT?: any;
+    onYouTubeIframeAPIReady?: (() => void) | undefined;
+  }
+}
+
 import { useEffect, useRef, useState, useCallback } from "react";
 import { Play, Pause, Volume2, VolumeX } from "lucide-react";
 import { cn } from "@/lib/utils";
