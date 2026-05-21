@@ -5,8 +5,11 @@
 @custom-variant dark (&:is(.dark *));
 
 /* phBMI Design System
-   Palette: Dark Olive #414833, Forest Green #3e5b2c, Deep Plum #321524,
-   Golden Yellow #cead4a, Dirty White #f0f2f5, Warm Bamboo #d4b896, Earth Brown #6b4423
+   Primary:   #414833 dark olive  -> nav, links, H2/H3
+   Secondary: #3E5B2C forest green -> buttons, accents, icons
+   Accent:    #321524 deep plum    -> H1, dark contrast
+   Surfaces:  #f5f1e8 warm neutral, #ffffff cards
+   Headers:   Potta One   Body: Inter
 */
 
 @theme inline {
@@ -42,71 +45,74 @@
   --color-cream: var(--cream);
   --color-plum: var(--plum);
   --color-gold: var(--gold);
+  --color-olive: var(--olive);
+  --color-forest: var(--forest);
 
-  --font-display: "Fraunces", "Playfair Display", Georgia, serif;
-  --font-body: "Inter", system-ui, sans-serif;
+  --font-display: "Potta One", "Fraunces", Georgia, serif;
+  --font-body: "Inter", "Poppins", system-ui, sans-serif;
 }
 
 :root {
-  --radius: 0.5rem;
+  --radius: 0.75rem;
 
-  /* Backgrounds: dark olive primary, forest green sections */
-  --background: oklch(0.32 0.04 110);          /* #414833 dark olive */
-  --foreground: oklch(0.96 0.005 250);         /* #f0f2f5 dirty white */
+  /* Warm neutral surfaces */
+  --background: oklch(0.97 0.012 85);          /* warm cream */
+  --foreground: oklch(0.22 0.02 60);           /* deep readable text */
 
-  --card: oklch(0.36 0.05 125);                /* slightly lifted olive */
-  --card-foreground: oklch(0.96 0.005 250);
+  --card: oklch(1 0 0);                        /* white cards */
+  --card-foreground: oklch(0.22 0.02 60);
 
-  --popover: oklch(0.28 0.04 110);
-  --popover-foreground: oklch(0.96 0.005 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.02 60);
 
-  --primary: oklch(0.78 0.14 90);              /* #cead4a golden yellow */
-  --primary-foreground: oklch(0.22 0.03 110);
+  /* Primary = forest green (buttons / CTAs) */
+  --primary: oklch(0.45 0.10 135);             /* #3E5B2C */
+  --primary-foreground: oklch(0.98 0.005 85);
 
-  --secondary: oklch(0.42 0.07 135);           /* #3e5b2c forest green */
-  --secondary-foreground: oklch(0.96 0.005 250);
+  /* Secondary = dark olive (nav / theme) */
+  --secondary: oklch(0.36 0.04 115);           /* #414833 */
+  --secondary-foreground: oklch(0.98 0.005 85);
 
-  --muted: oklch(0.38 0.03 110);
-  --muted-foreground: oklch(0.78 0.02 100);
+  --muted: oklch(0.93 0.01 85);
+  --muted-foreground: oklch(0.42 0.02 80);
 
-  --accent: oklch(0.30 0.08 350);              /* #321524 deep plum */
-  --accent-foreground: oklch(0.96 0.005 250);
+  /* Accent = deep plum */
+  --accent: oklch(0.26 0.06 350);              /* #321524 */
+  --accent-foreground: oklch(0.98 0.005 85);
 
   --destructive: oklch(0.55 0.20 25);
   --destructive-foreground: oklch(0.98 0.003 0);
 
-  --border: oklch(0.42 0.03 110 / 60%);
-  --input: oklch(0.42 0.03 110 / 60%);
-  --ring: oklch(0.78 0.14 90);
+  --border: oklch(0.36 0.04 115 / 18%);
+  --input: oklch(0.36 0.04 115 / 25%);
+  --ring: oklch(0.45 0.10 135);
 
-  /* Themed semantic tokens */
-  --bamboo: oklch(0.42 0.07 135);              /* forest green */
-  --earth: oklch(0.38 0.06 60);                /* warm earth brown */
-  --cream: oklch(0.96 0.005 250);              /* dirty white */
-  --plum: oklch(0.30 0.08 350);                /* deep plum */
-  --gold: oklch(0.78 0.14 90);                 /* golden yellow */
+  /* Semantic palette tokens */
+  --olive: oklch(0.36 0.04 115);               /* #414833 */
+  --forest: oklch(0.45 0.10 135);              /* #3E5B2C */
+  --plum: oklch(0.26 0.06 350);                /* #321524 */
+  --bamboo: oklch(0.45 0.10 135);
+  --earth: oklch(0.42 0.06 60);
+  --cream: oklch(0.97 0.012 85);
+  --gold: oklch(0.45 0.10 135);                /* alias -> forest for legacy refs */
 
-  --gradient-hero: linear-gradient(135deg, oklch(0.32 0.04 110) 0%, oklch(0.42 0.07 135) 60%, oklch(0.30 0.08 350) 100%);
-  --gradient-card: linear-gradient(180deg, oklch(0.38 0.05 125) 0%, oklch(0.32 0.04 110) 100%);
-  --gradient-gold: linear-gradient(135deg, oklch(0.82 0.15 90) 0%, oklch(0.70 0.13 75) 100%);
+  --gradient-hero: linear-gradient(135deg, oklch(0.97 0.012 85) 0%, oklch(0.94 0.02 110) 60%, oklch(0.90 0.03 130) 100%);
+  --gradient-card: linear-gradient(180deg, #ffffff 0%, oklch(0.96 0.012 85) 100%);
+  --gradient-gold: linear-gradient(135deg, oklch(0.50 0.11 135) 0%, oklch(0.40 0.09 130) 100%);
 
-  --shadow-card: 0 10px 30px -10px oklch(0 0 0 / 35%);
-  --shadow-glow: 0 0 40px oklch(0.78 0.14 90 / 25%);
+  --shadow-card: 0 8px 24px -12px oklch(0.26 0.06 350 / 22%);
+  --shadow-glow: 0 0 40px oklch(0.45 0.10 135 / 22%);
 
   --texture-bamboo: repeating-linear-gradient(
     90deg,
     transparent 0 18px,
-    oklch(0.42 0.07 135 / 8%) 18px 19px,
+    oklch(0.36 0.04 115 / 5%) 18px 19px,
     transparent 19px 38px,
-    oklch(0.30 0.04 110 / 12%) 38px 39px
+    oklch(0.26 0.06 350 / 5%) 38px 39px
   );
 }
 
-.dark {
-  /* Site is dark-first; keep .dark identical to root for safety */
-  --background: oklch(0.32 0.04 110);
-  --foreground: oklch(0.96 0.005 250);
-}
+.dark { /* site is light-first; keep identical for safety */ }
 
 @layer base {
   * { border-color: var(--color-border); }
@@ -116,21 +122,32 @@
     color: var(--color-foreground);
     font-family: var(--font-body);
     background-image:
-      radial-gradient(ellipse at top, oklch(0.42 0.07 135 / 35%), transparent 60%),
-      radial-gradient(ellipse at bottom right, oklch(0.30 0.08 350 / 25%), transparent 55%);
+      radial-gradient(ellipse at top, oklch(0.45 0.10 135 / 10%), transparent 60%),
+      radial-gradient(ellipse at bottom right, oklch(0.26 0.06 350 / 7%), transparent 55%);
     background-attachment: fixed;
   }
-  h1, h2, h3, h4, h5 {
+  h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
+    font-weight: 400; /* Potta One has a single weight */
   }
+  h1 { color: var(--plum); }
+  h2, h3 { color: var(--olive); }
+  h4, h5, h6 { color: var(--olive); }
+  a { color: var(--olive); }
+  a:hover { color: var(--forest); }
 }
 
 @layer utilities {
-  .text-gold { color: var(--gold); }
+  .text-gold { color: var(--forest); }
+  .text-plum { color: var(--plum); }
+  .text-olive { color: var(--olive); }
+  .text-forest { color: var(--forest); }
   .bg-bamboo { background-color: var(--bamboo); }
   .bg-earth { background-color: var(--earth); }
   .bg-plum { background-color: var(--plum); }
+  .bg-olive { background-color: var(--olive); }
+  .bg-forest { background-color: var(--forest); }
   .gradient-hero { background-image: var(--gradient-hero); }
   .gradient-card { background-image: var(--gradient-card); }
   .gradient-gold { background-image: var(--gradient-gold); }
@@ -138,8 +155,8 @@
   .shadow-glow { box-shadow: var(--shadow-glow); }
   .texture-bamboo { background-image: var(--texture-bamboo); }
   .glass {
-    background: oklch(0.32 0.04 110 / 70%);
+    background: oklch(1 0 0 / 75%);
     backdrop-filter: blur(12px);
-    border: 1px solid oklch(0.78 0.14 90 / 15%);
+    border: 1px solid oklch(0.36 0.04 115 / 15%);
   }
 }
