@@ -1,11 +1,11 @@
 /**
  * VideoPlayer — Custom responsive video player with hover-to-play interaction
- * Supports: YouTube embed (via iframe) and local video files
+ * Supports: YouTube embed (via iframe API) and local video files
  *
  * Customization points:
- *  - `variant`: "youtube" | "local"  — player mode
- *  - `src`: YouTube video ID (e.g. "dQw4w9WgXcQ") or local video URL
- *  - `poster`: cover image for local video / pre-load state
+ *  - `variant`: "youtube" | "local"
+ *  - `src`: YouTube video ID / full URL, or local video file URL
+ *  - `poster`: cover image for local video
  *  - `aspectRatio`: CSS aspect-ratio string (default "16/9")
  *  - `autoPlay`, `loop`, `muted`: standard video flags
  */
@@ -19,7 +19,6 @@ import { cn } from "@/lib/utils";
 /* ──────────────────────────────────────────────────────────────── */
 
 interface VideoPlayerProps {
-  /** YouTube video ID (variant="youtube") or local file URL (variant="local") */
   src: string;
   variant?: "youtube" | "local";
   poster?: string;
@@ -31,15 +30,26 @@ interface VideoPlayerProps {
 }
 
 /* ──────────────────────────────────────────────────────────────── */
-/*  Helper: extract YouTube ID from various URL shapes             */
+/*  Helper: extract YouTube ID                                     */
 /* ──────────────────────────────────────────────────────────────── */
 
 function extractYouTubeId(urlOrId: string): string {
-  if (!urlOrId.includes("/") && !urlOrId.includes(".")) return urlOrId; // already an ID
+  if (!urlOrId.includes("/") && !urlOrId.includes(".")) return urlOrId;
   const m = urlOrId.match(
     /(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/
   );
   return m?.[1] ?? urlOrId;
+}
+
+function youtubeEmbedUrl(id: string, extra: Record<string, string | number | undefined>) {
+  const params = new URLSearchParams({
+    enablejsapi: "1",
+    origin: typeof window !== "undefined" ? window.location.origin : "",
+    ...Object.fromEntries(
+      Object.entries(extra).filter(([, v]) => v !== undefined) as [string, string][]
+    ),
+  });
+  return `https://www.youtube.com/embed/${id}?${params.toString()}`;
 }
 
 /* ──────────────────────────────────────────────────────────────── */
@@ -63,79 +73,58 @@ export function VideoPlayer({
   const [isPlaying, setIsPlaying] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isMuted, setIsMuted] = useState(muted);
-  const [ytReady, setYtReady] = useState(false);
 
-  /* ── YouTube IFrame API setup ── */
+  const ytId = extractYouTubeId(src);
+
+  /* ── YouTube IFrame API ── */
   useEffect(() => {
     if (variant !== "youtube") return;
 
-    // Load the YouTube IFrame API script once
-    const existing = document.getElementById("yt-iframe-api") as HTMLScriptElement | null;
-    if (!existing) {
+    // Inject API script once
+    const scriptId = "yt-iframe-api";
+    if (!document.getElementById(scriptId)) {
       const tag = document.createElement("script");
-      tag.id = "yt-iframe-api";
+      tag.id = scriptId;
       tag.src = "https://www.youtube.com/iframe_api";
       document.head.appendChild(tag);
     }
 
-    // Initialise player when API is ready
-    const initPlayer = () => {
-      if (!ytRef.current) return;
-      const id = extractYouTubeId(src);
-      // @ts-expect-error — YT global injected by iframe_api script
-      new window.YT.Player(ytRef.current, {
-        videoId: id,
-        playerVars: {
-          autoplay: autoPlay ? 1 : 0,
-          mute: muted ? 1 : 0,
-          loop: loop ? 1 : 0,
-          playlist: loop ? id : undefined,
-          controls: 0,
-          modestbranding: 1,
-          rel: 0,
-          fs: 0,
-          cc_load_policy: 0,
-          iv_load_policy: 3,
-          disablekb: 1,
-          playsinline: 1,
-        },
+    const init = () => {
+      if (!ytRef.current || !window.YT) return;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      new (window.YT as any).Player(ytRef.current, {
         events: {
-          onReady: () => setYtReady(true),
-          onStateChange: (event: { data: number }) => {
-            // 1 = PLAYING, 2 = PAUSED
-            setIsPlaying(event.data === 1);
+          onStateChange: (e: { data: number }) => {
+            // 1 = PLAYING, 2 = PAUSED, 0 = ENDED
+            setIsPlaying(e.data === 1);
           },
         },
       });
     };
 
-    // @ts-expect-error
-    if (window.YT && window.YT.Player) {
-      initPlayer();
+    if ((window.YT as unknown as { Player?: unknown })?.Player) {
+      init();
     } else {
-      // @ts-expect-error
-      window.onYouTubeIframeAPIReady = initPlayer;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (window as any).onYouTubeIframeAPIReady = init;
     }
 
     return () => {
-      // @ts-expect-error
-      window.onYouTubeIframeAPIReady = undefined;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (window as any).onYouTubeIframeAPIReady = undefined;
     };
-  }, [variant, src, autoPlay, muted, loop]);
+  }, [variant, ytId]);
 
   /* ── Local video listeners ── */
   useEffect(() => {
     const v = videoRef.current;
     if (!v || variant !== "local") return;
-
     const onPlay = () => setIsPlaying(true);
     const onPause = () => setIsPlaying(false);
     const onEnded = () => setIsPlaying(false);
-
     v.addEventListener("play", onPlay);
     v.addEventListener("pause", onPause);
     v.addEventListener("ended", onEnded);
-
     return () => {
       v.removeEventListener("play", onPlay);
       v.removeEventListener("pause", onPause);
@@ -143,59 +132,63 @@ export function VideoPlayer({
     };
   }, [variant]);
 
-  /* ── Play / Pause toggle ── */
+  /* ── Toggle play / pause ── */
   const togglePlay = useCallback(() => {
     if (variant === "local") {
       const v = videoRef.current;
       if (!v) return;
-      if (v.paused) v.play();
-      else v.pause();
+      v.paused ? v.play() : v.pause();
       return;
     }
-
-    // YouTube mode: interact through iframe contentWindow postMessage
     const iframe = ytRef.current;
-    if (!iframe || !iframe.contentWindow) return;
-
-    const message = isPlaying
+    if (!iframe?.contentWindow) return;
+    const cmd = isPlaying
       ? '{"event":"command","func":"pauseVideo","args":""}'
       : '{"event":"command","func":"playVideo","args":""}';
-    iframe.contentWindow.postMessage(message, "*");
+    iframe.contentWindow.postMessage(cmd, "*");
   }, [variant, isPlaying]);
 
-  /* ── Mute toggle (local only; YouTube initial mute handled by playerVars) ── */
+  /* ── Toggle mute (local only) ── */
   const toggleMute = useCallback(() => {
-    if (variant === "local") {
-      const v = videoRef.current;
-      if (!v) return;
-      v.muted = !v.muted;
-      setIsMuted(v.muted);
-    }
+    if (variant !== "local") return;
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = !v.muted;
+    setIsMuted(v.muted);
   }, [variant]);
 
-  /* ── Determine whether overlay button should be visible ── */
-  const showOverlayButton = isHovered || !isPlaying;
+  const showOverlay = isHovered || !isPlaying;
 
   return (
     <div
       ref={containerRef}
       className={cn(
-        "relative w-full overflow-hidden rounded-xl bg-black isolate group",
+        "relative w-full overflow-hidden rounded-xl bg-black isolate",
         className
       )}
       style={{ aspectRatio }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* ═══════════════════════════════════════════════════════════════
-          VIDEO LAYER — fills container 100%, object-fit: cover
-         ═══════════════════════════════════════════════════════════════ */}
+      {/* ═══════ VIDEO LAYER ═══════ */}
       {variant === "youtube" ? (
         <iframe
           ref={ytRef}
-          id={`yt-player-${extractYouTubeId(src)}`}
-          className="absolute inset-0 h-full w-full"
-          style={{ objectFit: "cover" }}
+          className="absolute inset-0 h-full w-full border-1"
+          src={youtubeEmbedUrl(ytId, {
+            autoplay: autoPlay ? 1 : 0,
+            mute: muted ? 1 : 0,
+            loop: loop ? 1 : 0,
+            playlist: loop ? ytId : undefined,
+            controls: 0,
+            modestbranding: 1,
+            rel: 0,
+            fs: 0,
+            cc_load_policy: 0,
+            iv_load_policy: 3,
+            disablekb: 1,
+            playsinline: 1,
+          })}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
           title="Video player"
@@ -216,29 +209,25 @@ export function VideoPlayer({
         </video>
       )}
 
-      {/* ═══════════════════════════════════════════════════════════════
-          CLICK-CAPTURE OVERLAY
-          • Transparent when playing + not hovered (lets mouse pass through)
-          • Visible when paused or hovered (captures clicks for toggle)
-         ═══════════════════════════════════════════════════════════════ */}
+      {/* ═══════ INTERACTION OVERLAY ═══════ */}
       <div
         className={cn(
-          "absolute inset-1 z-10 flex items-center justify-center transition-opacity duration-300",
-          showOverlayButton ? "opacity-100 cursor-pointer" : "opacity-0 pointer-events-none"
+          "absolute inset-0 z-10 flex items-center justify-center transition-opacity duration-300",
+          showOverlay ? "opacity-100 cursor-pointer" : "opacity-0 pointer-events-none"
         )}
         onClick={togglePlay}
         aria-label={isPlaying ? "Pause video" : "Play video"}
         role="button"
       >
-        {/* Subtle vignette for readability */}
+        {/* Vignette backdrop */}
         <div
           className={cn(
-            "absolute inset-1 bg-gradient-to-t from-black/50 via-transparent to-black/20 transition-opacity duration-300",
-            showOverlayButton ? "opacity-100" : "opacity-0"
+            "absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20 transition-opacity duration-300",
+            showOverlay ? "opacity-100" : "opacity-0"
           )}
         />
 
-        {/* Centered Play / Pause button */}
+        {/* Center button */}
         <button
           type="button"
           className={cn(
@@ -246,7 +235,7 @@ export function VideoPlayer({
             "bg-forest/90 text-primary-foreground shadow-glow backdrop-blur-sm",
             "transition-all duration-300 ease-out",
             "hover:scale-110 hover:bg-forest active:scale-95",
-            showOverlayButton ? "scale-100 opacity-100" : "scale-90 opacity-0"
+            showOverlay ? "scale-100 opacity-100" : "scale-90 opacity-0"
           )}
           onClick={(e) => {
             e.stopPropagation();
@@ -262,12 +251,10 @@ export function VideoPlayer({
         </button>
       </div>
 
-      {/* ═══════════════════════════════════════════════════════════════
-          BOTTOM BAR (appears on hover when playing)
-         ═══════════════════════════════════════════════════════════════ */}
+      {/* ═══════ BOTTOM BAR (hover + playing) ═══════ */}
       <div
         className={cn(
-          "absolute bottom-0 left-0 right-0 z-20 px-4 pb-3 pt-8",
+          "absolute bottom-0 left-0 right-1 z-20 px-4 pb-3 pt-8",
           "bg-gradient-to-t from-black/70 via-black/30 to-transparent",
           "transition-opacity duration-300",
           isHovered && isPlaying ? "opacity-100" : "opacity-0 pointer-events-none"
@@ -280,7 +267,11 @@ export function VideoPlayer({
             className="text-white/90 hover:text-white transition-colors"
             aria-label={isPlaying ? "Pause" : "Play"}
           >
-            {isPlaying ? <Pause className="h-5 w-5 fill-current" /> : <Play className="h-5 w-5 fill-current ml-0.5" />}
+            {isPlaying ? (
+              <Pause className="h-5 w-5 fill-current" />
+            ) : (
+              <Play className="h-5 w-5 fill-current ml-0.5" />
+            )}
           </button>
 
           {variant === "local" && (
