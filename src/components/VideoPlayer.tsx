@@ -182,7 +182,7 @@ export function VideoPlayer({
       {variant === "youtube" ? (
         <iframe
           ref={ytRef}
-          className="absolute inset-0 h-full w-full border-1"
+          className="absolute inset-0 h-full w-full border-0"
           src={youtubeEmbedUrl(ytId, {
             autoplay: autoPlay ? 1 : 0,
             mute: muted ? 1 : 0,
@@ -262,7 +262,7 @@ export function VideoPlayer({
       {/* ═══════ BOTTOM BAR (hover + playing) ═══════ */}
       <div
         className={cn(
-          "absolute bottom-0 left-0 right-1 z-20 px-4 pb-3 pt-8",
+          "absolute bottom-0 left-0 right-0 z-20 px-4 pb-3 pt-8",
           "bg-gradient-to-t from-black/70 via-black/30 to-transparent",
           "transition-opacity duration-300",
           isHovered && isPlaying ? "opacity-100" : "opacity-0 pointer-events-none"
