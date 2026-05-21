@@ -1,8 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Play, ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { PARTNERS, FESTIVALS } from "@/data/site";
 import { AdSlot } from "@/components/AdSlot";
+import { VideoPlayer } from "@/components/VideoPlayer";
 
 export const Route = createFileRoute("/")({
   head: () => ({
