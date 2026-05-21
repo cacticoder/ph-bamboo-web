@@ -28,15 +28,11 @@ function Index() {
             transition={{ duration: 0.7 }}
             className="order-2 lg:order-1"
           >
-            <div className="relative aspect-video rounded-2xl overflow-hidden shadow-card group">
-              <iframe
-                className="absolute inset-0 h-full w-full"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0"
-                title="Bamboo Musical Instruments Innovation Research and Development Program"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
+            <VideoPlayer
+              src="dQw4w9WgXcQ"
+              variant="youtube"
+              className="rounded-2xl shadow-card"
+            />
             <div className="mt-4 flex items-center gap-3 text-sm text-muted-foreground">
               <div className="grid h-9 w-9 place-items-center rounded-full bg-gold/15 text-gold"><Play size={14} /></div>
               <div>
