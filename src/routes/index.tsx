@@ -52,7 +52,7 @@ function Index() {
             <div className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-3 py-1 text-xs uppercase tracking-widest text-gold">
               <Sparkles size={12} /> Heritage · Innovation
             </div>
-            <h1 className="mt-5 font-display text-4xl md:text-5xl lg:text-6xl leading-[1.05] text-gold">
+            <h1 className="mt-5 font-display text-4xl md:text-5xl lg:text-6xl leading-[1.05] text-gold text-[#3d5a2b]">
               Philippine Bamboo<br />Musical Instruments
             </h1>
             <p className="mt-6 text-base md:text-lg text-foreground/85 leading-relaxed max-w-xl">
