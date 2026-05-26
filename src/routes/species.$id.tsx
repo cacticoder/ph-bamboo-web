@@ -77,7 +77,7 @@ function SpeciesPage() {
         </div>
 
         <div className="mt-10 space-y-6 text-foreground/85 leading-relaxed">
-          {species.body.map((p, i) => (
+          {species.body.map((p: string, i: number) => (
             <p key={i}>{p}</p>
           ))}
         </div>

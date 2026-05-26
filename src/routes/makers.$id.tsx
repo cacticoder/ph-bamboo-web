@@ -64,7 +64,7 @@ function MakerPage() {
           {maker.bio}
         </p>
         <div className="mt-10 space-y-6 text-foreground/85 leading-relaxed">
-          {maker.body.map((p, i) => (
+          {maker.body.map((p: string, i: number) => (
             <p key={i}>{p}</p>
           ))}
         </div>
