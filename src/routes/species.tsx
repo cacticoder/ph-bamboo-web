@@ -42,13 +42,6 @@ function SpeciesPage() {
         ))}
       </div>
 
-                <div className="rounded-lg bg-card/60 p-3 sm:col-span-2"><div className="text-xs uppercase tracking-wider text-muted-foreground">Economic Importance</div><div className="mt-1">{active.economic}</div></div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       <section className="mt-16">
         <div className="flex items-end justify-between">
           <h2 className="font-display text-2xl text-gold">From the Field</h2>
