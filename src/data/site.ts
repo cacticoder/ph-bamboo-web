@@ -32,8 +32,12 @@ export interface Maker {
   expertise: string;
   bio: string;
   image: string;
+  born?: string;
+  signature?: string[];
+  quote?: string;
   body: string[];
 }
+
 
 export const MAKERS: Maker[] = [
   {
