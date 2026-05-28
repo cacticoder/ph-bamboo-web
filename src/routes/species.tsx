@@ -1,7 +1,8 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { motion } from "framer-motion";
-import { Leaf, TreePine, Sprout, TreeDeciduous, ArrowRight } from "lucide-react";
-import { SPECIES } from "@/data/site";
+import { createFileRoute } from "@tanstack/react-router";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { Leaf, TreePine, Sprout, TreeDeciduous, X } from "lucide-react";
+import { SPECIES, type Species } from "@/data/site";
 import { PageHero, PageShell } from "@/components/PageHero";
 import { ImageGallery } from "@/components/ImageGallery";
 
@@ -20,25 +21,33 @@ export const Route = createFileRoute("/species")({
 });
 
 function SpeciesPage() {
+  const [active, setActive] = useState<Species | null>(null);
+
   return (
     <PageShell>
       <PageHero kicker="Botanical Heritage" title="Bamboo Species" lead="The native and naturalized bamboos that give voice to Philippine instruments." />
+
       <h2 className="mt-12 font-display text-2xl text-gold">Species Catalogue</h2>
       <div className="mt-5 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {SPECIES.map((s, i) => (
-          <motion.div key={s.id} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }} whileHover={{ y: -4 }} className="rounded-2xl overflow-hidden border border-border/50 gradient-card shadow-card flex flex-col">
-            <Link to="/species/$id" params={{ id: s.id }} className="block aspect-[4/3] overflow-hidden">
-              <img src={s.image} alt={s.common} className="h-full w-full object-cover transition-transform duration-500 hover:scale-105" />
-            </Link>
-            <div className="p-5 flex flex-col flex-1">
-              <h3 className="font-display text-lg text-gold">{s.common}</h3>
-              <div className="text-xs italic text-muted-foreground">{s.scientific}</div>
-              <p className="mt-3 text-sm text-foreground/80 line-clamp-3">{s.description}</p>
-              <Link to="/species/$id" params={{ id: s.id }} className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-gold hover:text-gold/80 transition-colors">
-                Read more <ArrowRight size={14} />
-              </Link>
+          <motion.button
+            key={s.id}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.05 }}
+            whileHover={{ y: -4 }}
+            onClick={() => setActive(s)}
+            className="text-left rounded-2xl border border-border/50 gradient-card p-5 shadow-card hover:border-gold/40 transition-colors"
+          >
+            <div className="flex items-center gap-2 text-gold">
+              <Leaf size={16} />
+              <h3 className="font-display text-lg">{s.common}</h3>
             </div>
-          </motion.div>
+            <div className="mt-1 text-xs italic text-muted-foreground">{s.scientific}</div>
+            <p className="mt-3 text-sm text-foreground/80 line-clamp-3">{s.description}</p>
+            <div className="mt-3 inline-block text-[10px] uppercase tracking-widest bg-gold/15 text-gold px-2 py-1 rounded-full">View details</div>
+          </motion.button>
         ))}
       </div>
 
@@ -66,6 +75,51 @@ function SpeciesPage() {
           <p className="mt-2 text-sm text-foreground/85">Local cooperatives manage stands as both cultural and economic assets, ensuring fair pricing for artisan-grade bamboo.</p>
         </div>
       </section>
+
+      <AnimatePresence>
+        {active && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setActive(null)}
+            className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm flex items-center justify-center p-4"
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 20, scale: 0.97 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 20, scale: 0.97 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-2xl rounded-2xl border border-border/60 gradient-card p-6 md:p-8 shadow-card max-h-[85vh] overflow-y-auto"
+            >
+              <button onClick={() => setActive(null)} className="absolute top-4 right-4 text-muted-foreground hover:text-foreground">
+                <X size={18} />
+              </button>
+              <div className="text-xs uppercase tracking-widest text-gold/80">Species Profile</div>
+              <h3 className="mt-2 font-display text-3xl text-gold">{active.common}</h3>
+              <div className="text-sm italic text-muted-foreground">{active.scientific}</div>
+              {active.synonyms.length > 0 && (
+                <div className="mt-2 text-xs text-muted-foreground">Also known as: {active.synonyms.join(", ")}</div>
+              )}
+              <p className="mt-4 text-foreground/85 leading-relaxed">{active.description}</p>
+              <dl className="mt-5 grid sm:grid-cols-2 gap-4 text-sm">
+                <div>
+                  <dt className="text-xs uppercase tracking-widest text-gold/80">Habitat</dt>
+                  <dd className="mt-1 text-foreground/85">{active.habitat}</dd>
+                </div>
+                <div>
+                  <dt className="text-xs uppercase tracking-widest text-gold/80">Distribution</dt>
+                  <dd className="mt-1 text-foreground/85">{active.distribution}</dd>
+                </div>
+                <div className="sm:col-span-2">
+                  <dt className="text-xs uppercase tracking-widest text-gold/80">Economic Importance</dt>
+                  <dd className="mt-1 text-foreground/85">{active.economic}</dd>
+                </div>
+              </dl>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </PageShell>
   );
 }
