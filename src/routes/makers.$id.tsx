@@ -117,7 +117,7 @@ function MakerPage() {
                 <Sparkles size={12} /> Signature Works
               </div>
               <ul className="mt-3 space-y-2 text-sm text-foreground/85">
-                {maker.signature.map((s) => (
+                {maker.signature.map((s: string) => (
                   <li key={s} className="flex gap-2"><span className="text-gold">•</span>{s}</li>
                 ))}
               </ul>
