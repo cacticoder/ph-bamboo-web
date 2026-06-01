@@ -22,6 +22,7 @@ export const Route = createFileRoute("/species")({
 
 function SpeciesPage() {
   const [active, setActive] = useState<Species | null>(null);
+  const [lightbox, setLightbox] = useState<string | null>(null);
 
   return (
     <PageShell>
@@ -101,6 +102,18 @@ function SpeciesPage() {
               {active.synonyms.length > 0 && (
                 <div className="mt-2 text-xs text-muted-foreground">Also known as: {active.synonyms.join(", ")}</div>
               )}
+              <button
+                onClick={() => setLightbox(active.image)}
+                className="group mt-4 block w-full sm:w-56 overflow-hidden rounded-xl border border-border/60 hover:border-gold/60 transition-colors"
+                aria-label="Enlarge photo"
+              >
+                <img
+                  src={active.image}
+                  alt={active.common}
+                  className="h-32 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="px-2 py-1 text-[10px] uppercase tracking-widest text-muted-foreground group-hover:text-gold">Click to enlarge</div>
+              </button>
               <p className="mt-4 text-foreground/85 leading-relaxed">{active.description}</p>
               <dl className="mt-5 grid sm:grid-cols-2 gap-4 text-sm">
                 <div>
@@ -117,6 +130,35 @@ function SpeciesPage() {
                 </div>
               </dl>
             </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {lightbox && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setLightbox(null)}
+            className="fixed inset-0 z-[60] bg-background/95 backdrop-blur-md flex items-center justify-center p-4"
+          >
+            <button
+              onClick={() => setLightbox(null)}
+              className="absolute top-4 right-4 text-foreground/80 hover:text-gold"
+              aria-label="Close"
+            >
+              <X size={22} />
+            </button>
+            <motion.img
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              src={lightbox}
+              alt="Enlarged species photo"
+              onClick={(e) => e.stopPropagation()}
+              className="max-h-[90vh] max-w-[95vw] rounded-xl object-contain shadow-2xl"
+            />
           </motion.div>
         )}
       </AnimatePresence>
