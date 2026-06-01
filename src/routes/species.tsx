@@ -22,6 +22,7 @@ export const Route = createFileRoute("/species")({
 
 function SpeciesPage() {
   const [active, setActive] = useState<Species | null>(null);
+  const [lightbox, setLightbox] = useState<string | null>(null);
 
   return (
     <PageShell>
