@@ -102,6 +102,18 @@ function SpeciesPage() {
               {active.synonyms.length > 0 && (
                 <div className="mt-2 text-xs text-muted-foreground">Also known as: {active.synonyms.join(", ")}</div>
               )}
+              <button
+                onClick={() => setLightbox(active.image)}
+                className="group mt-4 block w-full sm:w-56 overflow-hidden rounded-xl border border-border/60 hover:border-gold/60 transition-colors"
+                aria-label="Enlarge photo"
+              >
+                <img
+                  src={active.image}
+                  alt={active.common}
+                  className="h-32 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="px-2 py-1 text-[10px] uppercase tracking-widest text-muted-foreground group-hover:text-gold">Click to enlarge</div>
+              </button>
               <p className="mt-4 text-foreground/85 leading-relaxed">{active.description}</p>
               <dl className="mt-5 grid sm:grid-cols-2 gap-4 text-sm">
                 <div>
