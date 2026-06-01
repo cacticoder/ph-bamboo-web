@@ -14,7 +14,7 @@ const WORKSHOP_GALLERY = [
   { title: "Hands of Heritage", caption: "Forty-year palms shaping the next generation of sound.", icon: Users, tone: "earth" as const },
 ];
 
-export const Route = createFileRoute("/makers")({
+export const Route = createFileRoute("/makers/")({
   head: () => ({ meta: [{ title: "BMI Makers — phBMI" }, { name: "description", content: "Master craftsmen and tradition-bearers of Philippine bamboo instruments." }] }),
   component: () => (
     <PageShell>
