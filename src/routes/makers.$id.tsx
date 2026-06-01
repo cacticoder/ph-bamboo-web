@@ -2,6 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, MapPin, Award, Quote, Calendar, Sparkles } from "lucide-react";
 import { MAKERS } from "@/data/site";
 import { PageShell } from "@/components/PageHero";
+import { ShareButtons } from "@/components/ShareButtons";
 
 export const Route = createFileRoute("/makers/$id")({
   loader: ({ params }) => {
