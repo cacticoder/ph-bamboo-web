@@ -2,6 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, MapPin, Award, Quote, Calendar, Sparkles } from "lucide-react";
 import { MAKERS } from "@/data/site";
 import { PageShell } from "@/components/PageHero";
+import { ShareButtons } from "@/components/ShareButtons";
 
 export const Route = createFileRoute("/makers/$id")({
   loader: ({ params }) => {
@@ -66,6 +67,10 @@ function MakerPage() {
       {/* Body + sidebar */}
       <div className="mx-auto max-w-6xl px-4 md:px-8 py-14 grid lg:grid-cols-[1fr_280px] gap-12">
         <div>
+          <div className="mb-8 pb-6 border-b border-border/50">
+            <ShareButtons title={`${maker.name} — phBMI Makers`} text={maker.bio} />
+          </div>
+
           <p className="text-lg text-foreground/85 leading-relaxed italic border-l-2 border-gold/50 pl-4">
             {maker.bio}
           </p>
