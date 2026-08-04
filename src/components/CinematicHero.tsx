@@ -10,7 +10,9 @@ import { useCallback, useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play, X, ArrowRight } from "lucide-react";
-import poster from "@/assets/hero-poster.jpg";
+import posterAsset from "@/assets/hero-poster-photo.png.asset.json";
+
+const poster = posterAsset.url;
 
 const YOUTUBE_ID = "dQw4w9WgXcQ";
 
