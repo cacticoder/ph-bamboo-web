@@ -58,7 +58,7 @@ export function Navbar() {
                   {isActive && (
                     <motion.span
                       layoutId="nav-underline"
-                      className="absolute inset-x-2 -bottom-px h-[2px] bg-gold rounded-full"
+                      className={cn("absolute inset-x-2 -bottom-px h-[2px] rounded-full", overlay ? "bg-[#c8a95f]" : "bg-gold")}
                     />
                   )}
                 </>
@@ -69,11 +69,15 @@ export function Navbar() {
 
         <button
           aria-label="Menu"
-          className="lg:hidden grid h-10 w-10 place-items-center rounded-md text-foreground hover:bg-card"
+          className={cn(
+            "lg:hidden grid h-10 w-10 place-items-center rounded-md",
+            overlay ? "text-[#fdfaf3] hover:bg-white/10" : "text-foreground hover:bg-card",
+          )}
           onClick={() => setOpen((v) => !v)}
         >
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
+
       </div>
 
       <AnimatePresence>
