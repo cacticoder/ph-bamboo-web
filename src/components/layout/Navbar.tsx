@@ -19,6 +19,8 @@ export function Navbar() {
 
   useEffect(() => setOpen(false), [location.pathname]);
 
+  const overlay = location.pathname === "/" && !scrolled;
+
   return (
     <header
       className={cn(
@@ -32,8 +34,8 @@ export function Navbar() {
             ph
           </div>
           <div className="leading-tight">
-            <div className="font-display text-lg font-semibold text-gold">phBMI</div>
-            <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Heritage · Research · Innovation</div>
+            <div className={cn("font-display text-lg font-semibold", overlay ? "text-[#fdfaf3]" : "text-gold")}>phBMI</div>
+            <div className={cn("text-[10px] uppercase tracking-[0.2em]", overlay ? "text-[#f2ead9]/70" : "text-muted-foreground")}>Heritage · Research · Innovation</div>
           </div>
         </Link>
 
@@ -43,9 +45,13 @@ export function Navbar() {
               key={l.to}
               to={l.to}
               activeOptions={{ exact: l.to === "/" }}
-              className="relative px-3 py-2 text-sm font-medium text-foreground/80 hover:text-gold transition-colors"
-              activeProps={{ className: "text-gold" }}
+              className={cn(
+                "relative px-3 py-2 text-sm font-medium transition-colors",
+                overlay ? "text-[#f2ead9]/85 hover:text-[#fdfaf3]" : "text-foreground/80 hover:text-gold",
+              )}
+              activeProps={{ className: overlay ? "text-[#fdfaf3]" : "text-gold" }}
             >
+
               {({ isActive }) => (
                 <>
                   {l.label}
