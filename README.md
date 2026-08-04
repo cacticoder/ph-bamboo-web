@@ -1,542 +1,369 @@
-# Bamboo Musical Instruments Website
+# Philippine Bamboo Musical Instruments (phBMI)
 
-Create a modern, cultural, professional, responsive website for the Philippine Bamboo Musical Instruments (phBMI) Program, a government initiative focused on preserving and promoting bamboo musical instruments through research, innovation, training, and cultural heritage.
+A modern digital platform dedicated to the preservation, documentation, promotion, research, and development of Philippine bamboo musical instruments.
 
-Design Requirements
+The Philippine Bamboo Musical Instruments (phBMI) Program is a government initiative focused on preserving and advancing the tradition of bamboo instrument making through research and development, training, innovation, cultural heritage preservation, and knowledge dissemination.
 
-Theme: Modern + cultural + professional
+---
 
-Color palette:
+## About the Project
 
-Bamboo greens
+The Philippine Bamboo Musical Instruments website serves as a digital cultural and research hub for bamboo musical instruments in the Philippines.
 
-Earthy browns
+The platform brings together information about:
 
-Natural bamboo textures
+- Philippine bamboo musical instruments
+- Instrument makers and cultural practitioners
+- Bamboo species used in instrument making
+- Bamboo processing and manufacturing
+- Traditional and modern value chains
+- Educational teaching modules
+- Research and development technologies
+- Cultural festivals and heritage
+- Research, innovation, and training activities
 
-Warm neutral backgrounds
+The website is designed to support researchers, educators, students, musicians, cultural practitioners, government agencies, and the general public.
 
-Style:
+---
 
-Clean and minimal
+# Features
 
-Heritage-inspired visual elements
+## 1. Global Navigation
 
-Large imagery and cards
+The website provides access to the following major sections:
 
-Smooth animations and transitions
+- Home
+- BMI Gallery
+- BMI Makers
+- Bamboo Species
+- Processing Center
+- Value Chain
+- Teaching Modules
+- R&D Technologies
 
-Animation:
+### Navigation Features
 
-Use Framer Motion (or equivalent)
+- Sticky navigation bar
+- Active section highlighting
+- Smooth scrolling
+- Responsive navigation
+- Mobile-friendly menu
+- Optimized page navigation
 
-Smooth transitions between gallery filters and interactive sections
+### Footer
 
-Responsiveness:
+The footer includes:
 
-Fully responsive desktop/tablet/mobile
+- Terms and Conditions
+- Contact Us
+- phBMI Design
+- Copyright notice
+- Social media links
 
-Mobile-friendly PDF viewer
+---
 
-Mobile-friendly species card grids
+# 2. Homepage — Innovation & Heritage Hub
 
-Optimized navigation
+## Hero Section
 
-Website Architecture
+The homepage features an immersive hero section introducing the Philippine Bamboo Musical Instruments Program.
 
-1. Global Navigation & Layout
+### Program Description
 
-Navigation Bar
+> The Philippine Bamboo Musical Instruments Program is a government initiative dedicated to promoting, preserving, and advancing the tradition of bamboo instrument making through research and development, training, innovation, and cultural preservation.
 
-Include the following navigation links:
+### Primary Actions
 
-Home
+- Explore Instruments
+- Learn More
 
-BMI Gallery
+## Documentary Video
 
-BMI Makers
+The homepage includes a documentary or program video:
 
-Bamboo Species
+**Bamboo Musical Instruments Innovation Research and Development Program**
 
-Processing Center
+The video is hosted through YouTube.
 
-Value Chain
+The website uses a customized video presentation and poster/cover design while maintaining the required YouTube player functionality.
 
-Teaching Modules
+---
 
-R&D Technologies
+# 3. Partners
 
-Navigation behavior:
+A dedicated partners section presents organizations involved in the development, research, promotion, and preservation of Philippine bamboo musical instruments.
 
-Sticky navbar
+Partners include:
 
-Active section highlighting
+- DOST
+- DOST-PCIEERD
+- DOST-FPRDI
+- UP Center for Ethnomusicology
+- Philippine Normal University
 
-Smooth scrolling
+Partner logos include interactive hover effects.
 
-Footer
+---
 
-Include:
+# 4. Philippine Bamboo Cultural Heritage
 
-Terms and Conditions
+The website features educational and interactive content about the history and cultural importance of bamboo celebrations and musical traditions in the Philippines.
 
-Contact Us
+The cultural heritage section documents the history of bamboo celebrations beginning in the 1980s and highlights important festivals and cultural events.
 
-phBMI Design logo
+## Featured Festivals
 
-Copyright notice
+- Karatong Festival
+- Cordillera Bamboo Day
+- Tultugan Festival
+- Las Piñas Bamboo Organ
 
-Social media icons
+### Interactive Festival Cards
 
-2. Homepage — Innovation & Heritage Hub
+Festival cards include:
 
-Hero Section
+- Image backgrounds
+- Overlay information
+- Hover animations
+- Expandable content
+- Cultural descriptions
 
-Split layout:
+---
 
-Right Side
+# 5. Copyright and Content Protection
 
-Large title:
+The website displays a copyright notice informing visitors that audiovisual and other protected materials may not be reproduced or distributed without authorization.
 
-Philippine Bamboo Musical Instruments
+Example notice:
 
-Add a descriptive section:
+> All videos and protected content on this website are subject to applicable copyright laws. Unauthorized copying, downloading, reproduction, or distribution of protected content is prohibited.
 
-The Philippine Bamboo Musical Instruments Program is a government initiative dedicated to promoting, preserving, and advancing the tradition of bamboo instrument making through research and development, training, innovation, and cultural preservation.
+---
 
-Include CTA buttons:
+# 6. BMI Gallery — Philippine Bamboo Musical Instruments
 
-Explore Instruments
+The BMI Gallery provides a searchable and filterable collection of Philippine bamboo musical instruments.
 
-Learn More
+## Instrument Categories
 
-Left Side
+- Display All
+- Chordophones
+- Aerophones
+- Idiophones
+- Membranophones
 
-Video section:
+Gallery filtering includes smooth animated transitions.
 
-Embed YouTube video with cover image:
+## Instrument Cards
 
-Title:
+Each instrument card includes:
 
-Bamboo Musical Instruments Innovation Research and Development Program
+- Instrument image
+- Instrument name
+- Short description
+- Instrument classification
+- Read More action
 
-Partners Section
+## Instrument Detail Pages
 
-Create a logo grid displaying:
+Each instrument has a dedicated information page containing:
 
-DOST
+- Instrument Name
+- Instrument Type
+- Bamboo Species Used
+- Geographic Location
+- Full Description
+- Image Gallery
+- Related information
 
-DOST-PCIEERD
+---
 
-DOST-FPRDI
+# 7. BMI Makers
 
-UP Center for Ethnomusicology
+The BMI Makers section documents instrument makers, artisans, musicians, researchers, and cultural practitioners.
 
-Philippine Normal University
+Each profile may include:
 
-Add hover animations.
+- Portrait
+- Name
+- Biography
+- Expertise
+- Region
+- Instruments produced
+- Bamboo species used
 
-Cultural Features
+The section uses visual profile cards designed to highlight individual practitioners and their contributions.
 
-Philippine Bamboo Celebration Section
+---
 
-Include history of bamboo celebrations in the Philippines beginning in the 1980s.
+# 8. Philippine Bamboo Species
 
-Festival Interactive Cards
+The Bamboo Species section provides information about bamboo species associated with musical instrument production.
 
-Create animated cards for:
+Each species has a dedicated information page containing:
 
-Karatong Festival
+- Common Name
+- Scientific Name
+- Synonyms
+- Description
+- Habitat
+- Geographic Distribution
+- Economic Importance
+- Image Gallery
 
-Cordillera Bamboo Day
+Each species may include 3–6 representative images.
 
-Tultugan Festival
+---
 
-Las Piñas Bamboo Organ
+# 9. Bamboo Musical Instrument Processing Center (BMIPC)
 
-Card interactions:
+The BMIPC section presents information about the facility and its role in bamboo musical instrument development.
 
-Hover effects
+Content includes:
 
-Expand on click
+- Facility overview
+- Large facility imagery
+- Manufacturing functions
+- Bamboo processing activities
+- Instrument production
+- Mini museum
+- Training venue
+- Research and development activities
 
-Image background with overlay text
+### Call to Action
 
-Copyright Notice
+Visitors can:
 
-Create a prominent modal popup or warning banner:
+- Contact the center
+- View a facility tour
+- Access related YouTube videos
 
-All videos on this website are protected by copyright laws. Unauthorized copying, downloading, reproduction, or distribution of content is strictly prohibited.
+---
 
-3. BMI Gallery (The Instruments)
+# 10. Interactive BMI Value Chain
 
-Create a searchable and filterable gallery.
+The Value Chain section presents the development of bamboo musical instruments through an interactive process.
 
-Categories:
+## Stage 1 — Raw Material Procurement
 
-Display All
+Includes:
 
-Chordophones
+- Bamboo species selection
+- Bamboo harvesting
+- Material preparation
+- Traditional Indigenous Peoples practices
+- Sustainable material sourcing
 
-Aerophones
+## Stage 2 — Production / BMI Making
 
-Idiophones
+Includes:
 
-Membranophones
+- Traditional tools
+- Artisanal craftsmanship
+- Bamboo processing
+- Instrument shaping
+- Tuning by ear
+- Finishing
 
-Use animated transitions when switching categories.
+## Stage 3 — Marketing & Distribution
 
-Instrument Cards
+Includes:
 
-Create 20 instrument cards.
+- Traditional peddling
+- Music stores
+- Online retail
+- Cultural events
+- Direct sales
 
-Each card includes:
+## Stage 4 — Support Services
 
-Instrument image
+Includes:
 
-Instrument name
+- Instrument repair
+- Tuning services
+- Maintenance
+- Customer education
+- Instrument playing instruction
 
-Short description
+### Interactive Features
 
-Read More button
+- Animated process flow
+- Expandable cards
+- Timeline visualization
+- Stage navigation
+- Responsive layouts
 
-Instrument Detail Page
+---
 
-When a card is clicked, open a detailed page containing:
+# 11. Teaching Modules
 
-Instrument Name
+The Teaching Modules section provides educational resources for students, teachers, researchers, and cultural educators.
 
-Instrument Type
+## Categories
 
-Bamboo Species Used
+### Elementary
 
-Geographic Location
+- Volume 1
+- Volume 2
 
-Full Description
+### High School
 
-Image gallery carousel
+- Volume 1
+- Volume 2
 
-4. BMI Makers & Bamboo Species
+## Module Cards
 
-BMI Makers
+Each module includes:
 
-Create artist-style profile cards:
+- Thumbnail
+- Module title
+- Grade-level badge
+- Description
+- PDF resource
+- Citation information
+- Engagement metrics
 
-Include:
+Example grade levels:
 
-Large portrait image
+- Grade 4
+- Grade 7
 
-Name
+---
 
-Biography
+# 12. PDF Viewer
 
-Expertise
+Teaching materials are presented through a responsive PDF viewer.
 
-Region
+The viewer is designed for:
 
-Bamboo Species
+- Desktop
+- Tablet
+- Mobile
 
-Create card-based layouts.
+Users can access the PDF directly through the module interface.
 
-Each species card opens into a detailed page containing:
+---
 
-Common Name
+# 13. Content Citation System
 
-Scientific Name
+Each teaching module includes a **Cite this Content** feature.
 
-Synonyms
+The system automatically generates citations using the module's metadata and the corresponding module URL.
 
-Description
+## Supported Citation Formats
 
-Habitat
+- APA 7th Edition
+- MLA
+- Chicago
+- BibTeX
 
-Distribution
+### APA 7th Edition
 
-Economic Importance
+APA is the default citation format.
 
-3–6 image gallery
+The citation should use the actual URL of the corresponding module.
 
-5. BMI Processing Center (BMIPC)
+Example:
 
-Create a section featuring:
-
-Large facility image
-
-Description of center role
-
-Manufacturing functions
-
-Mini museum description
-
-Training venue details
-
-Add CTA section:
-
-Contact Us button
-
-YouTube facility tour link
-
-6. Interactive BMI Value Chain
-
-Create a visually engaging step-by-step flow diagram.
-
-Stages:
-
-Raw Material Procurement
-
-Include:
-
-Bamboo species selection
-
-Traditional Indigenous Peoples (IP) practices
-
-Production / BMI Making
-
-Include:
-
-Traditional tools
-
-Artisanal craftsmanship
-
-Tuning by ear process
-
-Marketing & Distribution
-
-Include:
-
-Traditional peddling
-
-Modern online retail
-
-Music stores
-
-Support Services
-
-Include:
-
-Instrument repair
-
-Tuning services
-
-Teaching customers how to play
-
-Interaction:
-
-Animated progress flow
-
-Expandable cards
-
-Timeline visualization
-
-7. Teaching Modules (Educational Portal)
-
-Create a built-in PDF reader interface.
-
-Categories:
-
-Elementary
-
-Volume 1
-
-Volume 2
-
-High School
-
-Volume 1
-
-Volume 2
-
-Module Cards
-
-Each module card includes:
-
-Thumbnail image
-
-Module title
-
-Grade-level ribbon badge
-
-Examples:
-
-Grade 4
-
-Grade 7
-
-Add generated engagement metrics:
-
-Randomized values between:
-
-Views: 1,000–15,000
-
-Hearts/Likes: 1,000–15,000
-
-Downloads: 1,000–15,000
-
-Add button:
-
-Cite this Content
-
-Citation behavior:
-
-Add a "Cite this Content" button.
-
-Automatically generate citations using the module information and PDF link.
-
-Supported formats:
-
-APA 7th Edition (default)
-
-MLA
-
-Chicago
-
-BibTeX
-
-APA example:
-
-Author Last Name, A. A. (Year). Module Title (Vol. X). Philippine Bamboo Musical Instruments Program. [Module URL]
-
-Include:
-
-Copy citation button
-
-Download citation option
-
-8. R&D Technologies (Technical Knowledge Base)
-
-Chemical Treatments
-
-Create sections for:
-
-Spraying
-
-Brushing
-
-Dipping
-
-Pressure Method
-
-Include preservative table examples:
-
-Preservative
-
-Purpose
-
-Propiconazole
-
-Fungicide
-
-Deltamethrin
-
-Insect Control
-
-Non-Chemical Treatments
-
-Create interactive cards for:
-
-Smoking
-
-Heat Treatment
-
-Irradiation
-
-Oil Treatment
-
-Steam Treatment
-
-Advanced Analysis
-
-Acoustic Analysis
-
-Include:
-
-Sound Quality Descriptors (SQD)
-
-Timbre mathematical modeling
-
-Experimental Modal Analysis (EMA)
-
-Include:
-
-Vibration characteristics
-
-Impact hammer testing
-
-Accelerometer measurements
-
-Finite Element Analysis (FEA)
-
-Include:
-
-Simulation-based prototype development
-
-COMSOL integration
-
-MATLAB integration
-
-Technical Development Requirements
-
-Framework:
-
-React + Next.js
-
-Tailwind CSS
-
-Framer Motion animations
-
-Components:
-
-Search filters
-
-Modal popups
-
-Image galleries
-
-PDF viewer
-
-Interactive diagrams
-
-Responsive cards
-
-Dynamic content sections
-
-Prioritize:
-
-Accessibility
-
-Fast loading
-
-SEO optimization
-
-Cultural storytelling
-
-User engagement
-
-Research usability
-
-Generate production-ready website structure and component hierarchy.
-
-Please add: When citing this content please write the APA citation using the link of each modules. Also the randomized data will be stored in the database and also the visitor every countries will be recorded in the database as website metrics. And also make this website for generating income for ads ready.
-
-Add the following section to your existing Lovable AI prompt under Additional Functional Requirements / Database & Monetization Features:
-
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/7448d39f-0d06-434c-8d77-13e221e2592a).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
-```
+```text
+Author Last Name, A. A. (Year). Module title (Vol. X). Philippine Bamboo Musical Instruments Program. Module URL
