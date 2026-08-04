@@ -132,6 +132,8 @@
     font-weight: 400; /* Potta One has a single weight */
   }
   h1 { color: var(--plum) !important; }
+  h1.hero-title { color: #fdfaf3 !important; }
+
   h2, h3 { color: var(--olive); }
   h4, h5, h6 { color: var(--olive); }
   a { color: var(--olive); }

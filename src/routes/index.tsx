@@ -1,16 +1,20 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Play, ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { PARTNERS } from "@/data/site";
 import { ARTICLES } from "@/data/articles";
 import { AdSlot } from "@/components/AdSlot";
-import { VideoPlayer } from "@/components/VideoPlayer";
+import { CinematicHero } from "@/components/CinematicHero";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "phBMI — Philippine Bamboo Musical Instruments Program" },
       { name: "description", content: "A government initiative preserving and advancing Philippine bamboo musical instruments through research, training, and innovation." },
+      { property: "og:title", content: "phBMI — Philippine Bamboo Musical Instruments Program" },
+      { property: "og:description", content: "Where Philippine bamboo heritage meets research, craftsmanship, and innovation." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Index,
@@ -19,59 +23,8 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <div>
-      {/* HERO */}
-      <section className="relative overflow-hidden">
-        <div className="mx-auto max-w-7xl px-4 md:px-8 pt-12 md:pt-20 pb-16 grid lg:grid-cols-2 gap-10 items-center">
-          {/* Left: Video */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7 }}
-            className="order-2 lg:order-1"
-          >
-            <VideoPlayer
-              src="dQw4w9WgXcQ"
-              variant="youtube"
-              className="rounded-2xl shadow-card"
-            />
-            <div className="mt-4 flex items-center gap-3 text-sm text-muted-foreground">
-              <div className="grid h-9 w-9 place-items-center rounded-full bg-gold/15 text-gold"><Play size={14} /></div>
-              <div>
-                <div className="text-foreground font-medium">Innovation Research & Development Program</div>
-                <div className="text-xs">Featured documentary · 5:42</div>
-              </div>
-            </div>
-          </motion.div>
+      <CinematicHero />
 
-          {/* Right: Copy */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="order-1 lg:order-2"
-          >
-            <div className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-3 py-1 text-xs uppercase tracking-widest text-gold">
-              <Sparkles size={12} /> Heritage · Innovation
-            </div>
-            <h1 className="mt-5 font-display text-4xl md:text-5xl lg:text-6xl leading-[1.05] text-gold">
-              Philippine Bamboo<br />Musical Instruments
-            </h1>
-            <p className="mt-6 text-base md:text-lg text-foreground/85 leading-relaxed max-w-xl">
-              The Philippine Bamboo Musical Instruments Program is a government initiative dedicated to
-              promoting, preserving, and advancing the tradition of bamboo instrument making through
-              research and development, training, innovation, and cultural preservation.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link to="/gallery" className="inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-semibold text-primary-foreground shadow-glow hover:opacity-90 transition">
-                Explore Instruments <ArrowRight size={16} />
-              </Link>
-              <Link to="/modules" className="inline-flex items-center gap-2 rounded-full border border-gold/40 px-6 py-3 text-sm font-semibold text-gold hover:bg-gold/10 transition">
-                Learn More
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
 
       {/* PARTNERS */}
       <section className="border-y border-border/40 bg-card/30">
