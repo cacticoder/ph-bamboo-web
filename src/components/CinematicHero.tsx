@@ -78,7 +78,7 @@ export function CinematicHero() {
                 <div className="text-[10px] uppercase tracking-[0.4em] text-[#e9dcc3]/80">
                   Heritage · Innovation
                 </div>
-                <h1 className="mt-5 font-display text-[clamp(2.1rem,6vw,4.25rem)] leading-[1.02] tracking-tight text-[#fdfaf3]">
+                <h1 className="hero-title mt-5 font-display text-[clamp(2.1rem,6vw,4.25rem)] leading-[1.02] tracking-tight">
                   Philippine<br />Bamboo<br />Musical<br />Instruments
                 </h1>
                 <p className="mt-6 max-w-md text-sm leading-relaxed text-[#f2ead9]/85 md:text-base">
