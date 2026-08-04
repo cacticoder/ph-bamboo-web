@@ -367,3 +367,20 @@ Example:
 
 ```text
 Author Last Name, A. A. (Year). Module title (Vol. X). Philippine Bamboo Musical Instruments Program. Module URL
+```
+
+## Development
+
+To run the project locally, you will need **Node.js** and **npm**.
+
+### 1. Install Node.js
+
+If you use `nvm`, install Node.js with:
+
+https://github.com/nvm-sh/nvm#installing-and-updating
+
+### 2. Clone the Repository
+
+```bash
+git clone <repository-url>
+cd <repository-name>
