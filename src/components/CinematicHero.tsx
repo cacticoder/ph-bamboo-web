@@ -46,17 +46,18 @@ export function CinematicHero() {
       <div className="absolute inset-0">
         <motion.img
           src={poster}
-          alt="Filipino artisan playing a bamboo flute in a bamboo grove"
+          alt="Filipino artisan playing a bamboo jaw harp in a bamboo grove"
           width={1920}
           height={1088}
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover object-[70%_center] md:object-center"
           initial={{ scale: 1.08 }}
           animate={{ scale: playing ? 1.02 : 1 }}
           transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
         />
         {/* readability gradients */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#20180f]/85 via-[#20180f]/45 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#150f0a]/90 via-transparent to-[#150f0a]/55" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#140e08]/95 via-[#140e08]/70 to-[#140e08]/25" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#120c07]/95 via-[#120c07]/25 to-[#120c07]/70" />
+        <div className="absolute inset-0 bg-[#140e08]/25" />
       </div>
 
       {/* ── HERO CONTENT ── */}
