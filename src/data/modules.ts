@@ -1,3 +1,6 @@
+import kawayCover from "@/assets/kaway-kawayan-v1-elem.jpg.asset.json";
+import bambooOrganPdf from "@/assets/bmi-g4-vol01.pdf.asset.json";
+
 export interface TeachingModule {
   id: string;
   title: string;
@@ -9,10 +12,14 @@ export interface TeachingModule {
   pdfUrl: string;
   thumbnailPrompt: string;
   description: string;
+  coverUrl?: string;
+  coverPosition?: string;
 }
 
 export const MODULES: TeachingModule[] = [
+  { id: "elem-v1-g4-bamboo-organ", title: "Bamboo Organ of Las Piñas", level: "Elementary", volume: 1, grade: "Grade 4", authors: ["Philippine Society for Music Education"], year: 2023, pdfUrl: bambooOrganPdf.url, thumbnailPrompt: "Kaway-Kawayan Volume 1 elementary cover", description: "Kaway-Kawayan Bamboo Music Education Lessons for K-12 — Grade 4 lesson on the historic Bamboo Organ of Las Piñas.", coverUrl: kawayCover.url, coverPosition: "right center" },
   { id: "elem-v1-g4", title: "Introduction to Philippine Bamboo Instruments", level: "Elementary", volume: 1, grade: "Grade 4", authors: ["Cruz, M. R.", "Santos, A. L."], year: 2023, pdfUrl: "https://www.africau.edu/images/default/sample.pdf", thumbnailPrompt: "elementary bamboo music module cover", description: "An introductory module exploring bamboo instruments for young learners." },
+
   { id: "elem-v1-g5", title: "Sounds of the Bamboo Forest", level: "Elementary", volume: 1, grade: "Grade 5", authors: ["Reyes, J. P."], year: 2023, pdfUrl: "https://www.africau.edu/images/default/sample.pdf", thumbnailPrompt: "bamboo forest sounds module", description: "Activities and listening guides for identifying bamboo instrument timbres." },
   { id: "elem-v2-g4", title: "Playing the Tongatong: A Beginner's Guide", level: "Elementary", volume: 2, grade: "Grade 4", authors: ["Dela Cruz, P. S."], year: 2024, pdfUrl: "https://www.africau.edu/images/default/sample.pdf", thumbnailPrompt: "tongatong beginner guide cover", description: "Step-by-step lessons on the Kalinga tongatong." },
   { id: "elem-v2-g6", title: "Bamboo Rhythm Workshop", level: "Elementary", volume: 2, grade: "Grade 6", authors: ["Garcia, R. M.", "Lim, B. T."], year: 2024, pdfUrl: "https://www.africau.edu/images/default/sample.pdf", thumbnailPrompt: "bamboo rhythm workshop cover", description: "Group rhythm exercises using bamboo idiophones." },
