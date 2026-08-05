@@ -169,28 +169,6 @@ export function CinematicHero() {
         )}
       </AnimatePresence>
 
-      {/* ── BOTTOM INFORMATION STRIP ── */}
-      {!playing && (
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="absolute inset-x-0 bottom-0 z-20 border-t border-[#f5ecd8]/12 bg-[#150f0a]/45 backdrop-blur-md"
-        >
-          <div className="mx-auto flex max-w-7xl gap-6 overflow-x-auto px-5 py-3 text-[10px] uppercase tracking-[0.22em] text-[#f2ead9]/75 md:justify-between md:px-8">
-            {STRIP.map((s) => (
-              <span key={s.text} className="flex shrink-0 items-center gap-2">
-                {s.dot ? (
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#c8a95f]" aria-hidden />
-                ) : (
-                  <ArrowRight size={11} className="text-[#c8a95f]" aria-hidden />
-                )}
-                {s.text}
-              </span>
-            ))}
-          </div>
-        </motion.div>
-      )}
     </section>
   );
 }
