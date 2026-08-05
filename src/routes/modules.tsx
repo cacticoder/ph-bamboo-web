@@ -67,10 +67,21 @@ function ModulesPage() {
                 whileHover={{ y: -4 }}
                 className="rounded-2xl overflow-hidden border border-border/50 gradient-card shadow-card flex flex-col"
               >
-                <div className="aspect-[4/3] relative bg-gradient-to-br from-bamboo/40 to-earth/40 flex items-center justify-center texture-bamboo">
-                  <FileText size={48} className="text-gold/60" />
+                <div className="aspect-[4/3] relative bg-gradient-to-br from-bamboo/40 to-earth/40 flex items-center justify-center texture-bamboo overflow-hidden">
+                  {m.coverUrl ? (
+                    <img
+                      src={m.coverUrl}
+                      alt={`Cover of ${m.title}`}
+                      loading="lazy"
+                      className="absolute inset-0 h-full w-full object-cover"
+                      style={{ objectPosition: m.coverPosition ?? "center" }}
+                    />
+                  ) : (
+                    <FileText size={48} className="text-gold/60" />
+                  )}
                   <span className="absolute top-3 right-3 text-[10px] uppercase tracking-widest bg-gold text-primary-foreground px-2 py-0.5 rounded-full font-bold">{m.grade}</span>
                 </div>
+
                 <div className="p-5 flex-1 flex flex-col">
                   <span className="text-[10px] uppercase tracking-widest text-gold/80">{m.level} · Vol {m.volume}</span>
                   <h3 className="mt-1 font-display text-lg text-foreground line-clamp-2">{m.title}</h3>
