@@ -21,12 +21,6 @@ const CTAS = [
   { label: "Explore Philippine Bamboo", to: "/species" as const },
 ];
 
-const STRIP = [
-  { text: "Traditional Craftsmanship", dot: true },
-  { text: "Philippine Bamboo Species", dot: false },
-  { text: "Musical Heritage", dot: false },
-  { text: "Research & Innovation", dot: false },
-];
 
 export function CinematicHero() {
   const [playing, setPlaying] = useState(false);
