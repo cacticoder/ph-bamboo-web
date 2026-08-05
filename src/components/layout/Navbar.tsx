@@ -29,14 +29,8 @@ export function Navbar() {
       )}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-8">
-        <Link to="/" className="flex items-center gap-3 group">
-          <div className="grid h-10 w-10 place-items-center rounded-full gradient-gold text-primary-foreground font-display text-lg font-bold shadow-glow">
-            ph
-          </div>
-          <div className="leading-tight">
-            <div className={cn("font-display text-lg font-semibold", overlay ? "text-[#fdfaf3]" : "text-gold")}>phBMI</div>
-            <div className={cn("text-[10px] uppercase tracking-[0.2em]", overlay ? "text-[#f2ead9]/70" : "text-muted-foreground")}>Heritage · Research · Innovation</div>
-          </div>
+        <Link to="/" className="flex items-center group" aria-label="phBMI home">
+          <img src={logoAsset.url} alt="phBMI logo" className="h-10 w-auto md:h-12" />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1">
