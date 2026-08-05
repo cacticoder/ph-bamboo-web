@@ -92,12 +92,15 @@ function ModulesPage() {
                     <span className="inline-flex items-center gap-1"><Download size={11}/>{metrics.downloads.toLocaleString()}</span>
                   </div>
                   <div className="mt-4 flex gap-2">
-                    <button
-                      onClick={() => { setActive(m); void incrementMetric(m.id, "views"); }}
-                      className="flex-1 rounded-md bg-gold text-primary-foreground px-3 py-2 text-xs font-semibold hover:opacity-90"
+                    <a
+                      href={m.pdfUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => { e.preventDefault(); setActive(m); void incrementMetric(m.id, "views"); }}
+                      className="flex-1 rounded-md bg-gold text-primary-foreground px-3 py-2 text-xs font-semibold hover:opacity-90 text-center"
                     >
                       Read
-                    </button>
+                    </a>
                     <button
                       onClick={() => setCite(m)}
                       className="rounded-md border border-gold/40 px-3 py-2 text-xs font-semibold text-gold hover:bg-gold/10 inline-flex items-center gap-1"
