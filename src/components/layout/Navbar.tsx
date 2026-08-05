@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { NAV_LINKS } from "@/data/site";
 import { cn } from "@/lib/utils";
+import logoAsset from "@/assets/bmi-logo.gif.asset.json";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
