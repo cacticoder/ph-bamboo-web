@@ -3,6 +3,12 @@ import karatong2 from "@/assets/karatong-2.jpg.asset.json";
 import karatong3 from "@/assets/karatong-3.jpg.asset.json";
 import karatong4 from "@/assets/karatong-4.jpg.asset.json";
 import karatong5 from "@/assets/karatong-5.jpg.asset.json";
+import bambooday1 from "@/assets/bambooday-1.jpg.asset.json";
+import bambooday2 from "@/assets/bambooday-2.jpg.asset.json";
+import bambooday3 from "@/assets/bambooday-3.jpg.asset.json";
+import bambooday4 from "@/assets/bambooday-4.jpg.asset.json";
+import bambooday5 from "@/assets/bambooday-5.jpg.asset.json";
+import bambooday6 from "@/assets/bambooday-6.jpg.asset.json";
 
 export interface Article {
   slug: string;
@@ -49,15 +55,29 @@ export const ARTICLES: Article[] = [
   {
     slug: "cordillera-bamboo-day",
     title: "Cordillera Bamboo Day",
-    region: "Cordillera Administrative Region",
-    excerpt: "A regional gathering of Cordillera musicians and craftsmen showcasing tongatong, bungkaka, and kalaleng.",
-    cover: "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?w=1600&q=80",
-    date: "March 2024",
+    region: "Baguio City, Benguet",
+    excerpt:
+      "Brings together bamboo musical instrument makers, musicians, educators, and community members to share knowledge, address challenges in bamboo instrument-making, and strengthen the Cordillera's living bamboo music traditions.",
+    cover: bambooday3.url,
+    date: "2019",
     author: "phBMI Editorial",
+    gallery: [
+      { src: bambooday1.url, caption: "A bamboo bass guitar crafted by a Cordillera instrument maker." },
+      { src: bambooday2.url, caption: "A young participant in Kalinga attire holds a bamboo tube instrument." },
+      { src: bambooday4.url, caption: "Guest player-musicians perform with bamboo-bodied instruments on stage." },
+      { src: bambooday5.url, caption: "Musicians play a bamboo bass and a bamboo-topped guitar during the program." },
+      { src: bambooday6.url, caption: "Participants join a community bamboo ensemble in the open field." },
+    ],
     body: [
-      "Cordillera Bamboo Day brings together musicians, craftsmen, and tradition-bearers from across the highland provinces. Held annually in March, the event showcases the tongatong stamping tubes, the bungkaka buzzer, and the haunting kalaleng nose flute.",
-      "Workshops invite the public to try their hand at playing — and even making — these instruments under the guidance of master artisans. Performances spotlight the polyrhythmic ensembles that define Cordilleran music.",
-      "The gathering is also a forum for policy: elders, scholars, and government partners meet to discuss sustainable bamboo sourcing and the protection of indigenous knowledge.",
+      "Cordillera Bamboo Day brought together bamboo musical instrument users, makers, musicians, educators, and other participants in a community sharing activity following the final performance of guest player-musicians. Participants gathered in a circle, introduced themselves, and shared their knowledge and experiences with bamboo musical instruments (BMIs).",
+      "One of the concerns raised during the discussion was the infestation of bamboo musical instruments by bukbok, or powder-post beetles. Participants shared their experiences with the problem, highlighting the need for effective preservation and treatment methods. Dr. Jocelyn T. Guadalupe of the UP Diliman Project Team also shared that the study of bamboo musical instruments is integrated into the Department of Education's K\u201312 curriculum. She recounted how bamboo musical instruments intended for distribution to schools had deteriorated after being stored in a supplier's facility.",
+      "DOST-FPRDI's BMI Program Leader Aralyn L. Quintos provided a brief background of the program and emphasized its efforts to identify effective bamboo preservation techniques. The discussion highlighted the importance of proper treatment and preservation in ensuring that bamboo musical instruments remain usable and can continue to support music education and cultural activities.",
+      "Another concern raised during the gathering involved the harvesting of bamboo. Participants noted that even bamboo planted by the individual who intends to harvest it may require a permit from the Department of Environment and Natural Resources (DENR). According to participants, this requirement can lengthen the production process and discourage bamboo craftsmen and musical instrument makers. They also pointed out that bamboo is a grass and questioned the need for such permits when harvesting bamboo for craft and musical instrument production.",
+      "The Cordillera is home to a rich diversity of bamboo musical instruments that form an integral part of the region's musical traditions. These instruments are used for entertainment, self-expression, and rituals. Kalinga, in particular, has a wide range of bamboo instruments, including different types of flutes, jaw's harps, zithers, and percussion instruments. Their names, forms, and uses vary across towns and villages, reflecting the diversity of Cordillera communities.",
+      "Among those helping keep these traditions alive are Kalinga bamboo instrument makers Edgar Banasan and Benicio Damagon Sokkong. Edgar Banasan is a master bamboo craftsman and musician. In 2012, he co-founded EDAYA Arts Cordillera Corporation, where he continues to work as a craftsman. He is involved in the entire production process of his bamboo crafts, from harvesting the bamboo to creating the finished musical instruments.",
+      "Benicio Damagon Sokkong, known as Beni to his family and friends, teaches Cordillera music at the University of Baguio. Born and raised in Baguio City, Beni traces his roots to Barangay Old Tanglag in Lubuagan, Kalinga, where he lived after the death of his father. His experiences and cultural background have shaped his work as a musician, educator, and bamboo instrument maker.",
+      "Edgar and Beni share a deep knowledge of and passion for their Kalinga roots, culture, and craft. Their approaches to bamboo instrument production have several similarities, including the use of smoking as a drying process and Solignum for insect treatment. However, their markets and approaches to teaching differ. Edgar has a stronger focus on the international market, while his workshops cater particularly to younger students and recent college graduates. Beni primarily sells his instruments locally and shares his knowledge through his university teaching position and workshops.",
+      "Although Edgar and Beni have taken different paths as bamboo craftsmen and educators, they share a common vision: to preserve and promote the rich culture of Kalinga through bamboo musical instruments. More importantly, they hope to pass this knowledge and practice on to future generations so that the sound, craftsmanship, and cultural meaning of Cordillera bamboo music will continue to thrive.",
     ],
   },
   {
