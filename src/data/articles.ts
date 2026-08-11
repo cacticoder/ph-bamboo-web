@@ -3,6 +3,12 @@ import karatong2 from "@/assets/karatong-2.jpg.asset.json";
 import karatong3 from "@/assets/karatong-3.jpg.asset.json";
 import karatong4 from "@/assets/karatong-4.jpg.asset.json";
 import karatong5 from "@/assets/karatong-5.jpg.asset.json";
+import bambooday1 from "@/assets/bambooday-1.jpg.asset.json";
+import bambooday2 from "@/assets/bambooday-2.jpg.asset.json";
+import bambooday3 from "@/assets/bambooday-3.jpg.asset.json";
+import bambooday4 from "@/assets/bambooday-4.jpg.asset.json";
+import bambooday5 from "@/assets/bambooday-5.jpg.asset.json";
+import bambooday6 from "@/assets/bambooday-6.jpg.asset.json";
 
 export interface Article {
   slug: string;
