@@ -74,7 +74,7 @@ function ArticlePage() {
           <div className="mt-14">
             <div className="text-xs uppercase tracking-widest text-gold/80">Photo Gallery</div>
             <div className="mt-4 grid gap-5 sm:grid-cols-2">
-              {article.gallery.map((g) => (
+              {article.gallery.map((g: { src: string; caption: string }) => (
                 <figure key={g.src} className="overflow-hidden rounded-2xl border border-border/50 shadow-card">
                   <img
                     src={g.src}
