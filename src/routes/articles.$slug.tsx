@@ -70,10 +70,29 @@ function ArticlePage() {
           ))}
         </div>
 
+        {article.gallery && article.gallery.length > 0 && (
+          <div className="mt-14">
+            <div className="text-xs uppercase tracking-widest text-gold/80">Photo Gallery</div>
+            <div className="mt-4 grid gap-5 sm:grid-cols-2">
+              {article.gallery.map((g) => (
+                <figure key={g.src} className="overflow-hidden rounded-2xl border border-border/50 shadow-card">
+                  <img
+                    src={g.src}
+                    alt={g.caption}
+                    loading="lazy"
+                    className="h-56 w-full object-cover transition-transform duration-500 hover:scale-105"
+                  />
+                  <figcaption className="px-4 py-3 text-xs text-muted-foreground">{g.caption}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        )}
+
         <div className="mt-14 rounded-2xl border border-border/50 gradient-card p-6 shadow-card">
           <div className="text-xs uppercase tracking-widest text-gold/80">APA Citation</div>
           <p className="mt-2 text-sm font-mono text-foreground/80 break-words">
-            phBMI Editorial. ({new Date(article.date).getFullYear() || 2024}). {article.title}. Philippine Bamboo Musical Instruments Program. {typeof window !== "undefined" ? window.location.href : `https://phbmi.gov.ph/articles/${article.slug}`}
+            phBMI Editorial. ({article.date.match(/\d{4}/)?.[0] ?? "2024"}). {article.title}. Philippine Bamboo Musical Instruments Program. {typeof window !== "undefined" ? window.location.href : `https://phbmi.gov.ph/articles/${article.slug}`}
           </p>
         </div>
       </div>
