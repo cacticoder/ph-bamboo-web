@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, X, MapPin, Leaf } from "lucide-react";
+import { Search, X, MapPin, Leaf, Users } from "lucide-react";
 import { INSTRUMENTS, CATEGORIES, CATALOG_MAKERS, type Instrument } from "@/data/instruments";
 import { AdSlot } from "@/components/AdSlot";
 
