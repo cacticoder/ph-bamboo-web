@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, X, MapPin, Leaf } from "lucide-react";
-import { INSTRUMENTS, CATEGORIES, type Instrument } from "@/data/instruments";
+import { Search, X, MapPin, Leaf, Users } from "lucide-react";
+import { INSTRUMENTS, CATEGORIES, CATALOG_MAKERS, type Instrument } from "@/data/instruments";
 import { AdSlot } from "@/components/AdSlot";
 
 export const Route = createFileRoute("/gallery")({
@@ -17,17 +17,30 @@ export const Route = createFileRoute("/gallery")({
 
 function Gallery() {
   const [cat, setCat] = useState<(typeof CATEGORIES)[number]>("All");
+  const [maker, setMaker] = useState<string>("All");
+  const [makerType, setMakerType] = useState<"All" | "Indigenous Peoples (IP)" | "Commercial">("All");
   const [q, setQ] = useState("");
   const [active, setActive] = useState<Instrument | null>(null);
+
+  const makerOptions = useMemo(
+    () => CATALOG_MAKERS.filter((m) => makerType === "All" || m.type === makerType),
+    [makerType],
+  );
 
   const filtered = useMemo(
     () =>
       INSTRUMENTS.filter(
         (i) =>
           (cat === "All" || i.category === cat) &&
-          (q === "" || i.name.toLowerCase().includes(q.toLowerCase()) || i.shortDescription.toLowerCase().includes(q.toLowerCase())),
+          (makerType === "All" || i.makerType === makerType) &&
+          (maker === "All" || i.makerId === maker) &&
+          (q === "" ||
+            i.name.toLowerCase().includes(q.toLowerCase()) ||
+            i.localName.toLowerCase().includes(q.toLowerCase()) ||
+            i.makerName.toLowerCase().includes(q.toLowerCase()) ||
+            i.shortDescription.toLowerCase().includes(q.toLowerCase())),
       ),
-    [cat, q],
+    [cat, maker, makerType, q],
   );
 
   return (
@@ -63,6 +76,34 @@ function Gallery() {
         </div>
       </div>
 
+      <div className="mt-4 flex flex-col sm:flex-row gap-3">
+        <div className="flex flex-wrap gap-2">
+          {(["All", "Indigenous Peoples (IP)", "Commercial"] as const).map((t) => (
+            <button
+              key={t}
+              onClick={() => { setMakerType(t); setMaker("All"); }}
+              className={`px-4 py-1.5 rounded-full text-xs font-medium transition border ${
+                makerType === t ? "bg-primary text-primary-foreground border-primary" : "border-border/60 text-foreground/80 hover:border-primary/60"
+              }`}
+            >
+              {t === "All" ? "All Makers" : t}
+            </button>
+          ))}
+        </div>
+        <select
+          value={maker}
+          onChange={(e) => setMaker(e.target.value)}
+          className="rounded-full bg-card border border-border/60 px-4 py-2 text-sm focus:outline-none focus:border-gold"
+        >
+          <option value="All">All makers / tribes</option>
+          {makerOptions.map((m) => (
+            <option key={m.id} value={m.id}>{m.name}</option>
+          ))}
+        </select>
+      </div>
+
+      <p className="mt-4 text-xs text-muted-foreground">{filtered.length} instrument{filtered.length === 1 ? "" : "s"}</p>
+
       <AdSlot slot="gallery-top" className="my-6" />
 
       <motion.div layout className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
@@ -85,6 +126,9 @@ function Gallery() {
               </div>
               <div className="p-5">
                 <h3 className="font-display text-lg text-gold">{ins.name}</h3>
+                <div className="mt-1 text-[11px] text-muted-foreground">
+                  {ins.makerName} · <span className="text-gold/80">{ins.makerType}</span>
+                </div>
                 <p className="mt-2 text-sm text-muted-foreground line-clamp-2">{ins.shortDescription}</p>
                 <span className="mt-3 inline-block text-xs font-semibold text-gold group-hover:underline">Read more →</span>
               </div>
@@ -123,11 +167,18 @@ function Gallery() {
                   </div>
                   <button onClick={() => setActive(null)} className="p-2 hover:bg-card rounded-full"><X size={18} /></button>
                 </div>
+                <div className="mt-3 flex flex-wrap items-center gap-2 text-xs">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-gold/15 text-gold px-3 py-1"><Users size={11} />{active.makerName}</span>
+                  <span className="rounded-full border border-border/60 px-3 py-1 text-muted-foreground">{active.makerType}</span>
+                </div>
                 <div className="mt-4 grid sm:grid-cols-2 gap-3 text-sm">
                   <div className="rounded-lg bg-card/60 p-3"><span className="text-muted-foreground text-xs uppercase tracking-wider">Bamboo</span><div className="font-medium text-foreground mt-0.5">{active.bambooSpecies}</div></div>
                   <div className="rounded-lg bg-card/60 p-3"><span className="text-muted-foreground text-xs uppercase tracking-wider flex items-center gap-1"><MapPin size={11}/>Region</span><div className="font-medium text-foreground mt-0.5">{active.region}</div></div>
+                  <div className="rounded-lg bg-card/60 p-3"><span className="text-muted-foreground text-xs uppercase tracking-wider">Local name</span><div className="font-medium text-foreground mt-0.5">{active.localName || "—"}</div></div>
+                  <div className="rounded-lg bg-card/60 p-3"><span className="text-muted-foreground text-xs uppercase tracking-wider">Location</span><div className="font-medium text-foreground mt-0.5">{active.location}</div></div>
                 </div>
                 <p className="mt-5 text-foreground/85 leading-relaxed">{active.fullDescription}</p>
+                {active.figure && <p className="mt-3 text-xs text-muted-foreground">{active.figure}</p>}
               </div>
             </motion.div>
           </motion.div>
