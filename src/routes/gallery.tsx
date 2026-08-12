@@ -76,6 +76,34 @@ function Gallery() {
         </div>
       </div>
 
+      <div className="mt-4 flex flex-col sm:flex-row gap-3">
+        <div className="flex flex-wrap gap-2">
+          {(["All", "Indigenous Peoples (IP)", "Commercial"] as const).map((t) => (
+            <button
+              key={t}
+              onClick={() => { setMakerType(t); setMaker("All"); }}
+              className={`px-4 py-1.5 rounded-full text-xs font-medium transition border ${
+                makerType === t ? "bg-primary text-primary-foreground border-primary" : "border-border/60 text-foreground/80 hover:border-primary/60"
+              }`}
+            >
+              {t === "All" ? "All Makers" : t}
+            </button>
+          ))}
+        </div>
+        <select
+          value={maker}
+          onChange={(e) => setMaker(e.target.value)}
+          className="rounded-full bg-card border border-border/60 px-4 py-2 text-sm focus:outline-none focus:border-gold"
+        >
+          <option value="All">All makers / tribes</option>
+          {makerOptions.map((m) => (
+            <option key={m.id} value={m.id}>{m.name}</option>
+          ))}
+        </select>
+      </div>
+
+      <p className="mt-4 text-xs text-muted-foreground">{filtered.length} instrument{filtered.length === 1 ? "" : "s"}</p>
+
       <AdSlot slot="gallery-top" className="my-6" />
 
       <motion.div layout className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
