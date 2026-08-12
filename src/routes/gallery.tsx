@@ -167,11 +167,18 @@ function Gallery() {
                   </div>
                   <button onClick={() => setActive(null)} className="p-2 hover:bg-card rounded-full"><X size={18} /></button>
                 </div>
+                <div className="mt-3 flex flex-wrap items-center gap-2 text-xs">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-gold/15 text-gold px-3 py-1"><Users size={11} />{active.makerName}</span>
+                  <span className="rounded-full border border-border/60 px-3 py-1 text-muted-foreground">{active.makerType}</span>
+                </div>
                 <div className="mt-4 grid sm:grid-cols-2 gap-3 text-sm">
                   <div className="rounded-lg bg-card/60 p-3"><span className="text-muted-foreground text-xs uppercase tracking-wider">Bamboo</span><div className="font-medium text-foreground mt-0.5">{active.bambooSpecies}</div></div>
                   <div className="rounded-lg bg-card/60 p-3"><span className="text-muted-foreground text-xs uppercase tracking-wider flex items-center gap-1"><MapPin size={11}/>Region</span><div className="font-medium text-foreground mt-0.5">{active.region}</div></div>
+                  <div className="rounded-lg bg-card/60 p-3"><span className="text-muted-foreground text-xs uppercase tracking-wider">Local name</span><div className="font-medium text-foreground mt-0.5">{active.localName || "—"}</div></div>
+                  <div className="rounded-lg bg-card/60 p-3"><span className="text-muted-foreground text-xs uppercase tracking-wider">Location</span><div className="font-medium text-foreground mt-0.5">{active.location}</div></div>
                 </div>
                 <p className="mt-5 text-foreground/85 leading-relaxed">{active.fullDescription}</p>
+                {active.figure && <p className="mt-3 text-xs text-muted-foreground">{active.figure}</p>}
               </div>
             </motion.div>
           </motion.div>
