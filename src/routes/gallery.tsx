@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, X, MapPin, Leaf } from "lucide-react";
-import { INSTRUMENTS, CATEGORIES, type Instrument } from "@/data/instruments";
+import { INSTRUMENTS, CATEGORIES, CATALOG_MAKERS, type Instrument } from "@/data/instruments";
 import { AdSlot } from "@/components/AdSlot";
 
 export const Route = createFileRoute("/gallery")({
@@ -17,17 +17,30 @@ export const Route = createFileRoute("/gallery")({
 
 function Gallery() {
   const [cat, setCat] = useState<(typeof CATEGORIES)[number]>("All");
+  const [maker, setMaker] = useState<string>("All");
+  const [makerType, setMakerType] = useState<"All" | "Indigenous Peoples (IP)" | "Commercial">("All");
   const [q, setQ] = useState("");
   const [active, setActive] = useState<Instrument | null>(null);
+
+  const makerOptions = useMemo(
+    () => CATALOG_MAKERS.filter((m) => makerType === "All" || m.type === makerType),
+    [makerType],
+  );
 
   const filtered = useMemo(
     () =>
       INSTRUMENTS.filter(
         (i) =>
           (cat === "All" || i.category === cat) &&
-          (q === "" || i.name.toLowerCase().includes(q.toLowerCase()) || i.shortDescription.toLowerCase().includes(q.toLowerCase())),
+          (makerType === "All" || i.makerType === makerType) &&
+          (maker === "All" || i.makerId === maker) &&
+          (q === "" ||
+            i.name.toLowerCase().includes(q.toLowerCase()) ||
+            i.localName.toLowerCase().includes(q.toLowerCase()) ||
+            i.makerName.toLowerCase().includes(q.toLowerCase()) ||
+            i.shortDescription.toLowerCase().includes(q.toLowerCase())),
       ),
-    [cat, q],
+    [cat, maker, makerType, q],
   );
 
   return (
