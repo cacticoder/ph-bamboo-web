@@ -126,6 +126,9 @@ function Gallery() {
               </div>
               <div className="p-5">
                 <h3 className="font-display text-lg text-gold">{ins.name}</h3>
+                <div className="mt-1 text-[11px] text-muted-foreground">
+                  {ins.makerName} · <span className="text-gold/80">{ins.makerType}</span>
+                </div>
                 <p className="mt-2 text-sm text-muted-foreground line-clamp-2">{ins.shortDescription}</p>
                 <span className="mt-3 inline-block text-xs font-semibold text-gold group-hover:underline">Read more →</span>
               </div>
