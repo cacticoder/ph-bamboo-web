@@ -2,18 +2,21 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { MapPin, Music2, Leaf, Users, ArrowRight } from "lucide-react";
 import { MAKERS } from "@/data/site";
-import { SPECIES } from "@/data/site";
 import { INSTRUMENTS } from "@/data/instruments";
 import { PageHero, PageShell } from "@/components/PageHero";
-
-const speciesLinkFor = (name: string) =>
-  SPECIES.find((s) => name.toLowerCase().includes(s.scientific.toLowerCase()) || name.toLowerCase().includes(s.common.toLowerCase()));
+import { resolveSpeciesRefs, type SpeciesRef } from "@/lib/species-link";
 
 function makerFacts(makerId: string) {
   const items = INSTRUMENTS.filter((i) => i.makerId === makerId);
   const instruments = items.map((i) => ({ id: i.id, name: i.name }));
-  const species = Array.from(new Set(items.map((i) => i.bambooSpecies)));
-  return { instruments, species };
+  const seen = new Map<string, SpeciesRef>();
+  for (const i of items) {
+    for (const ref of resolveSpeciesRefs(i.bambooSpecies)) {
+      const key = ref.speciesId ?? ref.label.toLowerCase();
+      if (!seen.has(key)) seen.set(key, ref);
+    }
+  }
+  return { instruments, species: Array.from(seen.values()) };
 }
 
 export const Route = createFileRoute("/makers/")({
@@ -92,7 +95,7 @@ function MakersPage() {
                       <div className="text-[10px] uppercase tracking-widest text-muted-foreground inline-flex items-center gap-1.5"><Music2 size={12} className="text-gold" /> Instruments</div>
                       <div className="mt-1 flex flex-wrap gap-1.5">
                         {instruments.map((ins) => (
-                          <Link key={ins.id} to="/gallery" className="text-xs rounded-full border border-border/60 px-2 py-1 text-foreground/85 hover:border-gold hover:text-gold transition-colors">
+                          <Link key={ins.id} to="/gallery" search={{ instrument: ins.id }} className="text-xs rounded-full border border-border/60 px-2 py-1 text-foreground/85 hover:border-gold hover:text-gold transition-colors">
                             {ins.name}
                           </Link>
                         ))}
@@ -104,16 +107,15 @@ function MakersPage() {
                     <div className="mt-3">
                       <div className="text-[10px] uppercase tracking-widest text-muted-foreground inline-flex items-center gap-1.5"><Leaf size={12} className="text-gold" /> Bamboo</div>
                       <div className="mt-1 flex flex-wrap gap-1.5">
-                        {species.map((s) => {
-                          const match = speciesLinkFor(s);
-                          return match ? (
-                            <Link key={s} to="/species" className="text-xs italic rounded-full border border-border/60 px-2 py-1 text-foreground/85 hover:border-gold hover:text-gold transition-colors">
-                              {s}
+                        {species.map((s) =>
+                          s.speciesId ? (
+                            <Link key={s.label} to="/species/$id" params={{ id: s.speciesId }} className="text-xs italic rounded-full border border-border/60 px-2 py-1 text-foreground/85 hover:border-gold hover:text-gold transition-colors">
+                              {s.label}
                             </Link>
                           ) : (
-                            <span key={s} className="text-xs italic rounded-full border border-border/60 px-2 py-1 text-foreground/70">{s}</span>
-                          );
-                        })}
+                            <span key={s.label} className="text-xs italic rounded-full border border-border/60 px-2 py-1 text-foreground/70">{s.label}</span>
+                          ),
+                        )}
                       </div>
                     </div>
                   )}
