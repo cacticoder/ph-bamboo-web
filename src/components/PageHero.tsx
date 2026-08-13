@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { motion } from "framer-motion";
 
-export function PageHero({ kicker, title, lead }: { kicker: string; title: string; lead: string }) {
+export function PageHero({ kicker, title, lead }: { kicker: string; title: string; lead: ReactNode }) {
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
       <div className="text-xs uppercase tracking-[0.25em] text-gold/80">{kicker}</div>
