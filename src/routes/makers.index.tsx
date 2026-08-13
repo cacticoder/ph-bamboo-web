@@ -12,7 +12,8 @@ function makerFacts(makerId: string) {
   const seen = new Map<string, SpeciesRef>();
   for (const i of items) {
     for (const ref of resolveSpeciesRefs(i.bambooSpecies)) {
-      if (!seen.has(ref.label)) seen.set(ref.label, ref);
+      const key = ref.speciesId ?? ref.label.toLowerCase();
+      if (!seen.has(key)) seen.set(key, ref);
     }
   }
   return { instruments, species: Array.from(seen.values()) };

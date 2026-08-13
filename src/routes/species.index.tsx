@@ -15,7 +15,7 @@ const FIELD_GALLERY = [
   { title: "Nursery Propagation", caption: "Tissue-culture seedlings ensuring sustainable supply.", icon: Sprout, tone: "earth" as const },
 ];
 
-export const Route = createFileRoute("/species")({
+export const Route = createFileRoute("/species/")({
   head: () => ({ meta: [{ title: "Bamboo Species — phBMI" }, { name: "description", content: "Philippine bamboo species used in musical instrument making." }] }),
   component: SpeciesPage,
 });
