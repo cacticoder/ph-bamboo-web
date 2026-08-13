@@ -80,9 +80,9 @@ const MakersIndexRoute = MakersIndexRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const SpeciesIdRoute = SpeciesIdRouteImport.update({
-  id: '/species/$id',
-  path: '/species/$id',
-  getParentRoute: () => rootRouteImport,
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => SpeciesRoute,
 } as any)
 const MakersIdRoute = MakersIdRouteImport.update({
   id: '/makers/$id',
@@ -207,7 +207,6 @@ export interface RootRouteChildren {
   ValueChainRoute: typeof ValueChainRoute
   ArticlesSlugRoute: typeof ArticlesSlugRoute
   MakersIdRoute: typeof MakersIdRoute
-  SpeciesIdRoute: typeof SpeciesIdRoute
   MakersIndexRoute: typeof MakersIndexRoute
   SpeciesIndexRoute: typeof SpeciesIndexRoute
 }
@@ -293,10 +292,10 @@ declare module '@tanstack/react-router' {
     }
     '/species/$id': {
       id: '/species/$id'
-      path: '/species/$id'
+      path: '/$id'
       fullPath: '/species/$id'
       preLoaderRoute: typeof SpeciesIdRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof SpeciesRoute
     }
     '/makers/$id': {
       id: '/makers/$id'
@@ -327,7 +326,6 @@ const rootRouteChildren: RootRouteChildren = {
   ValueChainRoute: ValueChainRoute,
   ArticlesSlugRoute: ArticlesSlugRoute,
   MakersIdRoute: MakersIdRoute,
-  SpeciesIdRoute: SpeciesIdRoute,
   MakersIndexRoute: MakersIndexRoute,
   SpeciesIndexRoute: SpeciesIndexRoute,
 }
