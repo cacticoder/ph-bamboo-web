@@ -33,87 +33,60 @@ export interface Maker {
   bio: string;
   image: string;
   born?: string;
+  community?: string;
+  location?: string;
+  makerType?: "Indigenous Peoples (IP)" | "Commercial";
   signature?: string[];
   quote?: string;
   body: string[];
 }
 
+import bagoboImg from "@/assets/maker-bagobo-tagabawa.png.asset.json";
+import calabigImg from "@/assets/maker-calabig.png.asset.json";
 
 export const MAKERS: Maker[] = [
   {
-    id: "lumbo",
-    name: "Tatay Edicio Lumbo",
-    region: "Maasin, Iloilo",
-    expertise: "Tongatong & bamboo flutes",
-    bio: "A master craftsman with 40+ years shaping bamboo into sonorous instruments for ensembles across the Visayas.",
-    image: "https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=1600&q=80",
-    born: "Maasin, Iloilo · 1958",
-    signature: ["Tongatong stamping tubes", "Tumpong nose flutes", "Bayog tuned ensembles"],
-    quote: "The bamboo tells you when it is ready. You only have to listen.",
+    id: "bagobo-tagabawa",
+    name: "Bagobo-Tagabawa Tribe",
+    community: "Bagobo-Tagabawa",
+    makerType: "Indigenous Peoples (IP)",
+    location: "Toril District, Davao City",
+    region: "Toril District, Davao City",
+    expertise: "Togo zithers & Lantoy flutes",
+    bio: "Indigenous guardians of Southern Mindanao whose bamboo melodies have echoed across the Davao Gulf for generations.",
+    image: bagoboImg.url,
+    signature: ["Togo polychordal zithers", "Lantoy flutes", "Palakpak ka odak clappers"],
+    quote: "Each instrument is made with respect, for the bamboo speaks of our ancestors' journey.",
     body: [
-      "Tatay Edicio Lumbo learned the craft as a boy in Maasin, the Bamboo Capital of Iloilo, sitting beside his father as he shaved bayog culms to pitch. Four decades later, his workshop still hums with the same patient rhythm — measure, cut, listen, shave, listen again.",
-      "He came of age during the post-war revival of the Tultugan tradition, when families across Maasin rebuilt their bamboo ensembles from scratch. By his teens he was already cutting and curing his own culms; by his twenties he had begun supplying instruments for the town's school bands and parish ensembles.",
-      "His tongatongs and flutes have travelled with Iloilo ensembles to festivals across Asia — from Bangkok to Tokyo to KL — yet most days he is at home, mentoring apprentices and supplying the local schools that anchor the Tultugan Festival each December.",
-      "Tatay Edicio's process is famously slow. Culms are harvested only in the dry months between January and April, then cured under shade for at least eight months before they are touched again. 'A rushed bamboo,' he says, 'will crack on stage.'",
-      "He has trained more than thirty apprentices through the Maasin Bamboo Artisans' Circle, several of whom now run their own workshops in Iloilo, Antique, and Capiz. For Tatay Edicio, every culm is a conversation — and every apprentice, a way to keep the conversation going.",
+      "For the Bagobo-Tagabawa, learning to craft and play bamboo instruments is a sacred family affair. From childhood, members watch their elders select the right culms, later learning the intricate art of carving and raising strings straight from the bamboo skin to shape the Togo zither. Each note played is a continuation of an ancestral song.",
+      "Based on the slopes of Mt. Apo, the Togo zither and Lantoy flute are woven into the tribe's identity alongside their earth-toned abaca weaving and beaded basketry. Modern music poses a real challenge to these traditions, yet elders remain steadfast in passing the knowledge to their grandchildren, keeping the soul of their culture intact.",
+      "The instruments are vital for celebrations and ceremonies, but they are also companions in everyday life. Elders describe the haunting sound of the Lantoy flute and the rhythmic resonance of the zithers as powerful ways to relax and ease sadness — a connection between music and well-being that reflects the tribe's holistic view of their environment and artistry.",
+      "The craft is built on deep respect. Bamboo is harvested only after asking permission and giving thanks to the creator of all things, and always during the \"dulom\" — moonless nights believed to preserve the wood's strength and guard against insects like bukbok and fungal damage.",
+      "Every instrument is a living lesson, made only when a communal need arises or a younger member shows genuine interest in the craft. Through this patient stewardship, the tribe keeps its traditional knowledge — and its cultural distinctiveness — alive amid the pull of modernization. For the Bagobo-Tagabawa, every bamboo tube is a vessel for their history and a bridge to the future.",
     ],
   },
   {
-    id: "abueva",
-    name: "Manong Roberto Abueva",
-    region: "Las Piñas City",
-    expertise: "Bamboo organ pipe restoration",
-    bio: "Specialist in restoring the historic bamboo pipes of the Las Piñas Bamboo Organ.",
-    image: "https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=1600&q=80",
-    born: "Las Piñas City · 1965",
-    signature: ["Pipe re-voicing", "Humidity-stable bamboo aging", "Historic 1824 organ maintenance"],
-    quote: "Father Diego built it once. Our work is to let it keep speaking.",
+    id: "calabig-banda-kawayan-pilipinas",
+    name: "Prof. Siegfredo \u201cKa Fred\u201d Calabig",
+    community: "Banda Kawayan Pilipinas",
+    makerType: "Commercial",
+    location: "Sta. Mesa, Manila",
+    region: "Sta. Mesa, Manila",
+    expertise: "Bamboo ensembles & Angklung",
+    bio: "A pioneering educator and conductor who transformed bamboo into a global symbol of Philippine cultural diplomacy.",
+    image: calabigImg.url,
+    signature: ["Angklung rattle sets", "Kalagong bass pipes", "Marimba resonators"],
+    quote: "Music knows no boundaries when it is played through the heart of the bamboo.",
     body: [
-      "Few instruments demand the patience of the 200-year-old Las Piñas Bamboo Organ. Manong Roberto Abueva is among the handful of craftsmen trusted to repair its 902 bamboo pipes, each tuned to within a hair's breadth of its original 1824 voice — the work of the Augustinian priest Diego Cera.",
-      "He apprenticed under the German restorers who returned the organ to playing condition in the 1970s, and has spent his career deepening that knowledge in a Philippine climate the original builders never imagined.",
-      "His work involves humidity control, careful selection of replacement culms aged for years, and meticulous voicing — a process measured not in days but in seasons. A single pipe can take six months from cut to installation.",
-      "Manong Roberto also leads the technical preparations for the annual International Bamboo Organ Festival, coordinating with visiting organists to keep the instrument responsive to repertoire spanning three centuries.",
-      "He trains a new generation of restorers at the parish workshop in St. Joseph Church, ensuring that the only bamboo pipe organ of its kind continues to sound for another century. 'When the pipes breathe well,' he says, 'you can hear the whole town in them.'",
+      "Prof. Siegfredo \"Ka Fred\" Calabig's journey began in 1973 at the Philippine College of Commerce (now the Polytechnic University of the Philippines), where he founded a school-based group to explore the musical potential of indigenous materials. What started as a project with Laboratory High School principal Gloria R. Talastas grew into a lifelong mission to master the acoustic properties of kawayan. For over four decades, his workshop and rehearsal halls have been centers of innovation.",
+      "He led the PUP Banda Kawayan for forty years, building a unique ensemble of young performers who played instruments fashioned entirely from bamboo and other indigenous materials. Under his guidance, the group grew from a local academic curiosity into the premier Banda Kawayan Pilipinas, celebrated as a national treasure on its 40th anniversary in 2013. His work proved, time and again, that music knows no boundaries.",
+      "His baton has led bamboo ensembles to international expositions, music festivals, and concert tours across Europe, North America, Australia, the Middle East, and Asia. As ambassadors of goodwill, Calabig and his performers have showcased Philippine culture and tourism on the world stage, sharing the spirit of Filipino bamboo music with audiences everywhere.",
+      "His approach combines traditional craftsmanship with orchestral precision. He favors species like Gigantochloa levis (Bolo) for his instruments, selecting rattle tubes from the nodes of Batibot bamboo for his Angklung sets and mounting them on sturdy frames of Kawayang Tinik for clarity and resonance — an attention to material science that lets his instruments withstand international travel and diverse climates.",
+      "Through Banda Kawayan Pilipinas, he has trained generations of performers, instilling in them a deep appreciation for their cultural heritage. His work continues to shape the national K-12 curriculum, which now includes bamboo instrument playing to help students understand ethnic music more deeply. By mentoring these young artists, Prof. Calabig ensures that bamboo performance remains a vibrant part of the Philippine creative industry.",
     ],
   },
-  {
-    id: "balao",
-    name: "Apo Lucia Balao",
-    region: "Kalinga",
-    expertise: "Tongali nose flutes & saggeypo",
-    bio: "Cordilleran tradition-bearer passing nose flute craft and song to the next generation.",
-    image: "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?w=1600&q=80",
-    born: "Lubuagan, Kalinga · 1952",
-    signature: ["Tongali nose flutes", "Saggeypo panpipe sets", "Kalinga modal tunings"],
-    quote: "To make the flute, you must first know how to sing with it.",
-    body: [
-      "In the highlands of Kalinga, Apo Lucia Balao is a tradition-bearer of the tongali — the nose flute whose breathy, intimate tone is woven into Cordilleran courtship and ritual. She learned the instrument from her grandmother in Lubuagan, where the flute was as common in the household as the rice winnower.",
-      "She also crafts saggeypo panpipes, tuning each tube to the modal scales of her ili (village) rather than to Western pitch. Her workshop sits beside her rice terraces, where younger women come weekly to learn both the making and the playing.",
-      "Apo Lucia is unusual among Cordilleran instrument makers in that she is also a recognized performer. She has recorded with the UP Center for Ethnomusicology and her tongali pieces are part of the national archive of indigenous music.",
-      "Her teaching method refuses to separate craft from song: every apprentice must first learn to play a piece on a borrowed flute before they are allowed to cut bamboo for their own. 'A flute made by someone who cannot play,' she says, 'is just a hollow stick.'",
-      "Recognized as a Manlilikha ng Bayan candidate, Apo Lucia continues to anchor an unbroken line of women flute-makers in the Kalinga highlands — a quiet, persistent custodianship of one of the country's oldest musical traditions.",
-    ],
-  },
-  {
-    id: "matalam",
-    name: "Ustadz Hamid Matalam",
-    region: "Maguindanao",
-    expertise: "Kulintang a kayo & kubing",
-    bio: "Maguindanaon musician-craftsman building bamboo gong-rows and jaw harps for community ensembles.",
-    image: "https://images.unsplash.com/photo-1567593810070-7a3d471af022?w=1600&q=80",
-    born: "Datu Piang, Maguindanao · 1961",
-    signature: ["Kulintang a kayo (bamboo gong-row)", "Kubing jaw harps", "Pulangi river giant bamboo"],
-    quote: "Every kubing carries the voice of the one who carved it.",
-    body: [
-      "Ustadz Hamid Matalam crafts the kulintang a kayo — the bamboo cousin of the brass kulintang — alongside the kubing jaw harp, instruments central to Maguindanaon life from weddings to harvest and from courtship to mourning.",
-      "Trained as both a musician and an Islamic scholar, he understands the kulintang repertoire from the inside: the binalig, sinulog, and tidto rhythms shape how he tunes his keys, not the other way around.",
-      "He sources giant bamboo from forest stands along the Pulangi River, curing each piece for months before shaping the keys and frames. His kubings are carved from a single sliver of bamboo, each one tuned to the player's own breath and bone structure.",
-      "His ensembles perform regularly at Inaul and Shariff Kabunsuan festivals, and have represented Mindanao at national cultural events in Manila and Cebu. He also collaborates with peace-building organizations using kulintang workshops to bring together Moro, Lumad, and settler youth.",
-      "His workshop in Datu Piang has become a quiet meeting place where Maguindanaon youth rediscover their musical inheritance — and where, increasingly, visiting researchers come to learn that the bamboo kulintang is not a poor cousin of the brass one, but a tradition with a voice entirely its own.",
-    ],
-  },
-
 ];
+
 
 export interface Species {
   id: string;
