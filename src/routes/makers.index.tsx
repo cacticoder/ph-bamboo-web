@@ -2,18 +2,20 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { MapPin, Music2, Leaf, Users, ArrowRight } from "lucide-react";
 import { MAKERS } from "@/data/site";
-import { SPECIES } from "@/data/site";
 import { INSTRUMENTS } from "@/data/instruments";
 import { PageHero, PageShell } from "@/components/PageHero";
-
-const speciesLinkFor = (name: string) =>
-  SPECIES.find((s) => name.toLowerCase().includes(s.scientific.toLowerCase()) || name.toLowerCase().includes(s.common.toLowerCase()));
+import { resolveSpeciesRefs, type SpeciesRef } from "@/lib/species-link";
 
 function makerFacts(makerId: string) {
   const items = INSTRUMENTS.filter((i) => i.makerId === makerId);
   const instruments = items.map((i) => ({ id: i.id, name: i.name }));
-  const species = Array.from(new Set(items.map((i) => i.bambooSpecies)));
-  return { instruments, species };
+  const seen = new Map<string, SpeciesRef>();
+  for (const i of items) {
+    for (const ref of resolveSpeciesRefs(i.bambooSpecies)) {
+      if (!seen.has(ref.label)) seen.set(ref.label, ref);
+    }
+  }
+  return { instruments, species: Array.from(seen.values()) };
 }
 
 export const Route = createFileRoute("/makers/")({
