@@ -1,11 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, X, MapPin, Leaf, Users } from "lucide-react";
 import { INSTRUMENTS, CATEGORIES, CATALOG_MAKERS, type Instrument } from "@/data/instruments";
 import { AdSlot } from "@/components/AdSlot";
 
 export const Route = createFileRoute("/gallery")({
+  validateSearch: (search: Record<string, unknown>) => ({
+    instrument: typeof search.instrument === "string" ? search.instrument : undefined,
+  }),
   head: () => ({
     meta: [
       { title: "BMI Gallery — phBMI" },
@@ -21,6 +24,13 @@ function Gallery() {
   const [makerType, setMakerType] = useState<"All" | "Indigenous Peoples (IP)" | "Commercial">("All");
   const [q, setQ] = useState("");
   const [active, setActive] = useState<Instrument | null>(null);
+  const { instrument: instrumentParam } = Route.useSearch();
+
+  useEffect(() => {
+    if (!instrumentParam) return;
+    const found = INSTRUMENTS.find((i) => i.id === instrumentParam);
+    if (found) setActive(found);
+  }, [instrumentParam]);
 
   const makerOptions = useMemo(
     () => CATALOG_MAKERS.filter((m) => makerType === "All" || m.type === makerType),
