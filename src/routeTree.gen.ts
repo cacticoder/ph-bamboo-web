@@ -11,7 +11,6 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ValueChainRouteImport } from './routes/value-chain'
 import { Route as TermsRouteImport } from './routes/terms'
-import { Route as SpeciesRouteImport } from './routes/species'
 import { Route as RndRouteImport } from './routes/rnd'
 import { Route as ProcessingCenterRouteImport } from './routes/processing-center'
 import { Route as ModulesRouteImport } from './routes/modules'
@@ -19,6 +18,7 @@ import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AnalyticsRouteImport } from './routes/analytics'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SpeciesIndexRouteImport } from './routes/species.index'
 import { Route as MakersIndexRouteImport } from './routes/makers.index'
 import { Route as SpeciesIdRouteImport } from './routes/species.$id'
 import { Route as MakersIdRouteImport } from './routes/makers.$id'
@@ -32,11 +32,6 @@ const ValueChainRoute = ValueChainRouteImport.update({
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SpeciesRoute = SpeciesRouteImport.update({
-  id: '/species',
-  path: '/species',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RndRoute = RndRouteImport.update({
@@ -74,15 +69,20 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SpeciesIndexRoute = SpeciesIndexRouteImport.update({
+  id: '/species/',
+  path: '/species/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MakersIndexRoute = MakersIndexRouteImport.update({
   id: '/makers/',
   path: '/makers/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SpeciesIdRoute = SpeciesIdRouteImport.update({
-  id: '/$id',
-  path: '/$id',
-  getParentRoute: () => SpeciesRoute,
+  id: '/species/$id',
+  path: '/species/$id',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const MakersIdRoute = MakersIdRouteImport.update({
   id: '/makers/$id',
@@ -103,13 +103,13 @@ export interface FileRoutesByFullPath {
   '/modules': typeof ModulesRoute
   '/processing-center': typeof ProcessingCenterRoute
   '/rnd': typeof RndRoute
-  '/species': typeof SpeciesRouteWithChildren
   '/terms': typeof TermsRoute
   '/value-chain': typeof ValueChainRoute
   '/articles/$slug': typeof ArticlesSlugRoute
   '/makers/$id': typeof MakersIdRoute
   '/species/$id': typeof SpeciesIdRoute
   '/makers/': typeof MakersIndexRoute
+  '/species/': typeof SpeciesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -119,13 +119,13 @@ export interface FileRoutesByTo {
   '/modules': typeof ModulesRoute
   '/processing-center': typeof ProcessingCenterRoute
   '/rnd': typeof RndRoute
-  '/species': typeof SpeciesRouteWithChildren
   '/terms': typeof TermsRoute
   '/value-chain': typeof ValueChainRoute
   '/articles/$slug': typeof ArticlesSlugRoute
   '/makers/$id': typeof MakersIdRoute
   '/species/$id': typeof SpeciesIdRoute
   '/makers': typeof MakersIndexRoute
+  '/species': typeof SpeciesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -136,13 +136,13 @@ export interface FileRoutesById {
   '/modules': typeof ModulesRoute
   '/processing-center': typeof ProcessingCenterRoute
   '/rnd': typeof RndRoute
-  '/species': typeof SpeciesRouteWithChildren
   '/terms': typeof TermsRoute
   '/value-chain': typeof ValueChainRoute
   '/articles/$slug': typeof ArticlesSlugRoute
   '/makers/$id': typeof MakersIdRoute
   '/species/$id': typeof SpeciesIdRoute
   '/makers/': typeof MakersIndexRoute
+  '/species/': typeof SpeciesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -154,13 +154,13 @@ export interface FileRouteTypes {
     | '/modules'
     | '/processing-center'
     | '/rnd'
-    | '/species'
     | '/terms'
     | '/value-chain'
     | '/articles/$slug'
     | '/makers/$id'
     | '/species/$id'
     | '/makers/'
+    | '/species/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -170,13 +170,13 @@ export interface FileRouteTypes {
     | '/modules'
     | '/processing-center'
     | '/rnd'
-    | '/species'
     | '/terms'
     | '/value-chain'
     | '/articles/$slug'
     | '/makers/$id'
     | '/species/$id'
     | '/makers'
+    | '/species'
   id:
     | '__root__'
     | '/'
@@ -186,13 +186,13 @@ export interface FileRouteTypes {
     | '/modules'
     | '/processing-center'
     | '/rnd'
-    | '/species'
     | '/terms'
     | '/value-chain'
     | '/articles/$slug'
     | '/makers/$id'
     | '/species/$id'
     | '/makers/'
+    | '/species/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -203,12 +203,13 @@ export interface RootRouteChildren {
   ModulesRoute: typeof ModulesRoute
   ProcessingCenterRoute: typeof ProcessingCenterRoute
   RndRoute: typeof RndRoute
-  SpeciesRoute: typeof SpeciesRouteWithChildren
   TermsRoute: typeof TermsRoute
   ValueChainRoute: typeof ValueChainRoute
   ArticlesSlugRoute: typeof ArticlesSlugRoute
   MakersIdRoute: typeof MakersIdRoute
+  SpeciesIdRoute: typeof SpeciesIdRoute
   MakersIndexRoute: typeof MakersIndexRoute
+  SpeciesIndexRoute: typeof SpeciesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -225,13 +226,6 @@ declare module '@tanstack/react-router' {
       path: '/terms'
       fullPath: '/terms'
       preLoaderRoute: typeof TermsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/species': {
-      id: '/species'
-      path: '/species'
-      fullPath: '/species'
-      preLoaderRoute: typeof SpeciesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/rnd': {
@@ -283,6 +277,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/species/': {
+      id: '/species/'
+      path: '/species'
+      fullPath: '/species/'
+      preLoaderRoute: typeof SpeciesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/makers/': {
       id: '/makers/'
       path: '/makers'
@@ -292,10 +293,10 @@ declare module '@tanstack/react-router' {
     }
     '/species/$id': {
       id: '/species/$id'
-      path: '/$id'
+      path: '/species/$id'
       fullPath: '/species/$id'
       preLoaderRoute: typeof SpeciesIdRouteImport
-      parentRoute: typeof SpeciesRoute
+      parentRoute: typeof rootRouteImport
     }
     '/makers/$id': {
       id: '/makers/$id'
@@ -314,17 +315,6 @@ declare module '@tanstack/react-router' {
   }
 }
 
-interface SpeciesRouteChildren {
-  SpeciesIdRoute: typeof SpeciesIdRoute
-}
-
-const SpeciesRouteChildren: SpeciesRouteChildren = {
-  SpeciesIdRoute: SpeciesIdRoute,
-}
-
-const SpeciesRouteWithChildren =
-  SpeciesRoute._addFileChildren(SpeciesRouteChildren)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AnalyticsRoute: AnalyticsRoute,
@@ -333,12 +323,13 @@ const rootRouteChildren: RootRouteChildren = {
   ModulesRoute: ModulesRoute,
   ProcessingCenterRoute: ProcessingCenterRoute,
   RndRoute: RndRoute,
-  SpeciesRoute: SpeciesRouteWithChildren,
   TermsRoute: TermsRoute,
   ValueChainRoute: ValueChainRoute,
   ArticlesSlugRoute: ArticlesSlugRoute,
   MakersIdRoute: MakersIdRoute,
+  SpeciesIdRoute: SpeciesIdRoute,
   MakersIndexRoute: MakersIndexRoute,
+  SpeciesIndexRoute: SpeciesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
