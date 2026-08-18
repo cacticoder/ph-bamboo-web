@@ -9,54 +9,24 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ValueChainRouteImport } from './routes/value-chain'
-import { Route as TermsRouteImport } from './routes/terms'
-import { Route as RndRouteImport } from './routes/rnd'
-import { Route as ProcessingCenterRouteImport } from './routes/processing-center'
-import { Route as ModulesRouteImport } from './routes/modules'
-import { Route as GalleryRouteImport } from './routes/gallery'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as AnalyticsRouteImport } from './routes/analytics'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as SpeciesIndexRouteImport } from './routes/species.index'
-import { Route as MakersIndexRouteImport } from './routes/makers.index'
-import { Route as SpeciesIdRouteImport } from './routes/species.$id'
-import { Route as MakersIdRouteImport } from './routes/makers.$id'
+import { Route as AnalyticsRouteImport } from './routes/analytics'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as ModulesRouteImport } from './routes/modules'
+import { Route as ProcessingCenterRouteImport } from './routes/processing-center'
+import { Route as RndRouteImport } from './routes/rnd'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as ValueChainRouteImport } from './routes/value-chain'
 import { Route as ArticlesSlugRouteImport } from './routes/articles.$slug'
+import { Route as MakersIndexRouteImport } from './routes/makers.index'
+import { Route as MakersIdRouteImport } from './routes/makers.$id'
+import { Route as SpeciesIndexRouteImport } from './routes/species.index'
+import { Route as SpeciesIdRouteImport } from './routes/species.$id'
 
-const ValueChainRoute = ValueChainRouteImport.update({
-  id: '/value-chain',
-  path: '/value-chain',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TermsRoute = TermsRouteImport.update({
-  id: '/terms',
-  path: '/terms',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RndRoute = RndRouteImport.update({
-  id: '/rnd',
-  path: '/rnd',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProcessingCenterRoute = ProcessingCenterRouteImport.update({
-  id: '/processing-center',
-  path: '/processing-center',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ModulesRoute = ModulesRouteImport.update({
-  id: '/modules',
-  path: '/modules',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GalleryRoute = GalleryRouteImport.update({
-  id: '/gallery',
-  path: '/gallery',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AnalyticsRoute = AnalyticsRouteImport.update({
@@ -64,14 +34,44 @@ const AnalyticsRoute = AnalyticsRouteImport.update({
   path: '/analytics',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SpeciesIndexRoute = SpeciesIndexRouteImport.update({
-  id: '/species/',
-  path: '/species/',
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ModulesRoute = ModulesRouteImport.update({
+  id: '/modules',
+  path: '/modules',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProcessingCenterRoute = ProcessingCenterRouteImport.update({
+  id: '/processing-center',
+  path: '/processing-center',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RndRoute = RndRouteImport.update({
+  id: '/rnd',
+  path: '/rnd',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ValueChainRoute = ValueChainRouteImport.update({
+  id: '/value-chain',
+  path: '/value-chain',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArticlesSlugRoute = ArticlesSlugRouteImport.update({
+  id: '/articles/$slug',
+  path: '/articles/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MakersIndexRoute = MakersIndexRouteImport.update({
@@ -79,19 +79,19 @@ const MakersIndexRoute = MakersIndexRouteImport.update({
   path: '/makers/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SpeciesIdRoute = SpeciesIdRouteImport.update({
-  id: '/species/$id',
-  path: '/species/$id',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const MakersIdRoute = MakersIdRouteImport.update({
   id: '/makers/$id',
   path: '/makers/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ArticlesSlugRoute = ArticlesSlugRouteImport.update({
-  id: '/articles/$slug',
-  path: '/articles/$slug',
+const SpeciesIndexRoute = SpeciesIndexRouteImport.update({
+  id: '/species/',
+  path: '/species/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SpeciesIdRoute = SpeciesIdRouteImport.update({
+  id: '/species/$id',
+  path: '/species/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -214,53 +214,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/value-chain': {
-      id: '/value-chain'
-      path: '/value-chain'
-      fullPath: '/value-chain'
-      preLoaderRoute: typeof ValueChainRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/terms': {
-      id: '/terms'
-      path: '/terms'
-      fullPath: '/terms'
-      preLoaderRoute: typeof TermsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/rnd': {
-      id: '/rnd'
-      path: '/rnd'
-      fullPath: '/rnd'
-      preLoaderRoute: typeof RndRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/processing-center': {
-      id: '/processing-center'
-      path: '/processing-center'
-      fullPath: '/processing-center'
-      preLoaderRoute: typeof ProcessingCenterRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/modules': {
-      id: '/modules'
-      path: '/modules'
-      fullPath: '/modules'
-      preLoaderRoute: typeof ModulesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/gallery': {
-      id: '/gallery'
-      path: '/gallery'
-      fullPath: '/gallery'
-      preLoaderRoute: typeof GalleryRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/analytics': {
@@ -270,18 +228,60 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AnalyticsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/species/': {
-      id: '/species/'
-      path: '/species'
-      fullPath: '/species/'
-      preLoaderRoute: typeof SpeciesIndexRouteImport
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/modules': {
+      id: '/modules'
+      path: '/modules'
+      fullPath: '/modules'
+      preLoaderRoute: typeof ModulesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/processing-center': {
+      id: '/processing-center'
+      path: '/processing-center'
+      fullPath: '/processing-center'
+      preLoaderRoute: typeof ProcessingCenterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rnd': {
+      id: '/rnd'
+      path: '/rnd'
+      fullPath: '/rnd'
+      preLoaderRoute: typeof RndRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/value-chain': {
+      id: '/value-chain'
+      path: '/value-chain'
+      fullPath: '/value-chain'
+      preLoaderRoute: typeof ValueChainRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/articles/$slug': {
+      id: '/articles/$slug'
+      path: '/articles/$slug'
+      fullPath: '/articles/$slug'
+      preLoaderRoute: typeof ArticlesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/makers/': {
@@ -291,13 +291,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MakersIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/species/$id': {
-      id: '/species/$id'
-      path: '/species/$id'
-      fullPath: '/species/$id'
-      preLoaderRoute: typeof SpeciesIdRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/makers/$id': {
       id: '/makers/$id'
       path: '/makers/$id'
@@ -305,11 +298,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MakersIdRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/articles/$slug': {
-      id: '/articles/$slug'
-      path: '/articles/$slug'
-      fullPath: '/articles/$slug'
-      preLoaderRoute: typeof ArticlesSlugRouteImport
+    '/species/': {
+      id: '/species/'
+      path: '/species'
+      fullPath: '/species/'
+      preLoaderRoute: typeof SpeciesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/species/$id': {
+      id: '/species/$id'
+      path: '/species/$id'
+      fullPath: '/species/$id'
+      preLoaderRoute: typeof SpeciesIdRouteImport
       parentRoute: typeof rootRouteImport
     }
   }

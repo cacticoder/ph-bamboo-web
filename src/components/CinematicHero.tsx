@@ -10,8 +10,9 @@ import { useCallback, useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play, X, ArrowRight } from "lucide-react";
-import posterAsset from "@/assets/hero-poster-photo.png.asset.json";
+import posterUrl from "@/assets/hero-poster.PNG";
 
+const posterAsset = { url: posterUrl };
 const poster = posterAsset.url;
 
 const YOUTUBE_ID = "dQw4w9WgXcQ";
@@ -20,7 +21,6 @@ const CTAS = [
   { label: "Discover the Instruments", to: "/gallery" as const },
   { label: "Explore Philippine Bamboo", to: "/species" as const },
 ];
-
 
 export function CinematicHero() {
   const [playing, setPlaying] = useState(false);
@@ -76,7 +76,13 @@ export function CinematicHero() {
                   Heritage · Innovation
                 </div>
                 <h1 className="hero-title mt-5 font-display text-[clamp(2.1rem,6vw,4.25rem)] leading-[1.02] tracking-tight">
-                  Philippine<br />Bamboo<br />Musical<br />Instruments
+                  Philippine
+                  <br />
+                  Bamboo
+                  <br />
+                  Musical
+                  <br />
+                  Instruments
                 </h1>
                 <p className="mt-6 max-w-md text-sm leading-relaxed text-[#f2ead9]/85 md:text-base">
                   Where Philippine bamboo heritage meets research, craftsmanship, and innovation.
@@ -128,7 +134,10 @@ export function CinematicHero() {
           aria-label="Play the documentary"
           className="group absolute left-1/2 top-1/2 z-20 grid h-16 w-16 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-[#f5ecd8]/30 bg-[#1c1409]/40 text-[#fdfaf3] backdrop-blur-md transition-all duration-300 hover:scale-110 hover:bg-[#1c1409]/70 md:h-20 md:w-20"
         >
-          <span className="absolute inset-0 rounded-full border border-[#e9dcc3]/25 motion-safe:animate-ping" aria-hidden />
+          <span
+            className="absolute inset-0 rounded-full border border-[#e9dcc3]/25 motion-safe:animate-ping"
+            aria-hidden
+          />
           <Play className="ml-1 h-6 w-6 fill-current md:h-7 md:w-7" />
         </motion.button>
       )}
@@ -162,7 +171,6 @@ export function CinematicHero() {
           </motion.div>
         )}
       </AnimatePresence>
-
     </section>
   );
 }

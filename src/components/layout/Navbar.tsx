@@ -4,7 +4,9 @@ import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { NAV_LINKS } from "@/data/site";
 import { cn } from "@/lib/utils";
-import logoAsset from "@/assets/bmi-logo.gif.asset.json";
+import logoUrl from "@/assets/BMI-website-logo.gif";
+
+const logoAsset = { url: logoUrl };
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -42,18 +44,22 @@ export function Navbar() {
               activeOptions={{ exact: l.to === "/" }}
               className={cn(
                 "relative px-3 py-2 text-sm font-medium transition-colors",
-                overlay ? "text-[#f2ead9]/85 hover:text-[#fdfaf3]" : "text-foreground/80 hover:text-gold",
+                overlay
+                  ? "text-[#f2ead9]/85 hover:text-[#fdfaf3]"
+                  : "text-foreground/80 hover:text-gold",
               )}
               activeProps={{ className: overlay ? "text-[#fdfaf3]" : "text-gold" }}
             >
-
               {({ isActive }) => (
                 <>
                   {l.label}
                   {isActive && (
                     <motion.span
                       layoutId="nav-underline"
-                      className={cn("absolute inset-x-2 -bottom-px h-[2px] rounded-full", overlay ? "bg-[#c8a95f]" : "bg-gold")}
+                      className={cn(
+                        "absolute inset-x-2 -bottom-px h-[2px] rounded-full",
+                        overlay ? "bg-[#c8a95f]" : "bg-gold",
+                      )}
                     />
                   )}
                 </>
@@ -72,7 +78,6 @@ export function Navbar() {
         >
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
-
       </div>
 
       <AnimatePresence>

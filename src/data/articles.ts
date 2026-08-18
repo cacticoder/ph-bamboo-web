@@ -1,14 +1,36 @@
-import karatong1 from "@/assets/karatong-1.jpg.asset.json";
-import karatong2 from "@/assets/karatong-2.jpg.asset.json";
-import karatong3 from "@/assets/karatong-3.jpg.asset.json";
-import karatong4 from "@/assets/karatong-4.jpg.asset.json";
-import karatong5 from "@/assets/karatong-5.jpg.asset.json";
-import bambooday1 from "@/assets/bambooday-1.jpg.asset.json";
-import bambooday2 from "@/assets/bambooday-2.jpg.asset.json";
-import bambooday3 from "@/assets/bambooday-3.jpg.asset.json";
-import bambooday4 from "@/assets/bambooday-4.jpg.asset.json";
-import bambooday5 from "@/assets/bambooday-5.jpg.asset.json";
-import bambooday6 from "@/assets/bambooday-6.jpg.asset.json";
+import karatong1Url from "@/assets/Karatong-Festival_img_1.JPG";
+import karatong2Url from "@/assets/Karatong-Festival_img_2.JPG";
+import karatong3Url from "@/assets/Karatong-Festival_img_3.JPG";
+import karatong4Url from "@/assets/Karatong-Festival_img_4.JPG";
+import karatong5Url from "@/assets/Karatong-Festival_img_5.JPG";
+import bambooday1Url from "@/assets/BambooDay_img_1.JPG";
+import bambooday2Url from "@/assets/BambooDay_img_2.png";
+import bambooday3Url from "@/assets/BambooDay_img_3.png";
+import bambooday4Url from "@/assets/BambooDay_img_4.png";
+import bambooday5Url from "@/assets/BambooDay_img_5.png";
+import bambooday6Url from "@/assets/BambooDay_img_6.JPG";
+import tultugan1Url from "@/assets/Tultugan-Festival_1.jpg";
+import tultugan2Url from "@/assets/Tultugan-Festival_2.jpg";
+import tultugan3Url from "@/assets/Tultugan-Festival_3.jpg";
+import tultugan4Url from "@/assets/Tultugan-Festival_4.jpg";
+import lasPinas1Url from "@/assets/LasPinas-Bamboo-Organ.jpg";
+
+const karatong1 = { url: karatong1Url };
+const karatong2 = { url: karatong2Url };
+const karatong3 = { url: karatong3Url };
+const karatong4 = { url: karatong4Url };
+const karatong5 = { url: karatong5Url };
+const bambooday1 = { url: bambooday1Url };
+const bambooday2 = { url: bambooday2Url };
+const bambooday3 = { url: bambooday3Url };
+const bambooday4 = { url: bambooday4Url };
+const bambooday5 = { url: bambooday5Url };
+const bambooday6 = { url: bambooday6Url };
+const tultugan1 = { url: tultugan1Url };
+const tultugan2 = { url: tultugan2Url };
+const tultugan3 = { url: tultugan3Url };
+const tultugan4 = { url: tultugan4Url };
+const lasPinas1 = { url: lasPinas1Url };
 
 export interface Article {
   slug: string;
@@ -33,10 +55,23 @@ export const ARTICLES: Article[] = [
     date: "September 2019",
     author: "phBMI Editorial",
     gallery: [
-      { src: karatong2.url, caption: "Student ensembles play bamboo xylophones and tubes along the parade route." },
-      { src: karatong3.url, caption: "Dancers in woven attire strike carved karatong tubes in unison." },
-      { src: karatong4.url, caption: "Young performers in bamboo headdresses await their turn in the street presentation." },
-      { src: karatong5.url, caption: "The full street competition in Dulag, with bamboo props and all-bamboo music." },
+      {
+        src: karatong2.url,
+        caption: "Student ensembles play bamboo xylophones and tubes along the parade route.",
+      },
+      {
+        src: karatong3.url,
+        caption: "Dancers in woven attire strike carved karatong tubes in unison.",
+      },
+      {
+        src: karatong4.url,
+        caption:
+          "Young performers in bamboo headdresses await their turn in the street presentation.",
+      },
+      {
+        src: karatong5.url,
+        caption: "The full street competition in Dulag, with bamboo props and all-bamboo music.",
+      },
     ],
     body: [
       "Every September, the coastal municipality of Dulag in Leyte celebrates its annual fiesta through the Karatong Festival, a celebration named after the Waray bamboo percussion instrument known as the karatong. Dulag, also known as the \u201cLiberation Town,\u201d is a third-class municipality located along the eastern side of Leyte facing the Leyte Gulf. The karatong has traditionally been associated with the community as an instrument used by ancient Dulagnons to warn residents of impending chaos or calamities.",
@@ -62,11 +97,26 @@ export const ARTICLES: Article[] = [
     date: "2019",
     author: "phBMI Editorial",
     gallery: [
-      { src: bambooday1.url, caption: "A bamboo bass guitar crafted by a Cordillera instrument maker." },
-      { src: bambooday2.url, caption: "A young participant in Kalinga attire holds a bamboo tube instrument." },
-      { src: bambooday4.url, caption: "Guest player-musicians perform with bamboo-bodied instruments on stage." },
-      { src: bambooday5.url, caption: "Musicians play a bamboo bass and a bamboo-topped guitar during the program." },
-      { src: bambooday6.url, caption: "Participants join a community bamboo ensemble in the open field." },
+      {
+        src: bambooday1.url,
+        caption: "A bamboo bass guitar crafted by a Cordillera instrument maker.",
+      },
+      {
+        src: bambooday2.url,
+        caption: "A young participant in Kalinga attire holds a bamboo tube instrument.",
+      },
+      {
+        src: bambooday4.url,
+        caption: "Guest player-musicians perform with bamboo-bodied instruments on stage.",
+      },
+      {
+        src: bambooday5.url,
+        caption: "Musicians play a bamboo bass and a bamboo-topped guitar during the program.",
+      },
+      {
+        src: bambooday6.url,
+        caption: "Participants join a community bamboo ensemble in the open field.",
+      },
     ],
     body: [
       "Cordillera Bamboo Day brought together bamboo musical instrument users, makers, musicians, educators, and other participants in a community sharing activity following the final performance of guest player-musicians. Participants gathered in a circle, introduced themselves, and shared their knowledge and experiences with bamboo musical instruments (BMIs).",
@@ -84,28 +134,67 @@ export const ARTICLES: Article[] = [
     slug: "tultugan-festival",
     title: "Tultugan Festival",
     region: "Maasin, Iloilo",
-    excerpt: "Maasin's annual celebration of bamboo — a town known as the Bamboo Capital of Iloilo.",
-    cover: "https://images.unsplash.com/photo-1567593810070-7a3d471af022?w=1600&q=80",
-    date: "December 2023",
+    excerpt:
+      "Maasin's annual celebration of bamboo — a town known as the Bamboo Capital of Iloilo, where striking bamboo marks both tradition and identity.",
+    cover: tultugan1.url,
+    date: "May 2021",
     author: "phBMI Editorial",
+    gallery: [
+      {
+        src: tultugan1.url,
+        caption:
+          "Towering bamboo installations at the Tultugan Festival showcase Maasin's bamboo craftsmanship.",
+      },
+      {
+        src: tultugan2.url,
+        caption:
+          "Bamboo percussion ensembles perform, demonstrating the musical traditions of the festival.",
+      },
+      {
+        src: tultugan3.url,
+        caption: "Street celebrations feature all-bamboo percussion and traditional performances.",
+      },
+      {
+        src: tultugan4.url,
+        caption:
+          "Participants display the diversity of bamboo instruments and crafts that define the festival.",
+      },
+    ],
     body: [
-      "Maasin, Iloilo earned its title as the Bamboo Capital of the Philippines through generations of skilled bamboo cultivation and craftsmanship. The Tultugan Festival — from the Hiligaynon word for the act of striking bamboo — is its grandest expression.",
-      "Streets fill with towering bamboo installations, drum-and-bugle corps replaced by all-bamboo percussion ensembles, and street dances driven entirely by the percussive crack of bayog culms.",
-      "The festival has become a major draw for cultural tourism, channeling income back into local bamboo farmers and makers who form the backbone of the town's economy.",
+      "Maasin, Iloilo earned its title as the Bamboo Capital of the Philippines through generations of skilled bamboo cultivation and craftsmanship. The Tultugan Festival — from the Hiligaynon word for the act of striking bamboo — is its grandest expression, celebrating the town's identity and cultural heritage rooted in bamboo.",
+      "The name Tultugan itself reflects the festival's core: the percussive striking of bamboo instruments that have accompanied Maasin's communities for generations. Through this celebration, the town transforms its streets with towering bamboo installations, replacing traditional drum-and-bugle performances with all-bamboo percussion ensembles, and driving street dances entirely with the resonant crack and rhythm of bamboo culms striking in unison.",
+      "In May 2021, a comprehensive research documentation and data gathering effort was conducted at Maasin Central Elementary School to preserve and validate the festival's cultural significance. Ms. Rosemarie Bayag, a dedicated BMI maker and trainer who served as the District Music Coordinator, led this initiative with support from Prof. Hermie Cartagena of the University of the Philippines Visayas, an ethnographer and module writer from the Division of Professional Education. This collaboration with UPCE academics underscored the festival's importance as a living cultural expression worthy of scholarly attention and community transmission.",
+      "The festival has become a major draw for cultural tourism, channeling income back into local bamboo farmers and makers who form the backbone of Maasin's economy. Through celebrations like the Tultugan Festival, the town continues to demonstrate how a community can transform traditional bamboo instruments and practices into symbols of local identity, creativity, and cultural pride.",
+      "As Maasin continues to celebrate the Tultugan Festival, it honors both its heritage as the Bamboo Capital and its commitment to sustaining bamboo musical instrument traditions for future generations. The festival serves as a powerful reminder that bamboo is not merely a material resource, but a living part of the community's musical heritage and cultural identity.",
     ],
   },
   {
     slug: "las-pinas-bamboo-organ-festival",
-    title: "Las Piñas Bamboo Organ Festival",
+    title: "Las Piñas Bamboo Organ",
     region: "Las Piñas City",
-    excerpt: "International festival featuring the only 200-year-old bamboo pipe organ in the world.",
-    cover: "https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=1600&q=80",
-    date: "February 2024",
+    excerpt:
+      "The only functional 200-year-old pipe organ made entirely of bamboo — a National Cultural Treasure and living masterpiece of craftsmanship.",
+    cover: lasPinas1.url,
+    date: "1824",
     author: "phBMI Editorial",
+    gallery: [
+      {
+        src: lasPinas1.url,
+        caption:
+          "The Las Piñas Bamboo Organ, featuring 902 bamboo pipes and 129 metal pipes, permanently installed in St. Joseph Parish Church.",
+      },
+    ],
     body: [
-      "Built in 1824 by Father Diego Cera, the Las Piñas Bamboo Organ is the only one of its kind in the world. Each February, the St. Joseph Parish hosts the International Bamboo Organ Festival, drawing world-class organists and chamber ensembles.",
-      "The festival pairs the instrument's distinctive, woodier-than-wood timbre with repertoire spanning Baroque masterworks to newly commissioned Filipino compositions.",
-      "Proceeds support the ongoing conservation of the organ's 902 bamboo pipes — a delicate, ongoing dialogue between climate, craft, and history.",
+      "To date, the Las Piñas Bamboo Organ is the oldest and the largest in the Philippines, and possibly the world. This musical instrument is the one and only functional organ made of bamboo and is actively used in liturgical services. What sets this apart from the other existing church organs is not only the material from which it is made but also its endurance, as it has been around for more than two hundred years. The bamboo organ of Las Piñas is a cultural treasure, the only one of its kind in the Philippines.",
+      "The Bamboo Organ was created by Father Diego Cera during his assignment as parish priest of Las Piñas from 1795 to 1832. In 2003, it was declared a National Cultural Treasure of the Philippines. The organ consists of 1,031 pipes distributed into 902 bamboo pipes and 129 metal pipes, plus a pajarito — an instrument that produces a bird-like sound. Father Diego Cera completed this monumental work after six years of dedicated labor, finishing in 1824.",
+      "The instrument's construction required meticulous attention to detail, involving multiple specialized processes: harvesting the bamboo pipes, acquiring sheepskin for the bellows, assembling the bellows, shipping trumpet reed pipes, installing reed pipes, finishing work, installing detachable labium with replaceable parts, curing the pipes in sand by the beach, unearthing the pipes, and assembling the case mechanism using other wood types such as narra, molave, and kamagong.",
+      "In the mechanism of the bamboo organ, wind pressure is supplied by the bellows. The sound is produced by playing the keyboard, with bass notes played on the pedals. The keyboard's melodic range is F1 to F6, while the pedal range is F1 to E3. Its role in the ensemble is for melody and accompaniment, while its function in social and cultural activities is for liturgical and para-liturgical music performed inside the church, as well as to provide classical repertoire for pipe organ performance.",
+      "The bamboo organ is permanently installed on the upper left wall of the church adjacent to the choir loft. The bamboo pipes are housed in a frame visible to the congregation. Underneath the pipes, in the mezzanine porch, is the keyboard and the organist's chamber. The metal reed pipes are under the flooring of the mezzanine chamber, and the sound mechanism is in a room adjacent to the bamboo pipes but invisible to the audience. The electronically operated bellows are adjacent to the sound chamber on the left side of the choir loft.",
+      "Several calamities rendered the organ unplayable for a long time. However, in 1972, the national government and the local community collaborated to have the organ shipped to Germany for restoration. It stayed there for a couple of years, returning to its homeland in 1975. The responsibility of maintaining the bamboo organ was then assigned to two young alumni of St. Joseph's Academy: Cealwyn Tagle and the late Edgar Montiano. Being members of the Las Piñas Boys Choir, their interest in the technical side of the instrument grew, and they were noticed by Leo Renier, former director of St. Joseph Academy and founder of the Las Piñas Boys Choir, who encouraged them to pursue organ building.",
+      "Tagle and Montiano were sent to Austria and Germany for training and apprenticeship under the intense supervision of Europe's organ masters. This was made possible by the Bamboo Organ Foundation Incorporated, a non-stock, non-profit organization founded to preserve and maintain the historic Bamboo Organ and to engage in the spiritual, educational, and social enrichment of the people of Las Piñas. The foundation also organizes the yearly International Bamboo Organ Festival.",
+      "In March 1994, Tagle and Montiano founded Diego Cera Organ Builders, Inc. — the first Filipino pipe organ building company. Since its founding, the company has built over 20 custom-made pipe organs for local and international clients, including restorations in Lithuania and Austria. They have been involved in the overhauling of the Manila Cathedral-Basilica Organ, supposedly the biggest organ in Southeast Asia, and restorations of pipe organs in the Santo Domingo Church in Quezon City, the Holy Spirit Church in Tayuman, Manila, and historic organs in Baclayon, Loboc, and Loay in Bohol and Cebu.",
+      "The company sources its bamboo from Zapote, Cavite, and Batangas at approximately Php 150 per pole. The quantity of bamboo poles depends on the project — a custom-built bamboo pipe organ may use 1,200 to 5,000 poles. The bamboo poles are air-dried vertically for a year, then soaked in fungicide and air-dried again for 1-2 months. The company started with Php 1.5M donated by an Australian priest and now maintains both local and international markets in Singapore, Japan, Germany, and Australia, earning Php 1.3 to 4.5M per project.",
+      "The Las Piñas Bamboo Organ stands as a testament to the enduring legacy of craftsmanship and the potential of bamboo as a material for creating instruments of extraordinary beauty and longevity. Through the dedication of Father Diego Cera, the restoration efforts of Cealwyn Tagle and Edgar Montiano, and the continued work of Diego Cera Organ Builders, Inc., this unique instrument continues to inspire communities and demonstrate how a single material — bamboo — can serve as both a bridge to cultural heritage and a foundation for contemporary musical expression.",
     ],
   },
 ];
