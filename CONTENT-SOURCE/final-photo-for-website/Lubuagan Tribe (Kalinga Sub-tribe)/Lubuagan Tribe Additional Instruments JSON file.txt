@@ -1,0 +1,45 @@
+{
+  "instruments": [
+    {
+      "name": "Kullibit",
+      "category": "Idiophone / Zither",
+      "material": "Bamboo",
+      "bamboo_species": {
+        "scientific_name": "Schizostachyum lumampao",
+        "authority": "(Blanco) Merr."
+      },
+      "region": "Cordillera Mountain Range, Luzon",
+      "location": "Lubuagan, Kalinga",
+      "local_names": [
+        "Kullibit",
+        "Kolitong"
+      ],
+      "figure": {
+        "figure_number": 1,
+        "source_name": "Kullibit1"
+      },
+      "description": "The kullibit is a polychordal zither featuring five to six strings. It is crafted from a single bamboo internode, approximately three inches in diameter, that has been sun-dried for at least a week to facilitate skin carving. The strings are created by carefully lifting the outer skin of the bamboo and are raised using small bamboo frets. A slit is cut along the middle of the tube to allow sound to resonate inside the hollow body. Both ends of the instrument are secured with rattan ties to prevent the strings from lifting completely and to keep the tube from splitting. It is traditionally played for entertainment, as a pastime, or as a lullaby, and can serve as a substitute for the Gangsa (metal gongs)."
+    },
+    {
+      "name": "Patungguk",
+      "category": "Idiophone / Tube drum",
+      "material": "Bamboo",
+      "bamboo_species": {
+        "scientific_name": "Schizostachyum lumampao",
+        "authority": "(Blanco) Merr."
+      },
+      "region": "Cordillera Mountain Range, Luzon",
+      "location": "Lubuagan, Kalinga",
+      "local_names": [
+        "Patungguk",
+        "Tambi"
+      ],
+      "figure": {
+        "figure_number": 4,
+        "source_name": "Patungguk",
+        "caption": "Patungguk (six-piece ensemble)"
+      },
+      "description": "The patungguk is a two-stringed zither typically played as part of an ensemble consisting of six instruments. The strings are carefully carved and raised from the bamboo skin using small ridges. It is played by striking a central pad or plate, suspended between the strings, with a stick. This striking pad vibrates when hit, and a sound hole located directly beneath it amplifies the resonance within the hollow bamboo body. Rattan is used to secure both ends of the instrument to maintain string tension. It is commonly played in association with the Gangsa or tongatong."
+    }
+  ]
+}

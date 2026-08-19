@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, X, MapPin, Leaf, Users } from "lucide-react";
-import { INSTRUMENTS, CATEGORIES, CATALOG_MAKERS, type Instrument } from "@/data/instruments";
+import { INSTRUMENTS, CATEGORIES, CATALOG_MAKERS, INSTRUMENT_IMAGE_FILES, type Instrument } from "@/data/instruments";
 import { AdSlot } from "@/components/AdSlot";
 
 export const Route = createFileRoute("/gallery")({
@@ -17,6 +17,11 @@ export const Route = createFileRoute("/gallery")({
   }),
   component: Gallery,
 });
+
+function galleryImagePath(instrumentId: string) {
+  const filename = INSTRUMENT_IMAGE_FILES[instrumentId];
+  return filename ? `/gallery/${encodeURIComponent(filename)}` : undefined;
+}
 
 function Gallery() {
   const [cat, setCat] = useState<(typeof CATEGORIES)[number]>("All");
@@ -52,6 +57,7 @@ function Gallery() {
       ),
     [cat, maker, makerType, q],
   );
+  const activeImage = active ? galleryImagePath(active.id) : undefined;
 
   return (
     <div className="mx-auto max-w-7xl px-4 md:px-8 py-12">
@@ -118,7 +124,9 @@ function Gallery() {
 
       <motion.div layout className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
         <AnimatePresence mode="popLayout">
-          {filtered.map((ins) => (
+          {filtered.map((ins) => {
+            const image = galleryImagePath(ins.id);
+            return (
             <motion.button
               layout
               key={ins.id}
@@ -131,7 +139,7 @@ function Gallery() {
               className="group text-left rounded-2xl overflow-hidden border border-border/50 gradient-card shadow-card"
             >
               <div className="aspect-[4/3] relative bg-gradient-to-br from-bamboo/40 to-plum/40 flex items-center justify-center texture-bamboo">
-                <Leaf className="text-gold/60" size={48} />
+                {image ? <img src={image} alt={ins.name} className="absolute inset-0 h-full w-full object-cover" /> : <Leaf className="text-gold/60" size={48} />}
                 <span className="absolute top-3 left-3 text-[10px] uppercase tracking-widest bg-background/70 text-gold px-2 py-0.5 rounded-full">{ins.category}</span>
               </div>
               <div className="p-5">
@@ -143,7 +151,8 @@ function Gallery() {
                 <span className="mt-3 inline-block text-xs font-semibold text-gold group-hover:underline">Read more →</span>
               </div>
             </motion.button>
-          ))}
+            );
+          })}
         </AnimatePresence>
       </motion.div>
 
@@ -167,7 +176,7 @@ function Gallery() {
               className="glass max-w-3xl w-full rounded-2xl border border-gold/30 overflow-hidden max-h-[90vh] overflow-y-auto"
             >
               <div className="aspect-video bg-gradient-to-br from-bamboo to-plum flex items-center justify-center texture-bamboo">
-                <Leaf size={96} className="text-gold/60" />
+                {activeImage ? <img src={activeImage} alt={active.name} className="h-full w-full object-cover" /> : <Leaf size={96} className="text-gold/60" />}
               </div>
               <div className="p-6 md:p-8">
                 <div className="flex items-start justify-between gap-4">
