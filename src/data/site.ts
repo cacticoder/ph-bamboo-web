@@ -71,6 +71,7 @@ import majukayongImgUrl from "@/assets/Majukayong Tribe_1.png";
 import tbolitImgUrl from "@/assets/Tboli_1.PNG";
 import huniImgUrl from "@/assets/Huni-Ukulele_icon.png";
 import saritaImgUrl from "@/assets/Sarita-instrument-artisan_1.jpg";
+import musikawayanImgUrl from "@/assets/Musikawayan Malabon_1.jpg";
 
 const bagoboImg = { url: bagoboImgUrl };
 const calabigImg = { url: calabigImgUrl };
@@ -82,6 +83,7 @@ const majukayongImg = { url: majukayongImgUrl };
 const tbolitImg = { url: tbolitImgUrl };
 const huniImg = { url: huniImgUrl };
 const saritaImg = { url: saritaImgUrl };
+const musikawayanImg = { url: musikawayanImgUrl };
 
 export const MAKERS: Maker[] = [
   {
@@ -173,7 +175,7 @@ export const MAKERS: Maker[] = [
     ],
   },
   {
-    id: "king-flute-philippines",
+    id: "king-flute",
     name: "King Flute Philippines Inc.",
     makerType: "Commercial",
     location: "Alabat, Quezon",
@@ -297,7 +299,7 @@ export const MAKERS: Maker[] = [
     region: "Malabon City",
     expertise: "Musikong Bumbong & innovative BMIs",
     bio: 'Legacy craftsmen of the "Original Malabon Musikong Bumbong," preserving a century-old Katipunero tradition of bamboo wind bands.',
-    image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1600&q=80",
+    image: musikawayanImg.url,
     born: "Tonsuya, Malabon · 1896",
     signature: [
       "Bumbong sousaphone-style tubes",
