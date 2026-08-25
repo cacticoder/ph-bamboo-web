@@ -1,0 +1,46 @@
+{
+  "title": "From the Field",
+  "subtitle": "Where Philippine instrument bamboos grow and are harvested.",
+  "sections": [
+    {
+      "title": "Lowland Stands",
+      "bamboo": "Bayog (Dendrocalamus merillianus)",
+      "content": "Clumps generally planted in settled areas across Luzon, Leyte, Cebu, and Bohol. Its sturdy, thick-walled culms, which can grow up to 20 meters, serve as primary material for instruments like the Unnat jaw harp."
+    },
+    {
+      "title": "Hillside",
+      "bamboo": "Buho Thin-walled Anos (Schizostachyum lima) and Lumampao (S. lumampao)",
+      "content": "Harvested from secondary forests and thickets at low to medium altitudes. These species are the preferred choice for King Flute panpipes and the Tungali nose flutes of the Cordilleras due to their ideal diameter and hollow structure."
+    },
+    {
+      "title": "Giant Bamboo Grove",
+      "bamboo": "Afus (Dendrocalamus asper)",
+      "content": "Cultivated in groves up to 1,500 meters altitude. With culms reaching over 20 meters and diameters up to 16 centimeters, it provides the massive resonators needed for T’boli barrel drums (Tnonggong) and the bodies of modern engineered bamboo guitars."
+    },
+    {
+      "title": "Cordillera Highlands",
+      "bamboo": "Vuru or Buyu (S. lumampao)",
+      "content": "Mountain stands feed the rich musical traditions of the Kalinga and Majukayong tribes. These highland bamboos are meticulously air-dried for at least a week to prepare them for the intricate skin-carving required for Kullibit zithers."
+    },
+    {
+      "title": "Harvest Season",
+      "content": "Artisans observe traditional environmental indicators; Aeta makers harvest one-year-old “tinaunan” culms during the summer to prevent cracking, while Bagobo-Tagabawa elders harvest only during “dulom” (moonless nights) to protect the wood from “bukbok” (powder-post beetle) and fungal damage."
+    },
+    {
+      "title": "Sustainable Supply",
+      "content": "The BMI Innovation R&D Program utilizes science to characterization and digitize bamboo species to ensure a standardized supply for the industry. This program aims to support the increased demand caused by the inclusion of bamboo music in the national K-12 curriculum."
+    },
+    {
+      "title": "Sustainable Harvest",
+      "content": "A regenerative cycle where bamboo is chosen for its endless renewability as a natural resource. Producers like Huni Ukulele emphasize that utilizing bamboo has a minimal effect on the environment, providing a socially responsible alternative to traditional tonewoods."
+    },
+    {
+      "title": "Climate Impact",
+      "content": "As a highly sustainable material, bamboo is utilized by modern makers to respond to current ecological challenges in the Philippines. Its rapid growth and wide distribution make it a primary driver for a climate-conscious creative industry."
+    },
+    {
+      "title": "Community Forestry",
+      "content": "The craft provides vital economic opportunities; for instance, King Flute provides employment and generates income for barangays in Quezon, while Musikawayan Malabon preserves a century-old Katipunero tradition, ensuring heritage and livelihood flow harmoniously together."
+    }
+  ]
+}

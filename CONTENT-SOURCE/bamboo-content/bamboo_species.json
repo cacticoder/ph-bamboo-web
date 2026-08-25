@@ -1,0 +1,412 @@
+[
+  {
+    "id": 1,
+    "common_name": "Kauayang-tinik",
+    "scientific_name": "Bambusa spinosa Roxb.",
+    "common_names": [
+      "Kauayang-tinik",
+      "kauayang-totoo",
+      "aonoo",
+      "batakan",
+      "bangin",
+      "dagian",
+      "kauayang-dig",
+      "kauayang-siitan",
+      "kabugauan",
+      "lamuna",
+      "marurugi",
+      "pagsinga",
+      "pana",
+      "rugian"
+    ],
+    "description": "Culms grow in clumps, erect with an out-arching crown up to 20m tall. Nodes are dipping with glabrous green internodes up to 49cm long and 8.25cm in diameter. The culm wall is 3.0cm thick at the base, becoming thinner toward the top.",
+    "habitat": "Commonly planted in settled areas at low and medium altitudes.",
+    "distribution": "Native to Java and Eastern Malesia; cultivated in Southern China, Malay Peninsula, Moluccas, and the Philippines (Northern Luzon to Mindanao).",
+    "economic_importance": "Top to bottom of culms are used for musical instruments. It is also used in building construction, furniture, kitchen utensils, and papermaking; young shoots are edible.",
+    "instruments": {
+      "idiophones": [
+        "Palakpak Ka Odok",
+        "Togo",
+        "Bamboo Clappers",
+        "Kumbing with Sokong",
+        "Sludoy",
+        "Marimba",
+        "Mini Marimba"
+      ],
+      "aerophones": [
+        "Bumbong",
+        "Bamban"
+      ]
+    },
+    "gallery_figures": [
+      "Figure 65",
+      "Figure 66",
+      "Figure 8"
+    ]
+  },
+  {
+    "id": 2,
+    "common_name": "Kauayang-china",
+    "scientific_name": "Bambusa vulgaris Schrad. Ex Wendl.",
+    "common_names": [
+      "Kauayang-china",
+      "killing",
+      "taring",
+      "tewanak",
+      "kauawayang-kiling",
+      "bolinao",
+      "limas",
+      "tiling",
+      "sinamgang",
+      "kauayang-kiting",
+      "maribal",
+      "patong"
+    ],
+    "description": "Open clumps with about 30 erect, straight, or slightly zigzag culms up to 15m tall. Internodes are bluish-green, shining, and slightly grooved on the branch side.",
+    "distribution": "Originated in tropical Asia; pantropically cultivated. In the Philippines, it is found from Northern Luzon to Palawan and Mindanao.",
+    "economic_importance": "Classified as soft bamboo used in light construction, pulp, paper, and handicrafts.",
+    "distinguishing_features": "Glabrous shining bluish-green culms and sulcate internodes.",
+    "instruments": [
+      "Ullibyew (Lubuagan tribe jaw harp)"
+    ],
+    "gallery_figures": [
+      "Figure 67",
+      "Figure 68",
+      "Figure 12"
+    ]
+  },
+  {
+    "id": 3,
+    "common_name": "Baitu",
+    "scientific_name": "Cyrtochloa hirsuta S Dransf. sp. nov.",
+    "common_names": [
+      "Baitu"
+    ],
+    "description": "Culms are 6-7m tall, green turning yellow at maturity, with thin walls and internodes 50-70cm long. The tips are long and drooping.",
+    "distribution": "Endemic to Luzon, Philippines (specifically Bataan).",
+    "economic_importance": "Used locally for fences, barbecue sticks, and agricultural implements due to thin walls.",
+    "distinguishing_features": "Thin culm wall, long internodes, and rigid foliage leaves.",
+    "instruments": {
+      "aerophones": [
+        "Bamban",
+        "Barimbao/Rambunet",
+        "Rambusak",
+        "Bamboo Kazoo"
+      ],
+      "idiophones": [
+        "Tipangklung"
+      ]
+    },
+    "gallery_figures": [
+      "Figure 69",
+      "Figure 70",
+      "Figure 14"
+    ]
+  },
+  {
+    "id": 4,
+    "common_name": "Giant Bamboo / Afus",
+    "scientific_name": "Dendrocalamus asper (Schultes f.) Backer ex Heyne",
+    "common_names": [
+      "Giant bamboo",
+      "bolong-sina",
+      "Afus",
+      "Buntong",
+      "Pusog"
+    ],
+    "description": "Large culms reaching over 20m tall with diameters of 12-16cm near the base. Covered with velvety brown hairs when young.",
+    "habitat": "Grows well from low altitudes up to 1500m.",
+    "distribution": "Planted throughout Southeast Asia; introduced in Philippine bambusetums in Mt. Makiling and Bukidnon.",
+    "economic_importance": "Used in house construction, plywood, and tiles; young shoots are edible.",
+    "distinguishing_features": "Densely persistent brown velvety hairs covering lower internodes and swollen nodes with many aerial roots.",
+    "instruments": {
+      "chordophones": [
+        "Paglaom",
+        "Paglaom mini",
+        "Pahidaet/Pagyanig",
+        "Kalipay guitars",
+        "Dwegey"
+      ],
+      "idiophones": [
+        "Kulibaw",
+        "Kulitong",
+        "Tambi",
+        "Bantukak",
+        "Bantula",
+        "Kokak",
+        "Kubing",
+        "Ksal",
+        "Sludoy"
+      ],
+      "membranophones": [
+        "Tnonggong"
+      ]
+    },
+    "gallery_figures": [
+      "Figure 71",
+      "Figure 72",
+      "Figure 15",
+      "Figure 73",
+      "Figure 16",
+      "Figure 17"
+    ]
+  },
+  {
+    "id": 5,
+    "common_name": "Bayog",
+    "scientific_name": "Dendrocalamus merillianus (Elmer) Elmer",
+    "common_names": [
+      "Bayog",
+      "bayugin",
+      "bukaui",
+      "botong",
+      "butong",
+      "Kauayan",
+      "kauayan-bayog"
+    ],
+    "description": "Sturdy culms up to 20m tall with green, smooth internodes. Walls are up to 4.0cm thick, often nearly solid at the base.",
+    "habitat": "Generally planted in settled areas; prefers deep fertile soil.",
+    "distribution": "Endemic to various provinces in Luzon, Leyte, Cebu, Bohol, and Mindanao.",
+    "economic_importance": "Preferred for furniture making (vehicle shafts, yokes), building construction, ropes, and papermaking.",
+    "instruments": [
+      "Unnat (Majukayong/Kalinga jaw harp)"
+    ],
+    "gallery_figures": [
+      "Figure 74",
+      "Figure 18"
+    ]
+  },
+  {
+    "id": 6,
+    "common_name": "Bambu hitam",
+    "scientific_name": "Gigantochloa atter (Hassk.) Kurz",
+    "common_names": [
+      "Bambu hitam",
+      "Kayali",
+      "patong",
+      "Lasak"
+    ],
+    "synonyms": [
+      "Bambusa thouarsii Kunth var. atter Hassk.",
+      "Gigantochloa verticilla (Willd.) Munro sensu Backer"
+    ],
+    "description": "Culms 12-25m tall, closely tufted. Young culms are powdery waxy with bluish-green internodes.",
+    "habitat": "Thrives in tropics up to 1400m altitude.",
+    "distribution": "Originated in Java; cultivated in Davao and Laguna in the Philippines.",
+    "economic_importance": "Culms used for building materials, household utensils, handicrafts, and banana props; shoots are edible.",
+    "instruments": [
+      "Ksal (Tboli rhythm sticks)"
+    ],
+    "gallery_figures": [
+      "Figure 75",
+      "Figure 76",
+      "Figure 20"
+    ]
+  },
+  {
+    "id": 7,
+    "common_name": "Bolo",
+    "scientific_name": "Gigantochloa levis (Blanco) Merr.",
+    "common_names": [
+      "Bolo",
+      "bongsina",
+      "buhong-china",
+      "buling-china",
+      "kauayang china",
+      "kauayang-puti",
+      "kauayang-sina",
+      "book",
+      "buton",
+      "kabolian",
+      "patong",
+      "botong",
+      "Chinese Kawayan",
+      "Batibot"
+    ],
+    "description": "Clumps of 10-22 culms up to 20m tall. Internodes are 15-30cm long, hollow with walls 1-3cm thick. Culm sheaths are densely hairy dark-brown when young.",
+    "habitat": "All clumps are cultivated or naturalized.",
+    "distribution": "Native to the Philippines (Luzon, Leyte, Camiguin de Misamis, etc.).",
+    "economic_importance": "Culms are used for various musical instruments, building construction, basketry, and furniture; shoots are edible.",
+    "instruments": {
+      "idiophones": [
+        "Marimba",
+        "Bayawak/Hagubhob",
+        "Halo",
+        "Karatoktok",
+        "Karatong",
+        "Angklung",
+        "Kalagong",
+        "Kalatok",
+        "Kiskis",
+        "Patangguk"
+      ],
+      "aerophones": [
+        "Bumbong"
+      ]
+    },
+    "gallery_figures": [
+      "Figure 77",
+      "Figure 21",
+      "Figure 78",
+      "Figure 22",
+      "Figure 23",
+      "Figure 24",
+      "Figure 25"
+    ]
+  },
+  {
+    "id": 8,
+    "common_name": "Green buho",
+    "scientific_name": "Schizostachyum brachycladum (Kurz) Kurz",
+    "common_names": [
+      "Green buho",
+      "Bentung",
+      "Laya",
+      "Boho"
+    ],
+    "basionym": "Melocanna brachyclada Kurz",
+    "description": "Closely tufted culms up to 30m tall. Internodes are green with a prominent white-waxy bloom, 20.5–54.5cm long.",
+    "habitat": "Secondary forests up to 600m altitude.",
+    "distribution": "Originated from Java; cultivated in Davao.",
+    "economic_importance": "Used for roofs, handicrafts, water containers, and fibers for clothes in Indonesia.",
+    "instruments": [
+      "Assa-assa-kagik-manok (water flute)",
+      "Hlendeg (side flute)"
+    ],
+    "gallery_figures": [
+      "Figure 79",
+      "Figure 80",
+      "Figure 81",
+      "Figure 27"
+    ]
+  },
+  {
+    "id": 9,
+    "common_name": "Anos",
+    "scientific_name": "Schizostachyum lima (Blanco) Merr.",
+    "common_names": [
+      "Anos",
+      "bagakai",
+      "Bitu",
+      "Bolo",
+      "Buho",
+      "Lakap",
+      "Nap-nap",
+      "Sumbiling",
+      "Bahi-bahian",
+      "Seben",
+      "Bobong/Badek"
+    ],
+    "basionym": "Bambos lima Blanco",
+    "description": "Forms large clumps with 240–370 slender culms. Internodes are hollow and green, with fine irritating hairs when young.",
+    "habitat": "Thickets and secondary forests at low to medium altitudes.",
+    "distribution": "Philippines (Luzon to Basilan), New Guinea, Solomon Islands, and Sulawesi.",
+    "economic_importance": "Ideal for sawali boards; shoots are edible. Historically used to polish brass.",
+    "distinguishing_features": "Similar to S. lumampao but with smaller culms; internodes have sandpapery hairs.",
+    "instruments": [
+      "Pito (Musikong Bumbong flute)",
+      "Panflute (King Flute)",
+      "True Sidewinder Flute (King Flute)",
+      "Microflute (King Flute)",
+      "Lantoy (Bagobo Taga Bawa)"
+    ],
+    "gallery_figures": [
+      "Figure 84",
+      "Figure 28",
+      "Figure 85",
+      "Figure 29",
+      "Figure 30"
+    ]
+  },
+  {
+    "id": 10,
+    "common_name": "Lumampao",
+    "scientific_name": "Schizostachyum lumampao (Blanco) Merr.",
+    "common_names": [
+      "Lumampao",
+      "bokawi",
+      "boho",
+      "babakan",
+      "book",
+      "bolo",
+      "bulo",
+      "Caña del boho",
+      "dato",
+      "napnap",
+      "oras",
+      "bulu",
+      "vulu",
+      "Buyu"
+    ],
+    "basionym": "Bambus lumampao Blanco",
+    "description": "Clumps up to 3m in diameter with ~200 culms, 10-11m tall. Internodes are 60-90cm long with thin walls (0.17cm at top).",
+    "habitat": "Thickets and secondary forests at low and medium altitudes.",
+    "distribution": "Endemic to various Philippine islands (Luzon to Basilan).",
+    "economic_importance": "Culms used for musical instruments, sawali, baskets, and spears.",
+    "distinguishing_features": "Generally larger culms than S. lima in natural habitats.",
+    "instruments": [
+      "Togo",
+      "Marimba resonators",
+      "Panpipe",
+      "Ayég Udén",
+      "Byellingbing",
+      "Bérédong",
+      "Jungajung",
+      "Kullitong",
+      "Patangguk",
+      "Tabéllungan",
+      "Tabbatab",
+      "Tungali",
+      "Kulilit",
+      "Patang-ug",
+      "Patiteg",
+      "Tungatong",
+      "Saggaypu",
+      "Sulimong"
+    ],
+    "gallery_figures": [
+      "Figure 86",
+      "Figure 31",
+      "Figure 87",
+      "Figure 32",
+      "Figure 33",
+      "Figure 34",
+      "Figure 35"
+    ]
+  },
+  {
+    "id": 11,
+    "common_name": "Knaf",
+    "scientific_name": "Dinochloa sp.",
+    "local_name": "Knaf (Tboli)",
+    "description": "A high-climbing tropical genus with zigzag culms found in hill forests. Culms are solid or have a small lumen and twine around tree trunks.",
+    "collection_location": "Brgy. Lemsnolon, T'Boli, South Cotabato.",
+    "instruments": [
+      "Hlendeg (Tboli side flute)"
+    ],
+    "gallery_figures": [
+      "Figure 88",
+      "Figure 89"
+    ]
+  },
+  {
+    "id": 12,
+    "common_name": "Moso / Japanese Bamboo",
+    "scientific_name": "Phyllostachys edulis (Carriere) J. Houz.",
+    "common_names": [
+      "Moso bamboo",
+      "Japanese bamboo"
+    ],
+    "description": "Mature culms are distant from each other. Young culms have distinctive silvery white pubescence on nodes and internodes. Internodes are very long (up to 80cm).",
+    "habitat": "Grows well in cool climates or high altitudes up to 1600m.",
+    "distribution": "Warm-temperate China; recently introduced to the Philippines for experimental purposes.",
+    "economic_importance": "Culms used for flutes; major commercial species in China/Japan for building and food.",
+    "instruments": [
+      "Pulala or Hulagteb (long flute of the Talaandig tribe)"
+    ],
+    "gallery_figures": [
+      "Figure 82",
+      "Figure 83"
+    ]
+  }
+]

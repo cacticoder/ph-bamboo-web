@@ -15,7 +15,7 @@ import posterUrl from "@/assets/hero-poster.PNG";
 const posterAsset = { url: posterUrl };
 const poster = posterAsset.url;
 
-const YOUTUBE_ID = "dQw4w9WgXcQ";
+const YOUTUBE_ID = "xgrEMeFV_II";
 
 const CTAS = [
   { label: "Discover the Instruments", to: "/gallery" as const },
