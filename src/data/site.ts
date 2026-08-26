@@ -1,3 +1,9 @@
+import dostLogo from "@/assets/logo/DOST-Logo.png";
+import pcieerdLogo from "@/assets/logo/PCIEERD-Logo.png";
+import fprdiLogo from "@/assets/logo/FPRDI-Logo.png";
+import upceLogo from "@/assets/logo/UPCE-Logo.png";
+import pnuLogo from "@/assets/logo/PNU-Logo.png";
+
 export const NAV_LINKS = [
   { to: "/", label: "Home" },
   { to: "/gallery", label: "BMI Gallery" },
@@ -11,11 +17,11 @@ export const NAV_LINKS = [
 ] as const;
 
 export const PARTNERS = [
-  { name: "DOST", short: "DOST" },
-  { name: "DOST-PCIEERD", short: "PCIEERD" },
-  { name: "DOST-FPRDI", short: "FPRDI" },
-  { name: "UP Center for Ethnomusicology", short: "UPCE" },
-  { name: "Philippine Normal University", short: "PNU" },
+  { name: "DOST", short: "DOST", logo: dostLogo },
+  { name: "DOST-PCIEERD", short: "PCIEERD", logo: pcieerdLogo },
+  { name: "DOST-FPRDI", short: "FPRDI", logo: fprdiLogo },
+  { name: "UP Center for Ethnomusicology", short: "UPCE", logo: upceLogo },
+  { name: "Philippine Normal University", short: "PNU", logo: pnuLogo },
 ];
 
 export const FESTIVALS = [
@@ -344,83 +350,4 @@ export const MAKERS: Maker[] = [
   },
 ];
 
-export interface Species {
-  id: string;
-  common: string;
-  scientific: string;
-  synonyms: string[];
-  description: string;
-  habitat: string;
-  distribution: string;
-  economic: string;
-  image: string;
-  body: string[];
-}
-
-export const SPECIES: Species[] = [
-  {
-    id: "bayog",
-    common: "Bayog",
-    scientific: "Bambusa blumeana",
-    synonyms: ["Spiny bamboo", "Kawayan tinik"],
-    description:
-      "Thick-walled bamboo prized for its strong, resonant culms; the workhorse of Philippine instrument making.",
-    habitat: "Lowland riverbanks, 0–500m elevation",
-    distribution: "Throughout the Philippine archipelago",
-    economic: "Construction, furniture, musical instruments, food (shoots).",
-    image: "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?w=1600&q=80",
-    body: [
-      "Bayog (Bambusa blumeana) is the workhorse of Philippine bamboo crafts. Its thick walls and tight internodes produce a dense, resonant culm that holds tuning exceptionally well — making it the preferred species for stamping tubes, slit drums, and percussion ensembles.",
-      "Recognizable by the spiny thorns along its lower branches, bayog forms dense clumps along riverbanks throughout the archipelago. Sustainable harvesting takes culms at 3–4 years, leaving younger shoots to mature.",
-      "Beyond music, bayog underpins rural construction, furniture, and food security through its tender shoots — a single species linked to livelihoods across the country.",
-    ],
-  },
-  {
-    id: "buho",
-    common: "Buho",
-    scientific: "Schizostachyum lumampao",
-    synonyms: ["Philippine bamboo", "Bagakay"],
-    description: "Thin-walled, straight-grained bamboo ideal for flutes, panpipes, and zithers.",
-    habitat: "Hillsides up to 1000m",
-    distribution: "Luzon, Visayas, Mindanao",
-    economic: "Flutes, weaving slats, fish traps, light construction.",
-    image: "https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=1600&q=80",
-    body: [
-      "Buho (Schizostachyum lumampao) is the voice of the Philippine flute family. Its thin walls and remarkably straight grain make it the preferred bamboo for the tongali nose flute, the kalaleng, and the saggeypo panpipes of the Cordilleras.",
-      "It grows on hillsides up to 1000 meters across Luzon, the Visayas, and Mindanao, often in mixed stands with other native bamboos.",
-      "Beyond music, buho is woven into walls and fish traps — a quiet, versatile species that has shaped both Filipino soundscapes and built landscapes.",
-    ],
-  },
-  {
-    id: "kawayan",
-    common: "Kawayan Kiling",
-    scientific: "Bambusa vulgaris",
-    synonyms: ["Common bamboo"],
-    description: "Naturalized bamboo widely used for stamping tubes and slit drums.",
-    habitat: "Lowlands, settled areas",
-    distribution: "Pantropical; abundant in PH",
-    economic: "Construction, paper pulp, idiophones.",
-    image: "https://images.unsplash.com/photo-1567593810070-7a3d471af022?w=1600&q=80",
-    body: [
-      "Kawayan kiling (Bambusa vulgaris) is the most familiar bamboo in lowland Philippines — a naturalized species found around homes, schools, and roadsides across the country.",
-      "Its hollow culms ring brightly when struck, lending themselves to stamping tubes, slit drums, and other idiophones used in festival processions.",
-      "While not native, kiling has become culturally indispensable: easy to source, fast to grow, and forgiving to work — perfect for student instruments and community ensembles.",
-    ],
-  },
-  {
-    id: "giant",
-    common: "Giant Bamboo",
-    scientific: "Dendrocalamus asper",
-    synonyms: ["Bamboo betung"],
-    description: "Large-diameter culms used for drum bodies and resonator chambers.",
-    habitat: "Plantations and forests",
-    distribution: "Cultivated nationwide",
-    economic: "Heavy construction, drum bodies, edible shoots.",
-    image: "https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=1600&q=80",
-    body: [
-      "Giant bamboo (Dendrocalamus asper) lives up to its name — culms reach 20–30 meters with diameters wide enough to serve as drum bodies and deep resonator chambers.",
-      "Cultivated in plantations nationwide, its scale makes it indispensable for large bamboo organs, marimba-style xylophones, and the bass voices of contemporary bamboo ensembles.",
-      "Its shoots are also among the most prized edibles, and its strength supports modern bamboo architecture — a single species spanning food, shelter, and sound.",
-    ],
-  },
-];
+// Bamboo species data lives in @/data/species (sourced from CONTENT-SOURCE/bamboo-content).

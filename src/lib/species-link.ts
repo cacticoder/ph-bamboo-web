@@ -1,13 +1,4 @@
-import { SPECIES } from "@/data/site";
-
-/** Scientific-name (genus + epithet) → species page id, including synonyms. */
-const SCIENTIFIC_TO_ID: Record<string, string> = {
-  "bambusa blumeana": "bayog",
-  "bambusa spinosa": "bayog", // synonym of B. blumeana
-  "schizostachyum lumampao": "buho",
-  "bambusa vulgaris": "kawayan",
-  "dendrocalamus asper": "giant",
-};
+import { SPECIES } from "@/data/species";
 
 export interface SpeciesRef {
   label: string;
@@ -29,10 +20,9 @@ function matchOne(name: string): SpeciesRef {
   const label = name.trim();
   if (!label) return { label };
   const key = genusEpithet(label);
-  const byMap = SCIENTIFIC_TO_ID[key];
-  if (byMap) return { label, speciesId: byMap };
   const direct = SPECIES.find(
-    (s) => genusEpithet(s.scientific) === key || s.common.toLowerCase() === label.toLowerCase(),
+    (s) =>
+      genusEpithet(s.scientificName) === key || s.commonName.toLowerCase() === label.toLowerCase(),
   );
   return direct ? { label, speciesId: direct.id } : { label };
 }
