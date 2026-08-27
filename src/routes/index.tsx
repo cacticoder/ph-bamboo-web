@@ -5,6 +5,7 @@ import { PARTNERS } from "@/data/site";
 import { ARTICLES } from "@/data/articles";
 import { AdSlot } from "@/components/AdSlot";
 import { CinematicHero } from "@/components/CinematicHero";
+import { FeaturedVideos } from "@/components/FeaturedVideos";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -130,6 +131,8 @@ function Index() {
           ))}
         </div>
       </section>
+
+      <FeaturedVideos />
 
       <AdSlot slot="home-mid" />
     </div>
