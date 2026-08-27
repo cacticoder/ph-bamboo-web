@@ -1,45 +1,136 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { Trees, Hammer, Store, Wrench } from "lucide-react";
-import { PageHero, PageShell } from "@/components/PageHero";
-
-const STAGES = [
-  { icon: Trees, title: "Raw Material Procurement", details: ["Bamboo species selection", "Traditional IP harvesting practices", "Sustainable sourcing"] },
-  { icon: Hammer, title: "Production / BMI Making", details: ["Traditional tools", "Artisanal craftsmanship", "Tuning by ear"] },
-  { icon: Store, title: "Marketing & Distribution", details: ["Traditional peddling", "Modern online retail", "Music stores"] },
-  { icon: Wrench, title: "Support Services", details: ["Instrument repair", "Tuning services", "Teaching customers"] },
-];
+import { PageShell } from "@/components/PageHero";
+import {
+  VC_SECTIONS,
+  VC_EXECUTIVE_SUMMARY,
+  VC_TITLE,
+  VC_SUBTITLE,
+  VC_MAP_IMAGE,
+  type VcBlock,
+  type VcSubsection,
+} from "@/data/value-chain";
 
 export const Route = createFileRoute("/value-chain")({
-  head: () => ({ meta: [{ title: "BMI Value Chain — phBMI" }, { name: "description", content: "The full value chain of bamboo musical instrument production." }] }),
+  head: () => ({
+    meta: [
+      { title: "Value Chain Analysis — phBMI" },
+      {
+        name: "description",
+        content:
+          "A deep-dive socioeconomic and operational value chain analysis of the Philippine Bamboo Musical Instruments (BMI) industry, from DOST-FPRDI.",
+      },
+    ],
+  }),
   component: ValueChain,
 });
 
+function Block({ block }: { block: VcBlock }) {
+  if (block.type === "paragraph") {
+    return <p className="text-foreground/85 leading-relaxed">{block.text}</p>;
+  }
+  if (block.type === "bullets") {
+    return (
+      <ul className="space-y-3">
+        {block.items.map((item, i) => (
+          <li key={i} className="flex gap-2.5 text-foreground/85 leading-relaxed">
+            <span className="text-gold flex-shrink-0 mt-1">•</span>
+            <span>
+              {item.label && <span className="font-semibold text-foreground">{item.label}: </span>}
+              {item.text}
+            </span>
+          </li>
+        ))}
+      </ul>
+    );
+  }
+  if (block.type === "flow") {
+    return (
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {block.items.map((item, i) => (
+          <div key={i} className="rounded-xl border border-gold/30 bg-gold/5 p-4">
+            <div className="font-display text-gold text-sm">{item.label}</div>
+            <p className="mt-1.5 text-sm text-foreground/80 leading-relaxed">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    );
+  }
+  return null;
+}
+
+function Subsection({ sub }: { sub: VcSubsection }) {
+  return (
+    <div className="mt-8">
+      {sub.heading && (
+        <h3 className="font-display text-lg md:text-xl text-foreground mb-3">{sub.heading}</h3>
+      )}
+      <div className="space-y-4">
+        {sub.blocks.map((b, i) => (
+          <Block key={i} block={b} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function ValueChain() {
-  const [open, setOpen] = useState(0);
   return (
     <PageShell>
-      <PageHero kicker="From Forest to Stage" title="Interactive Value Chain" lead="Trace each step of how bamboo becomes a finished instrument in a player's hands." />
-      <div className="mt-12 relative">
-        <div className="hidden md:block absolute left-0 right-0 top-10 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
-        <div className="grid md:grid-cols-4 gap-5">
-          {STAGES.map((s, i) => {
-            const Icon = s.icon;
-            return (
-              <motion.button key={i} onClick={() => setOpen(i)} whileHover={{ y: -4 }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} className={`relative text-left rounded-2xl border p-5 ${open === i ? "border-gold bg-gold/10" : "border-border/50 gradient-card"}`}>
-                <div className={`grid h-12 w-12 place-items-center rounded-full ${open === i ? "bg-gold text-primary-foreground" : "bg-gold/15 text-gold"} mb-3`}><Icon size={20}/></div>
-                <div className="text-xs uppercase tracking-widest text-gold/80">Stage {i + 1}</div>
-                <h3 className="mt-1 font-display text-lg">{s.title}</h3>
-                {open === i && (
-                  <motion.ul initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} className="mt-3 space-y-1 text-sm text-foreground/85">
-                    {s.details.map((d) => <li key={d}>• {d}</li>)}
-                  </motion.ul>
-                )}
-              </motion.button>
-            );
-          })}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="max-w-4xl"
+      >
+        <div className="text-xs uppercase tracking-[0.25em] text-gold/80">
+          DOST-FPRDI · Bamboo Musical Instruments Innovation R&amp;D Program
         </div>
+        <h1 className="mt-3 font-display text-3xl md:text-5xl text-gold leading-tight">
+          {VC_TITLE}
+        </h1>
+        <p className="mt-4 text-base italic text-foreground/80">{VC_SUBTITLE}</p>
+      </motion.div>
+
+      <section className="mt-10 rounded-2xl border border-gold/30 gradient-card p-6 md:p-8 shadow-card">
+        <h2 className="font-display text-xl text-gold">Executive Summary</h2>
+        <div className="mt-4 space-y-4">
+          {VC_EXECUTIVE_SUMMARY.map((p, i) => (
+            <p key={i} className="text-foreground/85 leading-relaxed">
+              {p}
+            </p>
+          ))}
+        </div>
+      </section>
+
+      <div className="mt-14 space-y-16">
+        {VC_SECTIONS.map((section) => (
+          <section key={section.id} id={section.id}>
+            <h2 className="font-display text-2xl md:text-3xl text-gold flex items-baseline gap-3">
+              <span className="text-gold/50 text-lg md:text-xl">{section.number}.</span>
+              {section.title}
+            </h2>
+            <div className="mt-5 space-y-4">
+              {section.blocks.map((b, i) => (
+                <Block key={i} block={b} />
+              ))}
+            </div>
+
+            {section.id === "value-chain-map" && (
+              <div className="mt-8 rounded-2xl border border-border/50 bg-white p-4 md:p-6 shadow-card flex justify-center">
+                <img
+                  src={VC_MAP_IMAGE}
+                  alt="BMI Value Chain Map — a diagram of the Philippine Bamboo Musical Instruments value chain, showing core functions, industry players, support services, and the enabling environment"
+                  className="max-w-full h-auto rounded-lg"
+                  loading="lazy"
+                />
+              </div>
+            )}
+
+            {section.subsections?.map((sub, i) => (
+              <Subsection key={i} sub={sub} />
+            ))}
+          </section>
+        ))}
       </div>
     </PageShell>
   );
