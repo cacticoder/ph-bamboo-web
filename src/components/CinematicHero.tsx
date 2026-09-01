@@ -10,7 +10,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play, X, ArrowRight } from "lucide-react";
-import posterUrl from "@/assets/hero-poster.PNG";
+import posterUrl from "@/assets/hero-poster.webp";
 
 const posterAsset = { url: posterUrl };
 const poster = posterAsset.url;

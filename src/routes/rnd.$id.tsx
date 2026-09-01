@@ -91,6 +91,7 @@ function RndDetailPage() {
               src={tech.cover}
               alt={tech.title}
               className="absolute inset-0 h-full w-full object-cover"
+              fetchPriority="high"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/75 to-background/30" />
           </div>

@@ -139,7 +139,7 @@ function Gallery() {
               className="group text-left rounded-2xl overflow-hidden border border-border/50 gradient-card shadow-card"
             >
               <div className="aspect-[4/3] relative bg-gradient-to-br from-bamboo/40 to-plum/40 flex items-center justify-center texture-bamboo">
-                {image ? <img src={image} alt={ins.name} className="absolute inset-0 h-full w-full object-cover" /> : <Leaf className="text-gold/60" size={48} />}
+                {image ? <img src={image} alt={ins.name} className="absolute inset-0 h-full w-full object-cover" loading="lazy" /> : <Leaf className="text-gold/60" size={48} />}
                 <span className="absolute top-3 left-3 text-[10px] uppercase tracking-widest bg-background/70 text-gold px-2 py-0.5 rounded-full">{ins.category}</span>
               </div>
               <div className="p-5">

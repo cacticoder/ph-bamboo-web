@@ -110,6 +110,7 @@ function ProcessingCenterPage() {
               src={FACILITY_VIDEO.cover}
               alt={FACILITY_VIDEO.title}
               className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              fetchPriority="high"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent transition-opacity duration-300 group-hover:opacity-90" />
             <div className="absolute inset-0 flex items-center justify-center">
