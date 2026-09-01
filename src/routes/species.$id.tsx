@@ -59,6 +59,7 @@ function SpeciesDetailPage() {
             src={species.image}
             alt={species.commonName}
             className="absolute inset-0 h-full w-full object-cover"
+            fetchPriority="high"
           />
         ) : (
           <div className="absolute inset-0 bg-gradient-to-br from-bamboo/50 via-earth/40 to-plum/30 texture-bamboo grid place-items-center">

@@ -65,7 +65,7 @@ function MakersPage() {
                 className="rounded-2xl overflow-hidden border border-border/50 gradient-card shadow-card flex flex-col"
               >
                 <Link to="/makers/$id" params={{ id: m.id }} className="block aspect-[4/3] overflow-hidden">
-                  <img src={m.image} alt={m.name} className="h-full w-full object-cover transition-transform duration-500 hover:scale-105" />
+                  <img src={m.image} alt={m.name} className="h-full w-full object-cover transition-transform duration-500 hover:scale-105" loading="lazy" />
                 </Link>
                 <div className="p-5 flex flex-col flex-1">
                   <div className="text-[10px] uppercase tracking-widest text-muted-foreground">Maker</div>
