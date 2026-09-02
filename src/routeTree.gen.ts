@@ -15,6 +15,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as ModulesRouteImport } from './routes/modules'
 import { Route as ProcessingCenterRouteImport } from './routes/processing-center'
+import { Route as PublicationsRouteImport } from './routes/publications'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ValueChainRouteImport } from './routes/value-chain'
 import { Route as ArticlesSlugRouteImport } from './routes/articles.$slug'
@@ -53,6 +54,11 @@ const ModulesRoute = ModulesRouteImport.update({
 const ProcessingCenterRoute = ProcessingCenterRouteImport.update({
   id: '/processing-center',
   path: '/processing-center',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PublicationsRoute = PublicationsRouteImport.update({
+  id: '/publications',
+  path: '/publications',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TermsRoute = TermsRouteImport.update({
@@ -108,6 +114,7 @@ export interface FileRoutesByFullPath {
   '/gallery': typeof GalleryRoute
   '/modules': typeof ModulesRoute
   '/processing-center': typeof ProcessingCenterRoute
+  '/publications': typeof PublicationsRoute
   '/terms': typeof TermsRoute
   '/value-chain': typeof ValueChainRoute
   '/articles/$slug': typeof ArticlesSlugRoute
@@ -125,6 +132,7 @@ export interface FileRoutesByTo {
   '/gallery': typeof GalleryRoute
   '/modules': typeof ModulesRoute
   '/processing-center': typeof ProcessingCenterRoute
+  '/publications': typeof PublicationsRoute
   '/terms': typeof TermsRoute
   '/value-chain': typeof ValueChainRoute
   '/articles/$slug': typeof ArticlesSlugRoute
@@ -143,6 +151,7 @@ export interface FileRoutesById {
   '/gallery': typeof GalleryRoute
   '/modules': typeof ModulesRoute
   '/processing-center': typeof ProcessingCenterRoute
+  '/publications': typeof PublicationsRoute
   '/terms': typeof TermsRoute
   '/value-chain': typeof ValueChainRoute
   '/articles/$slug': typeof ArticlesSlugRoute
@@ -162,6 +171,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/modules'
     | '/processing-center'
+    | '/publications'
     | '/terms'
     | '/value-chain'
     | '/articles/$slug'
@@ -179,6 +189,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/modules'
     | '/processing-center'
+    | '/publications'
     | '/terms'
     | '/value-chain'
     | '/articles/$slug'
@@ -196,6 +207,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/modules'
     | '/processing-center'
+    | '/publications'
     | '/terms'
     | '/value-chain'
     | '/articles/$slug'
@@ -214,6 +226,7 @@ export interface RootRouteChildren {
   GalleryRoute: typeof GalleryRoute
   ModulesRoute: typeof ModulesRoute
   ProcessingCenterRoute: typeof ProcessingCenterRoute
+  PublicationsRoute: typeof PublicationsRoute
   TermsRoute: typeof TermsRoute
   ValueChainRoute: typeof ValueChainRoute
   ArticlesSlugRoute: typeof ArticlesSlugRoute
@@ -267,6 +280,13 @@ declare module '@tanstack/react-router' {
       path: '/processing-center'
       fullPath: '/processing-center'
       preLoaderRoute: typeof ProcessingCenterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/publications': {
+      id: '/publications'
+      path: '/publications'
+      fullPath: '/publications'
+      preLoaderRoute: typeof PublicationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/terms': {
@@ -342,6 +362,7 @@ const rootRouteChildren: RootRouteChildren = {
   GalleryRoute: GalleryRoute,
   ModulesRoute: ModulesRoute,
   ProcessingCenterRoute: ProcessingCenterRoute,
+  PublicationsRoute: PublicationsRoute,
   TermsRoute: TermsRoute,
   ValueChainRoute: ValueChainRoute,
   ArticlesSlugRoute: ArticlesSlugRoute,

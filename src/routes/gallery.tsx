@@ -197,7 +197,6 @@ function Gallery() {
                   <div className="rounded-lg bg-card/60 p-3"><span className="text-muted-foreground text-xs uppercase tracking-wider">Location</span><div className="font-medium text-foreground mt-0.5">{active.location}</div></div>
                 </div>
                 <p className="mt-5 text-foreground/85 leading-relaxed">{active.fullDescription}</p>
-                {active.figure && <p className="mt-3 text-xs text-muted-foreground">{active.figure}</p>}
               </div>
             </motion.div>
           </motion.div>

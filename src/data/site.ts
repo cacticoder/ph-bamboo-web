@@ -12,6 +12,7 @@ export const NAV_LINKS = [
   { to: "/processing-center", label: "Processing Center" },
   { to: "/value-chain", label: "Value Chain" },
   { to: "/modules", label: "Teaching Modules" },
+  { to: "/publications", label: "Publications" },
   { to: "/rnd", label: "R&D Technologies" },
   { to: "/analytics", label: "Analytics" },
 ] as const;
