@@ -11,6 +11,13 @@ interface AdSlotProps {
 }
 
 /**
+ * Ads are temporarily disabled site-wide. Flip this back to `true` to
+ * restore ad rendering everywhere AdSlot is used — no call sites need
+ * to change.
+ */
+const ADS_ENABLED = false;
+
+/**
  * Reusable Google AdSense slot. In production, set:
  *   VITE_ADSENSE_CLIENT="ca-pub-XXXXXXXXXXXX"
  * and pass the slot id per placement. Falls back to a styled placeholder
@@ -19,6 +26,8 @@ interface AdSlotProps {
 export function AdSlot({ slot, client, format = "auto", className, label = "Advertisement" }: AdSlotProps) {
   const adsenseClient = client || import.meta.env.VITE_ADSENSE_CLIENT;
   const isLive = !!(adsenseClient && slot);
+
+  if (!ADS_ENABLED) return null;
 
   return (
     <aside
