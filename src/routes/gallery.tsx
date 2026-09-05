@@ -139,7 +139,7 @@ function Gallery() {
               className="group text-left rounded-2xl overflow-hidden border border-border/50 gradient-card shadow-card"
             >
               <div className="aspect-[4/3] relative bg-gradient-to-br from-bamboo/40 to-plum/40 flex items-center justify-center texture-bamboo">
-                {image ? <img src={image} alt={ins.name} className="absolute inset-0 h-full w-full object-cover" loading="lazy" /> : <Leaf className="text-gold/60" size={48} />}
+                {image ? <img src={image} alt={ins.name} className="absolute inset-0 h-full w-full object-contain p-3" loading="lazy" /> : <Leaf className="text-gold/60" size={48} />}
                 <span className="absolute top-3 left-3 text-[10px] uppercase tracking-widest bg-background/70 text-gold px-2 py-0.5 rounded-full">{ins.category}</span>
               </div>
               <div className="p-5">
@@ -176,7 +176,7 @@ function Gallery() {
               className="glass max-w-3xl w-full rounded-2xl border border-gold/30 overflow-hidden max-h-[90vh] overflow-y-auto"
             >
               <div className="aspect-video bg-gradient-to-br from-bamboo to-plum flex items-center justify-center texture-bamboo">
-                {activeImage ? <img src={activeImage} alt={active.name} className="h-full w-full object-cover" /> : <Leaf size={96} className="text-gold/60" />}
+                {activeImage ? <img src={activeImage} alt={active.name} className="h-full w-full object-contain p-4" /> : <Leaf size={96} className="text-gold/60" />}
               </div>
               <div className="p-6 md:p-8">
                 <div className="flex items-start justify-between gap-4">
