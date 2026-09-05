@@ -1,4 +1,4 @@
-import { Bar, BarChart, CartesianGrid, Cell, Legend, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { Area, AreaChart, Bar, BarChart, CartesianGrid, Cell, Legend, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
 const TOOLTIP_STYLE = { background: "#414833", border: "1px solid #cead4a55", borderRadius: 12, color: "#f0f2f5" } as const;
 const COLORS = ["#cead4a", "#3e5b2c", "#414833", "#321524", "#8a7a2a", "#5e7a3a"];
@@ -16,6 +16,37 @@ export function ModuleBarChart({ data }: { data: Array<{ name: string; views: nu
         <Bar dataKey="likes" fill="#3e5b2c" radius={[6, 6, 0, 0]} />
         <Bar dataKey="downloads" fill="#321524" radius={[6, 6, 0, 0]} />
       </BarChart>
+    </ResponsiveContainer>
+  );
+}
+
+export function ModuleMonthlyTrendChart({ data }: { data: Array<{ month: string; views: number; likes: number; downloads: number }> }) {
+  return (
+    <ResponsiveContainer width="100%" height="100%">
+      <AreaChart data={data}>
+        <CartesianGrid strokeDasharray="3 3" stroke="#ffffff15" />
+        <XAxis dataKey="month" stroke="#f0f2f5aa" fontSize={11} />
+        <YAxis stroke="#f0f2f5aa" fontSize={11} />
+        <Tooltip contentStyle={TOOLTIP_STYLE} />
+        <Legend wrapperStyle={{ fontSize: 12 }} />
+        <Area type="monotone" dataKey="views" stroke="#cead4a" fill="#cead4a33" strokeWidth={2} />
+        <Area type="monotone" dataKey="likes" stroke="#3e5b2c" fill="#3e5b2c33" strokeWidth={2} />
+        <Area type="monotone" dataKey="downloads" stroke="#321524" fill="#32152433" strokeWidth={2} />
+      </AreaChart>
+    </ResponsiveContainer>
+  );
+}
+
+export function VisitorMonthlyTrendChart({ data }: { data: Array<{ month: string; visits: number }> }) {
+  return (
+    <ResponsiveContainer width="100%" height="100%">
+      <AreaChart data={data}>
+        <CartesianGrid strokeDasharray="3 3" stroke="#ffffff15" />
+        <XAxis dataKey="month" stroke="#f0f2f5aa" fontSize={11} />
+        <YAxis stroke="#f0f2f5aa" fontSize={11} />
+        <Tooltip contentStyle={TOOLTIP_STYLE} />
+        <Area type="monotone" dataKey="visits" stroke="#cead4a" fill="#cead4a33" strokeWidth={2} />
+      </AreaChart>
     </ResponsiveContainer>
   );
 }

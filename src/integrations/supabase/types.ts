@@ -14,27 +14,24 @@ export type Database = {
   }
   public: {
     Tables: {
-      module_metrics: {
+      module_events: {
         Row: {
-          downloads: number
-          likes: number
+          created_at: string
+          event_type: string
+          id: number
           module_id: string
-          updated_at: string
-          views: number
         }
         Insert: {
-          downloads?: number
-          likes?: number
+          created_at?: string
+          event_type: string
+          id?: number
           module_id: string
-          updated_at?: string
-          views?: number
         }
         Update: {
-          downloads?: number
-          likes?: number
+          created_at?: string
+          event_type?: string
+          id?: number
           module_id?: string
-          updated_at?: string
-          views?: number
         }
         Relationships: []
       }
@@ -86,16 +83,49 @@ export type Database = {
       }
     }
     Functions: {
-      get_visitor_country_counts: {
+      get_module_event_years: {
         Args: never
+        Returns: { year: number }[]
+      }
+      get_module_metrics: {
+        Args: { p_month?: number; p_year?: number }
+        Returns: {
+          downloads: number
+          likes: number
+          module_id: string
+          views: number
+        }[]
+      }
+      get_module_monthly_totals: {
+        Args: { p_year: number }
+        Returns: {
+          downloads: number
+          likes: number
+          month: number
+          views: number
+        }[]
+      }
+      get_visitor_country_counts: {
+        Args: { p_month?: number; p_year?: number }
         Returns: {
           country: string
           country_code: string
           visits: number
         }[]
       }
-      increment_module_metric: {
-        Args: { p_field: string; p_module_id: string }
+      get_visitor_event_years: {
+        Args: never
+        Returns: { year: number }[]
+      }
+      get_visitor_monthly_totals: {
+        Args: { p_year: number }
+        Returns: {
+          month: number
+          visits: number
+        }[]
+      }
+      log_module_event: {
+        Args: { p_event_type: string; p_module_id: string }
         Returns: undefined
       }
     }

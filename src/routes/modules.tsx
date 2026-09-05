@@ -1,10 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FileText, Heart, Download, Eye, X, Copy, Quote } from "lucide-react";
 import { MODULES, type TeachingModule } from "@/data/modules";
-import { seedMetrics, incrementMetric } from "@/lib/metrics";
+import { fetchAllModuleMetrics, incrementMetric, type ModuleMetricRow } from "@/lib/metrics";
 import { AdSlot } from "@/components/AdSlot";
+
+const EMPTY_METRICS = { views: 0, likes: 0, downloads: 0 };
 
 export const Route = createFileRoute("/modules")({
   head: () => ({
@@ -28,8 +30,29 @@ function ModulesPage() {
   const [tab, setTab] = useState<Tab>("All");
   const [active, setActive] = useState<TeachingModule | null>(null);
   const [cite, setCite] = useState<TeachingModule | null>(null);
+  const [metricsById, setMetricsById] = useState<Record<string, ModuleMetricRow>>({});
+
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const rows = await fetchAllModuleMetrics();
+      if (cancelled) return;
+      const map: Record<string, ModuleMetricRow> = {};
+      rows.forEach((r) => { map[r.module_id] = r; });
+      setMetricsById(map);
+    })();
+    return () => { cancelled = true; };
+  }, []);
 
   const filtered = useMemo(() => MODULES.filter((m) => matches(tab, m)), [tab]);
+
+  function bump(moduleId: string, field: "views" | "likes" | "downloads") {
+    void incrementMetric(moduleId, field);
+    setMetricsById((prev) => {
+      const current = prev[moduleId] ?? { module_id: moduleId, ...EMPTY_METRICS };
+      return { ...prev, [moduleId]: { ...current, [field]: current[field] + 1 } };
+    });
+  }
 
   return (
     <div className="mx-auto max-w-7xl px-4 md:px-8 py-12">
@@ -56,7 +79,7 @@ function ModulesPage() {
       <motion.div layout className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
         <AnimatePresence mode="popLayout">
           {filtered.map((m) => {
-            const metrics = seedMetrics(m.id);
+            const metrics = metricsById[m.id] ?? EMPTY_METRICS;
             return (
               <motion.div
                 layout
@@ -96,7 +119,7 @@ function ModulesPage() {
                       href={m.pdfUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      onClick={(e) => { e.preventDefault(); setActive(m); void incrementMetric(m.id, "views"); }}
+                      onClick={(e) => { e.preventDefault(); setActive(m); bump(m.id, "views"); }}
                       className="flex-1 rounded-md bg-gold text-primary-foreground px-3 py-2 text-xs font-semibold hover:opacity-90 text-center"
                     >
                       Read
@@ -134,13 +157,13 @@ function ModulesPage() {
                 <a
                   href={active.pdfUrl}
                   download
-                  onClick={() => void incrementMetric(active.id, "downloads")}
+                  onClick={() => bump(active.id, "downloads")}
                   className="rounded-md border border-gold/40 px-3 py-2 text-xs font-semibold text-gold hover:bg-gold/10 inline-flex items-center gap-1"
                 >
                   <Download size={12}/> Download
                 </a>
                 <button
-                  onClick={() => void incrementMetric(active.id, "likes")}
+                  onClick={() => bump(active.id, "likes")}
                   className="rounded-md border border-gold/40 px-3 py-2 text-xs font-semibold text-gold hover:bg-gold/10 inline-flex items-center gap-1"
                 >
                   <Heart size={12}/> Like

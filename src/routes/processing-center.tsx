@@ -10,15 +10,8 @@ import {
   FileText,
   Download,
   ExternalLink,
-  Factory,
-  Landmark,
-  GraduationCap,
-  Wrench,
-  Microscope,
-  Music2,
 } from "lucide-react";
 import { PageHero, PageShell } from "@/components/PageHero";
-import { ImageGallery } from "@/components/ImageGallery";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import {
   FACILITY_VIDEO,
@@ -28,52 +21,6 @@ import {
   BMIPC_CONTACT,
   BMIPC_SERVICES,
 } from "@/data/processing-center";
-
-const FACILITY_GALLERY = [
-  {
-    title: "Manufacturing Floor",
-    caption: "CNC-assisted cutting paired with traditional hand-finishing.",
-    icon: Factory,
-    tone: "earth" as const,
-  },
-  {
-    title: "Mini Museum",
-    caption: "Permanent exhibit of regional bamboo instrument traditions.",
-    icon: Landmark,
-    tone: "plum" as const,
-  },
-  {
-    title: "Training Studios",
-    caption: "Workshops for educators, makers, and student ensembles.",
-    icon: GraduationCap,
-    tone: "bamboo" as const,
-  },
-  {
-    title: "Tool Bench",
-    caption: "Custom jigs and tuning rigs developed in-house.",
-    icon: Wrench,
-    tone: "gold" as const,
-  },
-  {
-    title: "Acoustic Lab",
-    caption: "Anechoic measurements for every instrument leaving the facility.",
-    icon: Microscope,
-    tone: "earth" as const,
-  },
-  {
-    title: "Performance Hall",
-    caption: "On-site venue for premieres and recordings.",
-    icon: Music2,
-    tone: "plum" as const,
-  },
-];
-
-const STATS = [
-  { value: "1,200+", label: "Instruments produced annually" },
-  { value: "18", label: "Resident artisans & researchers" },
-  { value: "42", label: "Educator workshops hosted" },
-  { value: "9", label: "Regions reached through outreach" },
-];
 
 export const Route = createFileRoute("/processing-center")({
   head: () => ({
@@ -110,6 +57,7 @@ function ProcessingCenterPage() {
               src={FACILITY_VIDEO.cover}
               alt={FACILITY_VIDEO.title}
               className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              fetchPriority="high"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent transition-opacity duration-300 group-hover:opacity-90" />
             <div className="absolute inset-0 flex items-center justify-center">
@@ -292,30 +240,6 @@ function ProcessingCenterPage() {
             </a>
           </div>
         </div>
-      </section>
-
-      <section className="mt-16">
-        <h2 className="font-display text-2xl text-gold">Inside the Center</h2>
-        <p className="text-sm text-muted-foreground mt-1">
-          Six interlocking spaces under one roof.
-        </p>
-        <div className="mt-5">
-          <ImageGallery tiles={FACILITY_GALLERY} columns={3} />
-        </div>
-      </section>
-
-      <section className="mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {STATS.map((s) => (
-          <div
-            key={s.label}
-            className="rounded-2xl border border-border/50 gradient-card p-5 shadow-card text-center"
-          >
-            <div className="font-display text-3xl text-gold">{s.value}</div>
-            <div className="text-xs uppercase tracking-widest text-muted-foreground mt-2">
-              {s.label}
-            </div>
-          </div>
-        ))}
       </section>
     </PageShell>
   );

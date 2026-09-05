@@ -157,7 +157,7 @@ function Gallery() {
               className="group text-left rounded-2xl overflow-hidden border border-border/50 gradient-card shadow-card"
             >
               <div className="aspect-[4/3] relative bg-gradient-to-br from-bamboo/40 to-plum/40 flex items-center justify-center texture-bamboo">
-                {image ? <img src={image} alt={ins.name} className="absolute inset-0 h-full w-full object-cover" /> : <Leaf className="text-gold/60" size={48} />}
+                {image ? <img src={image} alt={ins.name} className="absolute inset-0 h-full w-full object-contain p-3" loading="lazy" /> : <Leaf className="text-gold/60" size={48} />}
                 <span className="absolute top-3 left-3 text-[10px] uppercase tracking-widest bg-background/70 text-gold px-2 py-0.5 rounded-full">{ins.category}</span>
                 {audio && (
                   <span title="Audio sample available" className="absolute top-3 right-3 inline-flex items-center justify-center h-6 w-6 rounded-full bg-background/70 text-gold">
@@ -209,7 +209,7 @@ function Gallery() {
               className="glass max-w-3xl w-full rounded-2xl border border-gold/30 overflow-hidden max-h-[90vh] overflow-y-auto"
             >
               <div className="aspect-video bg-gradient-to-br from-bamboo to-plum flex items-center justify-center texture-bamboo">
-                {activeImage ? <img src={activeImage} alt={active.name} className="h-full w-full object-cover" /> : <Leaf size={96} className="text-gold/60" />}
+                {activeImage ? <img src={activeImage} alt={active.name} className="h-full w-full object-contain p-4" /> : <Leaf size={96} className="text-gold/60" />}
               </div>
               <div className="p-6 md:p-8">
                 <div className="flex items-start justify-between gap-4">
@@ -230,15 +230,6 @@ function Gallery() {
                   <div className="rounded-lg bg-card/60 p-3"><span className="text-muted-foreground text-xs uppercase tracking-wider">Location</span><div className="font-medium text-foreground mt-0.5">{active.location}</div></div>
                 </div>
                 <p className="mt-5 text-foreground/85 leading-relaxed">{active.fullDescription}</p>
-                {galleryAudioPath(active.id) && (
-                  <div className="mt-4">
-                    <span className="flex items-center gap-1.5 text-xs uppercase tracking-wider text-gold/80 mb-1.5">
-                      <Volume2 size={12} /> Audio Sample
-                    </span>
-                    <audio controls preload="none" src={galleryAudioPath(active.id)} onPlay={handleAudioPlay} className="w-full h-9" />
-                  </div>
-                )}
-                {active.figure && <p className="mt-3 text-xs text-muted-foreground">{active.figure}</p>}
               </div>
             </motion.div>
           </motion.div>
