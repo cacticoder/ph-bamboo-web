@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, X, MapPin, Leaf, Users } from "lucide-react";
-import { INSTRUMENTS, CATEGORIES, CATALOG_MAKERS, INSTRUMENT_IMAGE_FILES, type Instrument } from "@/data/instruments";
+import { Search, X, MapPin, Leaf, Users, Volume2 } from "lucide-react";
+import { INSTRUMENTS, CATEGORIES, CATALOG_MAKERS, INSTRUMENT_IMAGE_FILES, INSTRUMENT_AUDIO_FILES, type Instrument } from "@/data/instruments";
 import { AdSlot } from "@/components/AdSlot";
 
 export const Route = createFileRoute("/gallery")({
@@ -23,6 +23,11 @@ function galleryImagePath(instrumentId: string) {
   return filename ? `/gallery/${encodeURIComponent(filename)}` : undefined;
 }
 
+function galleryAudioPath(instrumentId: string) {
+  const filename = INSTRUMENT_AUDIO_FILES[instrumentId];
+  return filename ? `/gallery/audio/${encodeURIComponent(filename)}` : undefined;
+}
+
 function Gallery() {
   const [cat, setCat] = useState<(typeof CATEGORIES)[number]>("All");
   const [maker, setMaker] = useState<string>("All");
@@ -30,6 +35,14 @@ function Gallery() {
   const [q, setQ] = useState("");
   const [active, setActive] = useState<Instrument | null>(null);
   const { instrument: instrumentParam } = Route.useSearch();
+  const playingAudioRef = useRef<HTMLAudioElement | null>(null);
+
+  const handleAudioPlay = (e: React.SyntheticEvent<HTMLAudioElement>) => {
+    if (playingAudioRef.current && playingAudioRef.current !== e.currentTarget) {
+      playingAudioRef.current.pause();
+    }
+    playingAudioRef.current = e.currentTarget;
+  };
 
   useEffect(() => {
     if (!instrumentParam) return;
@@ -54,7 +67,11 @@ function Gallery() {
             i.localName.toLowerCase().includes(q.toLowerCase()) ||
             i.makerName.toLowerCase().includes(q.toLowerCase()) ||
             i.shortDescription.toLowerCase().includes(q.toLowerCase())),
-      ),
+      ).sort((a, b) => {
+        const aHas = INSTRUMENT_AUDIO_FILES[a.id] ? 0 : 1;
+        const bHas = INSTRUMENT_AUDIO_FILES[b.id] ? 0 : 1;
+        return aHas - bHas;
+      }),
     [cat, maker, makerType, q],
   );
   const activeImage = active ? galleryImagePath(active.id) : undefined;
@@ -126,6 +143,7 @@ function Gallery() {
         <AnimatePresence mode="popLayout">
           {filtered.map((ins) => {
             const image = galleryImagePath(ins.id);
+            const audio = galleryAudioPath(ins.id);
             return (
             <motion.button
               layout
@@ -141,6 +159,11 @@ function Gallery() {
               <div className="aspect-[4/3] relative bg-gradient-to-br from-bamboo/40 to-plum/40 flex items-center justify-center texture-bamboo">
                 {image ? <img src={image} alt={ins.name} className="absolute inset-0 h-full w-full object-cover" /> : <Leaf className="text-gold/60" size={48} />}
                 <span className="absolute top-3 left-3 text-[10px] uppercase tracking-widest bg-background/70 text-gold px-2 py-0.5 rounded-full">{ins.category}</span>
+                {audio && (
+                  <span title="Audio sample available" className="absolute top-3 right-3 inline-flex items-center justify-center h-6 w-6 rounded-full bg-background/70 text-gold">
+                    <Volume2 size={13} />
+                  </span>
+                )}
               </div>
               <div className="p-5">
                 <h3 className="font-display text-lg text-gold">{ins.name}</h3>
@@ -148,6 +171,16 @@ function Gallery() {
                   {ins.makerName} · <span className="text-gold/80">{ins.makerType}</span>
                 </div>
                 <p className="mt-2 text-sm text-muted-foreground line-clamp-2">{ins.shortDescription}</p>
+                {audio && (
+                  <audio
+                    controls
+                    preload="none"
+                    src={audio}
+                    onPlay={handleAudioPlay}
+                    onClick={(e) => e.stopPropagation()}
+                    className="mt-3 h-8 w-full"
+                  />
+                )}
                 <span className="mt-3 inline-block text-xs font-semibold text-gold group-hover:underline">Read more →</span>
               </div>
             </motion.button>
@@ -197,6 +230,14 @@ function Gallery() {
                   <div className="rounded-lg bg-card/60 p-3"><span className="text-muted-foreground text-xs uppercase tracking-wider">Location</span><div className="font-medium text-foreground mt-0.5">{active.location}</div></div>
                 </div>
                 <p className="mt-5 text-foreground/85 leading-relaxed">{active.fullDescription}</p>
+                {galleryAudioPath(active.id) && (
+                  <div className="mt-4">
+                    <span className="flex items-center gap-1.5 text-xs uppercase tracking-wider text-gold/80 mb-1.5">
+                      <Volume2 size={12} /> Audio Sample
+                    </span>
+                    <audio controls preload="none" src={galleryAudioPath(active.id)} onPlay={handleAudioPlay} className="w-full h-9" />
+                  </div>
+                )}
                 {active.figure && <p className="mt-3 text-xs text-muted-foreground">{active.figure}</p>}
               </div>
             </motion.div>

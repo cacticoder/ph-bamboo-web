@@ -82,6 +82,29 @@ export const INSTRUMENT_IMAGE_FILES: Record<string, string> = {
   microflute: "microflute_1.png",
 };
 
+/** Local Gallery audio samples copied from CONTENT-SOURCE/bmi-gallery-audio. */
+export const INSTRUMENT_AUDIO_FILES: Record<string, string> = {
+  ullibyew: "Ullibyew.mp3",
+  byellingbing: "Byellingbing.mp3",
+  kulilit: "Kulilit.mp3",
+  "patang-ug": "Patang-ug.mp3",
+  patiteg: "Patiteg.mp3",
+  "tungali-nose-flute": "Tungali_nose.mp3",
+  "tungali-mouth-flute": "Tungali_mouth.mp3",
+  tungatong: "Tungatong.mp3",
+  saggaypu: "Saggaypu.mp3",
+  sulimong: "Sulimong.mp3",
+  "ayeg-uden": "Ayég Udén.mp3",
+  bellingving: "Béllingving.mp3",
+  beredong: "Bérédong.mp3",
+  jungajung: "Jungajung.mp3",
+  kullitong: "Kullitong.mp3",
+  tabellungan: "Tabéllungan.mp3",
+  tabbatab: "Tabbatab.mp3",
+  "tungali-majukayong": "Tungali.mp3",
+  unnat: "Unnat.mp3",
+};
+
 export const INSTRUMENTS: Instrument[] = [
   { id: "palakpak-ka-odak", name: "Palakpak Ka Odak", category: "Idiophones", shortDescription: "The palakpak ka odak is a bamboo clapper played by holding the two handles at the bottom of the instrument and shaking it upright.", fullDescription: "The palakpak ka odak is a bamboo clapper played by holding the two handles at the bottom of the instrument and shaking it upright. It is made by splitting about three-fourths of the bamboo tube so the sides can separate and rebound to strike each other, creating a clapping sound. Thick-walled and fibrous bamboo is used to produce loud noise and prevent the instrument from splitting apart completely.", bambooSpecies: "Bambusa spinosa Roxb.", region: "Davao Gulf to Mt. Apo, Mindanao", imagePrompt: "palakpak ka odak bamboo instrument", makerId: "bagobo-tagabawa", makerName: "Bagobo-Tagabawa Tribe", makerType: "Indigenous Peoples (IP)", material: "Bamboo", location: "Toril District, Davao City", localName: "Palakpak Ka Odak", figure: "Figure 8" },
   { id: "assa-assa-kagik-manok", name: "Assa-assa-kagik-manok", category: "Aerophones", shortDescription: "A whistle-type instrument, also known as a bird flute or water whistle flute, that mimics the sound of chirping birds.", fullDescription: "A whistle-type instrument, also known as a bird flute or water whistle flute, that mimics the sound of chirping birds. It is constructed from an internode with a closed end and a small diameter wind pipe attached to the body; water is poured into the bigger tube to produce the chirping resonance.", bambooSpecies: "Schizostachyum brachycladum (Kurz) Kurz", region: "Davao Gulf to Mt. Apo, Mindanao", imagePrompt: "assa-assa-kagik-manok bamboo instrument", makerId: "bagobo-tagabawa", makerName: "Bagobo-Tagabawa Tribe", makerType: "Indigenous Peoples (IP)", material: "Bamboo", location: "Toril District, Davao City", localName: "Assa-assa-kagik-manok", figure: "Figure 27" },
