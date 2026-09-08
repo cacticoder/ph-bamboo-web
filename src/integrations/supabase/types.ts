@@ -124,6 +124,10 @@ export type Database = {
           visits: number
         }[]
       }
+      get_visitor_total_count: {
+        Args: { p_month?: number; p_year?: number }
+        Returns: number
+      }
       log_module_event: {
         Args: { p_event_type: string; p_module_id: string }
         Returns: undefined

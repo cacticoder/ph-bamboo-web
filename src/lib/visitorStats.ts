@@ -24,6 +24,18 @@ export async function fetchVisitorCountryCounts(period: Period = {}): Promise<Co
   return (data as CountryRow[] | null) ?? [];
 }
 
+export async function fetchVisitorTotalCount(period: Period = {}): Promise<number> {
+  const { data, error } = await supabase.rpc("get_visitor_total_count", {
+    p_year: period.year ?? undefined,
+    p_month: period.month ?? undefined,
+  });
+  if (error) {
+    console.error("fetchVisitorTotalCount failed", error);
+    return 0;
+  }
+  return data ?? 0;
+}
+
 export async function fetchVisitorMonthlyTotals(year: number): Promise<MonthlyVisitorTotals[]> {
   const { data, error } = await supabase.rpc("get_visitor_monthly_totals", { p_year: year });
   if (error) {
