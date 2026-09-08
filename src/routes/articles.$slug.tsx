@@ -44,7 +44,7 @@ function ArticlePage() {
   return (
     <article>
       <div className="relative h-[55vh] min-h-[360px] w-full overflow-hidden">
-        <img src={article.cover} alt={article.title} className="absolute inset-0 h-full w-full object-cover" />
+        <img src={article.cover} alt={article.title} className="absolute inset-0 h-full w-full object-cover" fetchPriority="high" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/20" />
         <div className="relative mx-auto max-w-4xl h-full px-4 md:px-8 flex flex-col justify-end pb-10">
           <Link to="/" className="inline-flex items-center gap-2 text-sm text-gold/90 hover:text-gold mb-4 w-fit">

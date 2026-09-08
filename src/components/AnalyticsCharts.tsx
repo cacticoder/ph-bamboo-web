@@ -20,6 +20,37 @@ export function ModuleBarChart({ data }: { data: Array<{ name: string; views: nu
   );
 }
 
+export function ModuleMonthlyTrendChart({ data }: { data: Array<{ month: string; views: number; likes: number; downloads: number }> }) {
+  return (
+    <ResponsiveContainer width="100%" height="100%">
+      <AreaChart data={data}>
+        <CartesianGrid strokeDasharray="3 3" stroke="#ffffff15" />
+        <XAxis dataKey="month" stroke="#f0f2f5aa" fontSize={11} />
+        <YAxis stroke="#f0f2f5aa" fontSize={11} />
+        <Tooltip contentStyle={TOOLTIP_STYLE} />
+        <Legend wrapperStyle={{ fontSize: 12 }} />
+        <Area type="monotone" dataKey="views" stroke="#cead4a" fill="#cead4a33" strokeWidth={2} />
+        <Area type="monotone" dataKey="likes" stroke="#3e5b2c" fill="#3e5b2c33" strokeWidth={2} />
+        <Area type="monotone" dataKey="downloads" stroke="#321524" fill="#32152433" strokeWidth={2} />
+      </AreaChart>
+    </ResponsiveContainer>
+  );
+}
+
+export function VisitorMonthlyTrendChart({ data }: { data: Array<{ month: string; visits: number }> }) {
+  return (
+    <ResponsiveContainer width="100%" height="100%">
+      <AreaChart data={data}>
+        <CartesianGrid strokeDasharray="3 3" stroke="#ffffff15" />
+        <XAxis dataKey="month" stroke="#f0f2f5aa" fontSize={11} />
+        <YAxis stroke="#f0f2f5aa" fontSize={11} />
+        <Tooltip contentStyle={TOOLTIP_STYLE} />
+        <Area type="monotone" dataKey="visits" stroke="#cead4a" fill="#cead4a33" strokeWidth={2} />
+      </AreaChart>
+    </ResponsiveContainer>
+  );
+}
+
 export function CountryPieChart({ data }: { data: Array<{ country: string; visits: number }> }) {
   return (
     <ResponsiveContainer width="100%" height="100%">

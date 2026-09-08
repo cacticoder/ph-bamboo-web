@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { Facebook, Youtube, Instagram, Mail } from "lucide-react";
+import { Facebook, Youtube, Mail } from "lucide-react";
 import { NAV_LINKS } from "@/data/site";
+import logoUrl from "@/assets/BMI-website-logo.gif";
 
 export function Footer() {
   return (
@@ -8,9 +9,9 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 md:px-8 py-12 grid gap-10 md:grid-cols-4">
         <div className="md:col-span-2">
           <div className="flex items-center gap-3">
-            <div className="grid h-12 w-12 place-items-center rounded-full gradient-gold text-primary-foreground font-display text-xl font-bold">ph</div>
+            <img src={logoUrl} alt="BMI Program logo" className="h-12 w-auto flex-shrink-0" />
             <div>
-              <div className="font-display text-xl text-gold">phBMI Program</div>
+              <div className="font-display text-xl text-gold">BMI Program</div>
               <div className="text-xs uppercase tracking-widest text-muted-foreground">Philippine Bamboo Musical Instruments</div>
             </div>
           </div>
@@ -19,10 +20,9 @@ export function Footer() {
             instrument making through research, training, innovation, and cultural preservation.
           </p>
           <div className="mt-5 flex gap-3 text-muted-foreground">
-            <a href="#" aria-label="Facebook" className="hover:text-gold transition"><Facebook size={18} /></a>
-            <a href="#" aria-label="YouTube" className="hover:text-gold transition"><Youtube size={18} /></a>
-            <a href="#" aria-label="Instagram" className="hover:text-gold transition"><Instagram size={18} /></a>
-            <a href="mailto:info@phbmi.ph" aria-label="Email" className="hover:text-gold transition"><Mail size={18} /></a>
+            <a href="https://www.facebook.com/dostfprdi" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-gold transition"><Facebook size={18} /></a>
+            <a href="https://www.youtube.com/@dostfprdi" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:text-gold transition"><Youtube size={18} /></a>
+            <a href="mailto:info@fprdi.dost.gov.ph" aria-label="Email" className="hover:text-gold transition"><Mail size={18} /></a>
           </div>
         </div>
 
@@ -49,9 +49,8 @@ export function Footer() {
       </div>
 
       <div className="border-t border-border/60">
-        <div className="mx-auto max-w-7xl px-4 md:px-8 py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
-          <div>© {new Date().getFullYear()} Philippine Bamboo Musical Instruments Program. All rights reserved.</div>
-          <div className="font-display tracking-wider text-gold/80">phBMI Design</div>
+        <div className="mx-auto max-w-7xl px-4 md:px-8 py-5 text-center text-xs text-muted-foreground">
+          © {new Date().getFullYear()} Philippine Bamboo Musical Instruments Program. All rights reserved.
         </div>
       </div>
     </footer>

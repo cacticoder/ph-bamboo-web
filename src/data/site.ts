@@ -12,6 +12,7 @@ export const NAV_LINKS = [
   { to: "/processing-center", label: "Processing Center" },
   { to: "/value-chain", label: "Value Chain" },
   { to: "/modules", label: "Teaching Modules" },
+  { to: "/publications", label: "Publications" },
   { to: "/rnd", label: "R&D Technologies" },
   { to: "/analytics", label: "Analytics" },
 ] as const;
@@ -67,14 +68,14 @@ export interface Maker {
   body: string[];
 }
 
-import bagoboImgUrl from "@/assets/bagobo-tagabawa.png.png";
+import bagoboImgUrl from "@/assets/bagobo-tagabawa.webp";
 import calabigImgUrl from "@/assets/calabig.png.png";
 import karatongImgUrl from "@/assets/Karatong Festival.jpg";
 import diegoCeraImgUrl from "@/assets/Diego Cera Organ-builders Inc._1.jpg";
 import kingFluteImgUrl from "@/assets/King Flute Philippines Inc._Processing site of Kinflute Philippines, Inc.jpg";
-import lubuaganImgUrl from "@/assets/Lubuagan Tribe (Kalinga Sub-tribe)_1.png";
-import majukayongImgUrl from "@/assets/Majukayong Tribe_1.png";
-import tbolitImgUrl from "@/assets/Tboli_1.PNG";
+import lubuaganImgUrl from "@/assets/Lubuagan Tribe (Kalinga Sub-tribe)_1.webp";
+import majukayongImgUrl from "@/assets/Majukayong Tribe_1.webp";
+import tbolitImgUrl from "@/assets/Tboli_1.webp";
 import huniImgUrl from "@/assets/Huni-Ukulele_icon.png";
 import saritaImgUrl from "@/assets/Sarita-instrument-artisan_1.jpg";
 import musikawayanImgUrl from "@/assets/Musikawayan Malabon_1.jpg";

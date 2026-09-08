@@ -48,7 +48,7 @@ function MakerPage() {
     <article>
       {/* Hero */}
       <div className="relative h-[60vh] min-h-[420px] w-full overflow-hidden">
-        <img src={maker.image} alt={maker.name} className="absolute inset-0 h-full w-full object-cover" />
+        <img src={maker.image} alt={maker.name} className="absolute inset-0 h-full w-full object-cover" fetchPriority="high" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/75 to-background/20" />
         <div className="relative mx-auto max-w-5xl h-full px-4 md:px-8 flex flex-col justify-end pb-12">
           <Link to="/makers" className="inline-flex items-center gap-2 text-sm text-gold/90 hover:text-gold mb-4 w-fit">
@@ -93,7 +93,7 @@ function MakerPage() {
         {/* Sidebar */}
         <aside className="space-y-6 lg:sticky lg:top-24 self-start">
           <div className="rounded-2xl overflow-hidden border border-border/50 shadow-card">
-            <img src={maker.image} alt={maker.name} className="w-full aspect-[3/4] object-cover" />
+            <img src={maker.image} alt={maker.name} className="w-full aspect-[3/4] object-cover" loading="lazy" />
           </div>
 
           <div className="rounded-2xl border border-border/50 gradient-card p-5 shadow-card">
@@ -138,7 +138,7 @@ function MakerPage() {
           {others.map((m) => (
             <Link key={m.id} to="/makers/$id" params={{ id: m.id }} className="group rounded-2xl overflow-hidden border border-border/50 gradient-card shadow-card">
               <div className="aspect-[4/3] overflow-hidden">
-                <img src={m.image} alt={m.name} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <img src={m.image} alt={m.name} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
               </div>
               <div className="p-4">
                 <div className="text-xs uppercase tracking-widest text-muted-foreground">{m.region}</div>
