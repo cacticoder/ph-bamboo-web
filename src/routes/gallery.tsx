@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Search, X, MapPin, Leaf, Users, Volume2 } from "lucide-react";
 import { INSTRUMENTS, CATEGORIES, CATALOG_MAKERS, INSTRUMENT_IMAGE_FILES, INSTRUMENT_AUDIO_FILES, type Instrument } from "@/data/instruments";
 import { AdSlot } from "@/components/AdSlot";
+import { trackEvent } from "@/lib/analytics";
 
 export const Route = createFileRoute("/gallery")({
   validateSearch: (search: Record<string, unknown>) => ({
@@ -37,11 +38,16 @@ function Gallery() {
   const { instrument: instrumentParam } = Route.useSearch();
   const playingAudioRef = useRef<HTMLAudioElement | null>(null);
 
-  const handleAudioPlay = (e: React.SyntheticEvent<HTMLAudioElement>) => {
+  const handleAudioPlay = (e: React.SyntheticEvent<HTMLAudioElement>, instrument: Instrument) => {
     if (playingAudioRef.current && playingAudioRef.current !== e.currentTarget) {
       playingAudioRef.current.pause();
     }
     playingAudioRef.current = e.currentTarget;
+    void trackEvent("audio_play", {
+      instrument: instrument.name,
+      instrumentId: instrument.id,
+      audioFile: INSTRUMENT_AUDIO_FILES[instrument.id],
+    });
   };
 
   useEffect(() => {
@@ -176,7 +182,7 @@ function Gallery() {
                     controls
                     preload="none"
                     src={audio}
-                    onPlay={handleAudioPlay}
+                    onPlay={(e) => handleAudioPlay(e, ins)}
                     onClick={(e) => e.stopPropagation()}
                     className="mt-3 h-8 w-full"
                   />
@@ -235,7 +241,7 @@ function Gallery() {
                     <span className="flex items-center gap-1.5 text-xs uppercase tracking-wider text-gold/80 mb-1.5">
                       <Volume2 size={12} /> Audio Sample
                     </span>
-                    <audio controls preload="none" src={galleryAudioPath(active.id)} onPlay={handleAudioPlay} className="w-full h-9" />
+                    <audio controls preload="none" src={galleryAudioPath(active.id)} onPlay={(e) => handleAudioPlay(e, active)} className="w-full h-9" />
                   </div>
                 )}
                 {active.figure && <p className="mt-3 text-xs text-muted-foreground">{active.figure}</p>}

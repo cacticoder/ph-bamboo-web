@@ -11,6 +11,7 @@ import { Link } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play, X, ArrowRight } from "lucide-react";
 import posterUrl from "@/assets/hero-poster.PNG";
+import { trackEvent } from "@/lib/analytics";
 
 const posterAsset = { url: posterUrl };
 const poster = posterAsset.url;
@@ -127,7 +128,10 @@ export function CinematicHero() {
       {!playing && (
         <motion.button
           type="button"
-          onClick={() => setPlaying(true)}
+          onClick={() => {
+            setPlaying(true);
+            void trackEvent("youtube_click", { video: "Hero video", videoId: YOUTUBE_ID, page: "home-hero" });
+          }}
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.5 }}

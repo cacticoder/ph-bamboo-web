@@ -4,6 +4,7 @@ import { Play } from "lucide-react";
 import bmiLogo from "@/assets/logo/BMI-logo-browser.png";
 import { FEATURED_VIDEOS, type FeaturedVideo } from "@/data/videos";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { trackEvent } from "@/lib/analytics";
 
 export function FeaturedVideos() {
   const [activeVideo, setActiveVideo] = useState<FeaturedVideo | null>(null);
@@ -36,7 +37,10 @@ export function FeaturedVideos() {
           >
             <button
               type="button"
-              onClick={() => setActiveVideo(video)}
+              onClick={() => {
+                setActiveVideo(video);
+                void trackEvent("youtube_click", { video: video.title, videoId: video.youtubeId, page: "featured-videos" });
+              }}
               aria-label={`Play video: ${video.title}`}
               className="group block w-full overflow-hidden rounded-2xl border border-border/50 gradient-card shadow-card h-full text-left"
             >

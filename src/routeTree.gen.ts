@@ -17,6 +17,8 @@ import { Route as ModulesRouteImport } from './routes/modules'
 import { Route as ProcessingCenterRouteImport } from './routes/processing-center'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ValueChainRouteImport } from './routes/value-chain'
+import { Route as AdminAnalyticsRouteImport } from './routes/admin.analytics'
+import { Route as AdminLoginRouteImport } from './routes/admin.login'
 import { Route as ArticlesSlugRouteImport } from './routes/articles.$slug'
 import { Route as MakersIndexRouteImport } from './routes/makers.index'
 import { Route as MakersIdRouteImport } from './routes/makers.$id'
@@ -65,6 +67,16 @@ const ValueChainRoute = ValueChainRouteImport.update({
   path: '/value-chain',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminAnalyticsRoute = AdminAnalyticsRouteImport.update({
+  id: '/admin/analytics',
+  path: '/admin/analytics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/admin/login',
+  path: '/admin/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ArticlesSlugRoute = ArticlesSlugRouteImport.update({
   id: '/articles/$slug',
   path: '/articles/$slug',
@@ -110,6 +122,8 @@ export interface FileRoutesByFullPath {
   '/processing-center': typeof ProcessingCenterRoute
   '/terms': typeof TermsRoute
   '/value-chain': typeof ValueChainRoute
+  '/admin/analytics': typeof AdminAnalyticsRoute
+  '/admin/login': typeof AdminLoginRoute
   '/articles/$slug': typeof ArticlesSlugRoute
   '/makers/$id': typeof MakersIdRoute
   '/rnd/$id': typeof RndIdRoute
@@ -127,6 +141,8 @@ export interface FileRoutesByTo {
   '/processing-center': typeof ProcessingCenterRoute
   '/terms': typeof TermsRoute
   '/value-chain': typeof ValueChainRoute
+  '/admin/analytics': typeof AdminAnalyticsRoute
+  '/admin/login': typeof AdminLoginRoute
   '/articles/$slug': typeof ArticlesSlugRoute
   '/makers/$id': typeof MakersIdRoute
   '/rnd/$id': typeof RndIdRoute
@@ -145,6 +161,8 @@ export interface FileRoutesById {
   '/processing-center': typeof ProcessingCenterRoute
   '/terms': typeof TermsRoute
   '/value-chain': typeof ValueChainRoute
+  '/admin/analytics': typeof AdminAnalyticsRoute
+  '/admin/login': typeof AdminLoginRoute
   '/articles/$slug': typeof ArticlesSlugRoute
   '/makers/$id': typeof MakersIdRoute
   '/rnd/$id': typeof RndIdRoute
@@ -164,6 +182,8 @@ export interface FileRouteTypes {
     | '/processing-center'
     | '/terms'
     | '/value-chain'
+    | '/admin/analytics'
+    | '/admin/login'
     | '/articles/$slug'
     | '/makers/$id'
     | '/rnd/$id'
@@ -181,6 +201,8 @@ export interface FileRouteTypes {
     | '/processing-center'
     | '/terms'
     | '/value-chain'
+    | '/admin/analytics'
+    | '/admin/login'
     | '/articles/$slug'
     | '/makers/$id'
     | '/rnd/$id'
@@ -198,6 +220,8 @@ export interface FileRouteTypes {
     | '/processing-center'
     | '/terms'
     | '/value-chain'
+    | '/admin/analytics'
+    | '/admin/login'
     | '/articles/$slug'
     | '/makers/$id'
     | '/rnd/$id'
@@ -216,6 +240,8 @@ export interface RootRouteChildren {
   ProcessingCenterRoute: typeof ProcessingCenterRoute
   TermsRoute: typeof TermsRoute
   ValueChainRoute: typeof ValueChainRoute
+  AdminAnalyticsRoute: typeof AdminAnalyticsRoute
+  AdminLoginRoute: typeof AdminLoginRoute
   ArticlesSlugRoute: typeof ArticlesSlugRoute
   MakersIdRoute: typeof MakersIdRoute
   RndIdRoute: typeof RndIdRoute
@@ -283,6 +309,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ValueChainRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/analytics': {
+      id: '/admin/analytics'
+      path: '/admin/analytics'
+      fullPath: '/admin/analytics'
+      preLoaderRoute: typeof AdminAnalyticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/admin/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/articles/$slug': {
       id: '/articles/$slug'
       path: '/articles/$slug'
@@ -344,6 +384,8 @@ const rootRouteChildren: RootRouteChildren = {
   ProcessingCenterRoute: ProcessingCenterRoute,
   TermsRoute: TermsRoute,
   ValueChainRoute: ValueChainRoute,
+  AdminAnalyticsRoute: AdminAnalyticsRoute,
+  AdminLoginRoute: AdminLoginRoute,
   ArticlesSlugRoute: ArticlesSlugRoute,
   MakersIdRoute: MakersIdRoute,
   RndIdRoute: RndIdRoute,

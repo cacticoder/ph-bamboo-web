@@ -14,6 +14,66 @@ export type Database = {
   }
   public: {
     Tables: {
+      admin_users: {
+        Row: {
+          created_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      analytics_events: {
+        Row: {
+          browser: string | null
+          country: string | null
+          created_at: string
+          device_type: string | null
+          event_type: string
+          id: string
+          metadata: Json
+          operating_system: string | null
+          page_path: string | null
+          page_title: string | null
+          referrer: string | null
+          session_id: string
+        }
+        Insert: {
+          browser?: string | null
+          country?: string | null
+          created_at?: string
+          device_type?: string | null
+          event_type: string
+          id?: string
+          metadata?: Json
+          operating_system?: string | null
+          page_path?: string | null
+          page_title?: string | null
+          referrer?: string | null
+          session_id: string
+        }
+        Update: {
+          browser?: string | null
+          country?: string | null
+          created_at?: string
+          device_type?: string | null
+          event_type?: string
+          id?: string
+          metadata?: Json
+          operating_system?: string | null
+          page_path?: string | null
+          page_title?: string | null
+          referrer?: string | null
+          session_id?: string
+        }
+        Relationships: []
+      }
       module_metrics: {
         Row: {
           downloads: number
@@ -86,6 +146,38 @@ export type Database = {
       }
     }
     Functions: {
+      admin_get_dimension_breakdown: {
+        Args: { p_dimension: string; p_end: string; p_start: string }
+        Returns: { count: number; value: string }[]
+      }
+      admin_get_document_stats: {
+        Args: { p_end: string; p_limit?: number; p_start: string }
+        Returns: { document: string; downloads: number; views: number }[]
+      }
+      admin_get_summary: {
+        Args: { p_end: string; p_start: string }
+        Returns: { events: number; page_views: number; sessions: number; visitors: number }[]
+      }
+      admin_get_top_instruments: {
+        Args: { p_end: string; p_limit?: number; p_start: string }
+        Returns: { instrument: string; plays: number }[]
+      }
+      admin_get_top_pages: {
+        Args: { p_end: string; p_limit?: number; p_start: string }
+        Returns: { page_path: string; views: number }[]
+      }
+      admin_get_traffic_sources: {
+        Args: { p_end: string; p_start: string }
+        Returns: { source: string; visits: number }[]
+      }
+      admin_get_visitor_trend: {
+        Args: { p_end: string; p_start: string; p_tz?: string }
+        Returns: { day: string; page_views: number; visitors: number }[]
+      }
+      admin_get_youtube_clicks: {
+        Args: { p_end: string; p_limit?: number; p_start: string }
+        Returns: { clicks: number; video: string }[]
+      }
       get_visitor_country_counts: {
         Args: never
         Returns: {
@@ -97,6 +189,10 @@ export type Database = {
       increment_module_metric: {
         Args: { p_field: string; p_module_id: string }
         Returns: undefined
+      }
+      is_admin: {
+        Args: never
+        Returns: boolean
       }
     }
     Enums: {

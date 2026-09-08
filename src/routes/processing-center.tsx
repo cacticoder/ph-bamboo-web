@@ -28,6 +28,7 @@ import {
   BMIPC_CONTACT,
   BMIPC_SERVICES,
 } from "@/data/processing-center";
+import { trackEvent } from "@/lib/analytics";
 
 const FACILITY_GALLERY = [
   {
@@ -102,7 +103,10 @@ function ProcessingCenterPage() {
         <div className="mt-5 max-w-4xl">
           <button
             type="button"
-            onClick={() => setVideoOpen(true)}
+            onClick={() => {
+              setVideoOpen(true);
+              void trackEvent("youtube_click", { video: FACILITY_VIDEO.title, videoId: FACILITY_VIDEO.youtubeId, page: "processing-center" });
+            }}
             aria-label={`Play video: ${FACILITY_VIDEO.title}`}
             className="group relative block w-full aspect-video overflow-hidden rounded-2xl border border-border/50 shadow-card bg-black"
           >
@@ -279,6 +283,7 @@ function ProcessingCenterPage() {
               href={BROCHURE.url}
               target="_blank"
               rel="noreferrer"
+              onClick={() => void trackEvent("pdf_view", { document: BROCHURE.filename, page: "processing-center" })}
               className="inline-flex items-center justify-center gap-2 rounded-full border border-gold/40 px-5 py-2.5 text-sm font-semibold text-gold hover:bg-gold/10"
             >
               <ExternalLink size={14} /> View PDF
@@ -286,6 +291,7 @@ function ProcessingCenterPage() {
             <a
               href={BROCHURE.url}
               download={BROCHURE.filename}
+              onClick={() => void trackEvent("pdf_download", { document: BROCHURE.filename, page: "processing-center" })}
               className="inline-flex items-center justify-center gap-2 rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-90"
             >
               <Download size={14} /> Download Brochure (PDF)

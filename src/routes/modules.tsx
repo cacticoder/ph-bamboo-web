@@ -5,6 +5,18 @@ import { FileText, Heart, Download, Eye, X, Copy, Quote } from "lucide-react";
 import { MODULES, type TeachingModule } from "@/data/modules";
 import { seedMetrics, incrementMetric } from "@/lib/metrics";
 import { AdSlot } from "@/components/AdSlot";
+import { trackEvent } from "@/lib/analytics";
+
+function moduleAnalyticsMeta(m: TeachingModule) {
+  return {
+    document: m.title,
+    moduleId: m.id,
+    level: m.level,
+    grade: m.grade,
+    volume: m.volume,
+    file: m.pdfUrl,
+  };
+}
 
 export const Route = createFileRoute("/modules")({
   head: () => ({
@@ -96,7 +108,7 @@ function ModulesPage() {
                       href={m.pdfUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      onClick={(e) => { e.preventDefault(); setActive(m); void incrementMetric(m.id, "views"); }}
+                      onClick={(e) => { e.preventDefault(); setActive(m); void incrementMetric(m.id, "views"); void trackEvent("pdf_view", moduleAnalyticsMeta(m)); }}
                       className="flex-1 rounded-md bg-gold text-primary-foreground px-3 py-2 text-xs font-semibold hover:opacity-90 text-center"
                     >
                       Read
@@ -134,7 +146,7 @@ function ModulesPage() {
                 <a
                   href={active.pdfUrl}
                   download
-                  onClick={() => void incrementMetric(active.id, "downloads")}
+                  onClick={() => { void incrementMetric(active.id, "downloads"); void trackEvent("pdf_download", moduleAnalyticsMeta(active)); }}
                   className="rounded-md border border-gold/40 px-3 py-2 text-xs font-semibold text-gold hover:bg-gold/10 inline-flex items-center gap-1"
                 >
                   <Download size={12}/> Download
